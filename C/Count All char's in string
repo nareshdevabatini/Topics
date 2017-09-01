@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+					
+public class Program
+{
+	public static void Main()
+	{
+		string data="madam";
+		char[] d=data.ToCharArray();
+		Dictionary<char,int> dt = new Dictionary<char,int>();
+		foreach(char c in d)
+		{
+			if(dt.ContainsKey(c))
+			{
+				int val = dt[c];
+				dt[c] = val+1;
+			}
+			else
+			dt.Add(c,1)	;
+		}
+		foreach(var c in dt)
+			Console.WriteLine("String:{0} Count:{1}",c.Key,c.Value);
+		
+	}
+}
