@@ -1,0 +1,20 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		string data="madam";
+		char[] d=data.ToCharArray();
+		string str=string.Empty;
+		foreach(char c in d)
+		{
+			if(str.IndexOf(c)==-1)
+			{
+				str= str+c;
+			}
+		}
+		Console.Write(str);
+		
+	}
+}
