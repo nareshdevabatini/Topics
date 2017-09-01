@@ -1,0 +1,40 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            //Your code goes here
+            int no=6;
+            long fact=no;
+            for(int i=1;no>i;i++){
+                fact=fact*i;
+            }
+            Console.WriteLine(getfact(no));
+            Console.WriteLine(getRev("Hello"));
+        }
+        public static int getfact(int no){
+            if(no==0){
+                return 1;
+            }
+            else{
+               return no*getfact(no-1);
+            }
+        }
+        public static string getRev(string data){
+         if(data=="")
+         {
+             return "";
+         }
+            else{
+                return data[data.Length-1]+getRev(data.Substring(0,data.Length-1));
+            }
+        }
+    }
+}
