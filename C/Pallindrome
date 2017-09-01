@@ -1,0 +1,13 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		string data="madam",reverse="";
+		char[] i=data.ToCharArray();
+		Array.Reverse(i);
+		reverse=new string(i);
+		Console.WriteLine(data==reverse);
+	}
+}
