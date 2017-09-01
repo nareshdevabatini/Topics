@@ -1,0 +1,8 @@
+Constant can be injected anywhere, once declared then cannot be changed or modified.
+
+syntax:
+app.constant('lang',{
+en:'English',
+hn:'Hindi',
+ar:'Arabic'
+});
