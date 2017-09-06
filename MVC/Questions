@@ -1,0 +1,18 @@
+1. MVC life cycle
+2. Execution order filters
+3. How to create custom filter
+4. how many ways to call partial view
+5. Diff b/w asp.net and MVC
+6. What is use of helper class
+7. Ajax Helper class methods
+8. how to submit a form using two submit buttons
+9. Minification and bundling
+10. Diff b/w view and partial view
+11. Diff b/w Render partial, Partial, Action, RenderAction
+12. what is modelView and how to bind it and what all the types
+13. Routing and constraints
+14. Data Anotations
+15. Authentication and types in MVC
+16. How update both partial views parallely in same page
+17. How to create custom view engine
+18. How to create custom handler
