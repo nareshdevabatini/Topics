@@ -1,0 +1,30 @@
+1. Constructors and types
+2. Abstract and Interface main difference
+3. Encapsulation and Abstraction with example
+4. Inheritance and why C# not supported multiple inheritance
+5. Static class vs Abstract class
+6. Access Modifiers
+7. Compile time and run-time polymorphism
+8. keywords(virtual, this, constant, Readonly, static, Override, new)
+9. Extension methods
+10. Anonymous mehtods and types
+11. Diff b/w Linq and lambda expression
+12. Types(Var, Dynamic, Nullable) and Casting
+13. Safety type
+14. Stack and Heap storage
+15. Value type and Reference types(Boxing and Unboxing)
+16. Delegates and Events
+17. Async and await
+18. Genirics and types
+19. Collections(List, ArrayList, Dictionay, Hashtable, Tuple, Heap, Stack)
+20. Garbage Collector(Disposable & Finalize)
+21. Function Overloading
+22. IEnumerable and Iquerable
+23. Ref and out key
+24. Error Handling
+25.  What are sealed classes
+26.  What are Partial classes
+27. Singleton
+28. Seriliazation
+29. Diff b/w Classes and Structures?
+30 
