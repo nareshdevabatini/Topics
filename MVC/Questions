@@ -1,3 +1,4 @@
+0. Diff b/w MVC versions
 1. MVC life cycle
 2. Execution order filters
 3. How to create custom filter
@@ -28,4 +29,26 @@
 28. What is use jquery unobtrusive
 29. Asp.net Identity
 30. Resultset in MVC
-31.
+31. Diff b/w View & Partial View
+32. Explain Areas
+33. Concept of scaffholding
+34. Explain the need of Display Mode?
+35. What is output cache
+36. What is Elastic search and how to use it
+37. Method of hadling error
+38. What is viewstart in MVC
+39. How to Create custom Error page
+40. Serverside validations
+41. Remote validation in MVC
+42. Mention what “beforFilter()”,“beforeRender” and “afterFilter” functions do in Controller?
+43. How can we use multiple models in singlepage and types
+44. CSRF attact(anti-forgery key)?
+45. Explain the role of components Presentation, Abstraction and Control in MVC?
+46. How we can remove default viewengine
+47. What are different ways of rendering layout?
+48. How to load data into dropdown
+48. Mention the order of the filters that get executed, if the multiple filters are implemented?
+49. Mention what is the use of the default route {resource}.axd/{*pathinfo} ?
+50. what are the two ways for adding constraints to a route?
+51. How to create UnitTesing?
+
