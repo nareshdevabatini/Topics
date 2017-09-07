@@ -1,0 +1,16 @@
+Constructor is special method in a class which gets automatically invoked when we instance of that class.
+
+Some of the key points regarding the Constructor are:
+  A class can have any number of constructors.
+  A constructor doesn't have any return type, not even void.
+  A static constructor can not be a parametrized constructor.
+  Within a class you can create only one static constructor. 
+
+Constructors can be divided into 5 types:
+1. Default Constructor: with same class name without parameter
+2. Parametrized Constructor: It contains parameter , when intialize we have to pass parameter
+3. Copy Constructor: 
+4. Static Constructor: Without parameter, Accessmodifier and it contains only one static constructor and compiler will call without instance
+5. Private Constructor: It'll be use on normal class with private access modifier constructor, and all method of inside the class be use 
+                        static keyword
+
