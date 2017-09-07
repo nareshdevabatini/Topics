@@ -1,0 +1,20 @@
+1. Dependency Injection
+2. HTTP Verbs
+3. Routing Attributes
+4. How to Consuming
+5. Exception handling
+6. Diff types of Action Resultsets(IHttpActionResult and HttpResponsemessage)
+7. Security in WebApi
+8. HTTP Status Code
+9. Filters
+10. Internet Media Types:
+11. Enable tracing 
+12. What new features are introduced in ASP.NET Web API 2.0?
+13. Explain briefly OWIN (Open Web Interface for .NET) Self Hosting?
+14. fromUri and fromBody
+15. Brefily about CORS
+16. What are Exception Filters? What are different ways to register exception filters?
+17. How we can guarantee that our Web API returns JSON data only?
+18. ASPMembership configuration
+19. How to unit test the WebAPI method using Fiddler - Content-type:application/json?
+20. 
