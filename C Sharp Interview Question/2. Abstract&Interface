@@ -1,0 +1,59 @@
+Interface: Interface can only have method signature, by using this we can achieve multiple inheritance. and Definetly need to implement
+            interface methods once we inherits.
+            Bydefault interface is public.
+            
+            Ex: when a class inherits two interfaces and both of  them have same method name
+             interface ISimpleCalculator
+            {
+                void Add();
+            }
+            interface IComplexCalculator
+            {
+                void Add();
+            }
+            class Calculator: ISimpleCalculator,IComplexCalculator
+            {
+                //This is explicit implementation
+                void ISimpleCalculator.Add()
+                {
+                    //doSomething
+                }
+                void IComplexCalculator.Add() 
+               {
+                    //doSomething
+                }
+            }
+            
+Abstract : Abstract is special kind of class that has no implementation. it cannot be instantiated , it can be having abstract methods, 
+          non abstract methods.
+          An abstract class can never be sealed or static. 
+          An abstract member cannot be static or private. 
+          An abstract method cannot be marked virtual. 
+          Without an abstract class, we cannot implement the Template Method Pattern.
+
+Ex: 
+public abstract class paraconstrctor
+  {
+      public void call()
+      {
+        Console.WriteLine("non-abstract method");
+      }
+      public abstract void model();
+ }
+public class Program: paraconstrctor
+{
+	public override void model()
+	{
+		Console.WriteLine("Model: The model of this iPhone is iPhone5s"); 
+	}
+	
+	public static void Main()
+	{
+		
+		Program i= new Program();
+		i.call();
+	}
+	
+}
+
+Why we would use one vs another?
