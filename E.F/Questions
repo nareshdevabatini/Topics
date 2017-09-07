@@ -1,0 +1,19 @@
+1. What are the approaches in E.F
+2. What is DBContext
+3. What is DBSet
+4. How to Change a model name While Creating DB
+5. What is Seeding in E.F
+6. What is post and Pre script running
+7. What are the entity Attributes
+8. How to Configure 1-1 and 1-* in code first approach
+9. What is migrations
+10. What is Lazy loading and how to enable and disable it
+11. Transactions in E.F
+12. diff b/w FirstorDefault() and SingleorDefault()
+13. Linq Methods
+14. What all are DB CRUD methods
+15. What are T4 templates?
+16. How to create Sproc method using E.F
+17. What is reverse enginerring and how to implement it
+18. Database Initialization Strategies in Code-First:
+19. how to intialize E.F in Glabal.asax for creating or modifying DB
