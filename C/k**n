@@ -1,0 +1,28 @@
+write a program to find the min no of multiplication iperation to fine k**n(k to the power n)
+for ex if k=3 and n=6 then 
+
+3**6=(((3*3)*3)**2)
+Norma multiplication =>1 operation
+square multiplication => 1 operration 
+so your output should be 3
+
+constraints
+1 <=T <=25
+0<=k <= 100
+0 <= n <= (2**64)-1
+
+Note: this cannot bbe solved using normal iteration mthod
+
+Input Format:
+First line contains number of test cases T
+Following T line contains 2 nos separted by spacke K and n
+
+Output Famat:
+A single no which is the minimum no of operation should be printed for each test case per line
+
+Sample Input:
+1
+3 6
+
+Sample Output:
+3
