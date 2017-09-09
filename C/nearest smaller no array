@@ -1,0 +1,17 @@
+Write a program to find the nearest smaller no array for the given array. Neares smaller no is the no which is smaller than the given no
+and nearest to the given numbers positionn. if no such no is found print-1
+
+For ex, the given array is [8,2,4,5,1,6,0,3,2] then the nearest smaller no array is [2,,1,2,1,0,0,-1,0,0]. for fist number 8 nearest 
+smaller no than 8 is 2. for seacon no 2 neareast smaller number than 2 is 1. Similarly for all no the nearest smaller no should be found. 
+for seventho no 0 no smaller no is found in the array. so -1 is given in seven position.
+
+input format: first line contains the no of elements in array N. Second line contains N numbers seperated by spaces.
+
+Output format: Single line contains N nubers separated by spaces, where each no is the nearest smaller no of the giver no in that position.
+
+Sample Input
+9
+8 2 4 5 1 6 0 3 2
+
+sample output 
+2 1 2 1 0 0 -1 0 0
