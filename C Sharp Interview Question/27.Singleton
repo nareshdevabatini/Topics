@@ -1,0 +1,69 @@
+using System;
+
+static class Employee
+{
+	
+	public static  void Emp()
+	{
+		
+		Console.WriteLine("Employee");
+	}
+}
+
+static class Managers
+{
+	
+	public static void Man()
+	{
+		
+		Console.WriteLine("Managers");
+	}
+}
+					
+public class Company
+{
+	
+	public static void Main_X()
+	{
+		
+		Console.WriteLine("Company");
+		Employee.Emp();
+	}
+}
+
+
+public sealed class DBClass
+	{
+		private static DBClass instance=null;
+		private static readonly object padlock=new Object();
+		private DBClass()
+		{
+			
+		}
+		public static DBClass Instance
+		{
+			get{
+				lock(padlock){
+					if(instance==null)
+					{
+						Console.WriteLine("Call Singleton");
+						instance= new DBClass();
+					}
+				}
+				return instance;
+			}
+		}
+	
+	public static void Main()
+	{
+		Console.WriteLine(DBClass.Instance.Call());
+		
+		
+	}
+	
+	public  int Call()
+	{
+		return 0;
+	}
+	 
+	}
