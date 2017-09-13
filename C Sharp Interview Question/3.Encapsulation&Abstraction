@@ -1,0 +1,39 @@
+Abstraction & Encapsulation: 
+          It is use to display only necessary futures to outside the world and encapsulation should be unnecessary futures to outside 
+          world by using Private we can acheive this.
+
+Example:
+Iphone class
+
+Public class iphone{
+  private string _model ="6s";
+  private string _size="4.7";
+  public string Model{
+    set{
+      _model= value;
+    }
+    get{
+      return _model
+    }
+  }
+  public string Size{
+    set{
+      _size=value;
+    }
+    get{
+      return _size
+    }
+  }
+  public void display(){
+    Console.WriteLine("Retina Display");
+  }
+  private void CameraCompany(){
+    Console.WriteLine("Sony");
+  }
+  private void Processor(){
+    Console.WriteLine("2.2 ghz");
+  }
+}
+
+In above example when we inherit we can see model, size, display, so these are abstractions from parent class and Cameracompany,
+Processor or also features but no need to show derived class.
