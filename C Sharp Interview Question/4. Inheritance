@@ -1,0 +1,56 @@
+Inheritance:
+          It allows the creation of hierarchical classifications. Using inheritance you can create a general class that defines 
+          traits common to a set of related items
+          
+          In c#, a class that get inherited class Base class and class get inheriting called Derived class. These derived class is 
+          specialized version of base class. Derived class inherits all of variable , properties, indexers, methods from base class.
+          
+example:
+using System;
+using System.ComponentModel;
+using System.Threading.Tasks;
+
+public class Program{
+	public  static void Main(){
+		
+		A a = new C();
+		a.method1();
+		a.method2();
+		
+		B b = new C();
+		b.method1();
+		b.method2();
+	}  
+	
+}
+public class A{
+	public virtual void method1(){
+		Console.WriteLine("Base Method1 A");
+	}
+	public virtual void method2(){
+		Console.WriteLine("Base Method2 A");
+	}
+}
+public class B:A{
+	public override void method1(){
+		Console.WriteLine("derived class B");
+	}
+	public new void method2(){
+		Console.WriteLine("method Hiding B");
+	}
+}
+public class C:B{
+	public override void method1(){ 
+		Console.WriteLine("Derived Class C");
+	}
+	public new void method2(){
+		Console.WriteLine("method hiding C");
+	}
+}
+Ans:
+Derived Class C
+Base Method2 A
+
+Derived Class C
+method Hiding B
+         
