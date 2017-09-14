@@ -1,0 +1,28 @@
+1. *ngIf  else condition
+<div *ngIf="isAdmin" else elsepart>
+  <show-emp></show-emp>
+</div>
+<ng-template #elsepart>
+  <show-user></show-user>
+</ng-template>
+
+Local reference is elsepart
+
+2. Renderer2: use to change color for template, some new changes.
+
+3. Email validator:
+  old version:  pattern validator
+  new version:
+  <input type="email" [(ngModel)]="name" email/>
+
+4. Typescript version is <2.0
+
+5. Animations: animations become separate package in angular4
+  old version :
+  import {animate, component, Renderer, state, style, transition, trigger} from '@angular/core'
+  new version:
+  import {component, Renderer2} from '@angular/core'
+  import {animate, state, style, transition, trigger} from '@angular/animations'
+  
+  In Angular app:
+  imports:[BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule]
