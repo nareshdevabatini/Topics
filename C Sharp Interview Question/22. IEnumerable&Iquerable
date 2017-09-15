@@ -1,0 +1,38 @@
+IEnumerable and IQueryable are used for data manipulation in LINQ from the database and collections.
+
+IEnumerable
+
+1. IEnumerable exists in the System.Collections namespace.
+2. IEnumerable is suitable for querying data from in-memory collections like List, Array and so on.
+3. While querying data from the database, IEnumerable executes "select query" on the server-side, loads data in-memory 
+    on the client-side and then filters the data
+
+IQueryable
+
+1. IQueryable exists in the System.Linq Namespace.
+2. IQueryable is suitable for querying data from out-memory (like remote database, service) collections.
+3. While querying data from a database, IQueryable executes a "select query" on server-side with all filters.
+
+using System;
+using System.Text;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Program
+{
+	public static void Main()
+	{
+		 List<string> l = new List<string>();
+                l.Add("Sourav");
+                l.Add("Ram");
+                l.Add("shyam");
+                l.Add("Sachin");
+		IEnumerable names = from s in l where(s.StartsWith("S")) select s;
+		IQueryable names2 = from s in l.AsQueryable() where(s.StartsWith("S")) select s;
+		foreach(string name in names2)
+		{
+			Console.WriteLine(name);
+		}
+	}
+}
