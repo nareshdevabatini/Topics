@@ -1,0 +1,7 @@
+
+SELECT *
+FROM customers cs1
+WHERE (1-1) = (
+    SELECT COUNT(DISTINCT(cs2.customerid))
+    FROM customers cs2
+    WHERE cs2.customerid > cs1.customerid)
