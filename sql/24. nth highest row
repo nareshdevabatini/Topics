@@ -5,3 +5,9 @@ WHERE (1-1) = (
     SELECT COUNT(DISTINCT(cs2.customerid))
     FROM customers cs2
     WHERE cs2.customerid > cs1.customerid)
+ 
+ nth min row
+	select * from Person p1 where (2-1)=(
+		select COUNT(distinct(p2.id))
+			from Person p2 where p2.Id<p1.Id
+	)
