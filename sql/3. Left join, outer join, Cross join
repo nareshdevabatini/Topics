@@ -9,3 +9,5 @@ select * from Person p
 left  join PersonOrders po on p.Id=po.PersonId
 for Person table there is no 9, 10 foreign key ref so null column will for person address table
 
+Full outer Join:
+The FULL OUTER JOIN keyword return all records when there is a match in either left (table1) or right (table2) table records.
