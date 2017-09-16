@@ -1,0 +1,7 @@
+SQL Server allows you to define a Magic Table. Magic Tables are invisible tables or virtual tables.
+You can see them only with the help Triggers in SQL Server.
+
+These are the two Magic Tables:
+
+Inserted
+Deleted
