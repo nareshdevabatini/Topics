@@ -1,0 +1,12 @@
+SQL 2008:
+1. Backup encription
+2. XML Datatype introduced
+3. Filestream introduced
+4. Table Valued parameters
+5. Merge statements
+6. It can support 1000 partions
+
+Sql 2012
+1. Query page splitting
+2. it can support 15000 partions
+3. Format and Concat Introduced
