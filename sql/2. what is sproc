@@ -1,0 +1,9 @@
+A stored procedure is a group of sql statements that has been created and stored in the database. Stored procedure will accept 
+input parameters so that a single procedure can be used over the network by several clients using different input data.
+
+Stored Procedure can reduce network traffic. 
+
+Stored procedures provide better security to your data
+
+Users can be granted permission to execute a stored procedure even if they do not have permission 
+to execute the procedure's statements directly.
