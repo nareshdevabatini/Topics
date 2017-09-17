@@ -1,0 +1,10 @@
+That executes in response to certain action on the table like insertion, deletion or updation of data.You can’t explicitly invoke triggers.
+
+CREATE TRIGGER trgAfterInsert ON [dbo].[Employee_Test] 
+FOR INSERT
+AS
+declare @empid int;
+	declare @empname varchar(100);
+	declare @empsal decimal(10,2);
+	declare @audit_action varchar(100);
+Go
