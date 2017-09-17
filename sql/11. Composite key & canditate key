@@ -1,0 +1,14 @@
+Composite Key : 
+A composite key is a combination of more than one column to identify a unique row in a table. 
+Exp : Let say EmpID, EmailID, SSN are columns in Employee table and projectID in project table . 
+if EmpID and project id are put in projectionHours table then combination of empid and project ID called as composite key because
+combination of these two act as primary key in projectionHours table. 
+
+Candidate Key: 
+All keys in a table that become unique called as candidate key. 
+Exp : EmpID , EmailID and SSN all will be always unique for any employee in that case all these three columns called as candidate keys. 
+
+Alternate Key: 
+Among of candidate keys if any single key or combination of keys made as primary key then rest candidate key called as alternate key. 
+Exp : Suppose in employee table EmpID is primary key then Emailid and SSN are called as alternate key mean later on these key can be act 
+      as primary key without affecting existing data in table.
