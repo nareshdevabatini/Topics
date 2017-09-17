@@ -1,0 +1,20 @@
+SET NOCOUNT ON
+DECLARE @Id int
+DECLARE @name varchar(50)
+DECLARE @salary int
+ DECLARE cur_emp CURSOR
+STATIC FOR 
+SELECT EmpID,EmpName,Salary from Employee
+OPEN cur_emp
+IF @@CURSOR_ROWS > 0
+ BEGIN 
+ FETCH NEXT FROM cur_emp INTO @Id,@name,@salary
+ WHILE @@Fetch_status = 0
+ BEGIN
+ PRINT 'ID : '+ convert(varchar(20),@Id)+', Name : '+@name+ ', Salary : '+convert(varchar(20),@salary)
+ FETCH NEXT FROM cur_emp INTO @Id,@name,@salary
+ END
+END
+CLOSE cur_emp
+DEALLOCATE cur_emp
+SET NOCOUNT OFF 
