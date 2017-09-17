@@ -1,0 +1,14 @@
+What are Temporary Tables in SQL Server?
+Temporary Tables are tables that are temporarily created for a particular session. Once the session is terminated, the temporary tables 
+are automatically deleted. In other words, these are the physical tables, which are created in tempdb database in SQL Server.
+
+Since the Temporary Tables are physical tables, while reading from the table, SQL Optimizer puts a read lock on the table.
+
+What are Table Variables in SQL Server?
+
+Table variables are laid out like tables. They are partially stored both in the memory and in the disk.
+They can be declared in batch or stored procedure. Unlike Temporary Tables, they cannot be dropped explicitly. 
+Once the batch execution is finished, the Table Variables are dropped automatically.
+
+Since the Table Variables are partially stored in the memory, they cannot be accessed by any other user or process that the current user. 
+Therefore, no read lock is put on the Table Variable.
