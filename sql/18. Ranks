@@ -1,0 +1,11 @@
+Rank:
+Rank() Function
+
+The Rank function produces a rank based on the sorted order when two rows have the same order value.
+It provides the same rank for the two rows and also increases the same order by clause.
+
+
+DENSE_RANK() Function
+
+The DENSE_RANK function produces a rank based on the sorted order without any gap. When two rows have the same order value, 
+it provides the same rank for the two rows and also increases the next row value.
