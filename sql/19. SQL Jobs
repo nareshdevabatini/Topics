@@ -1,0 +1,5 @@
+ Job is a specified series of actions that SQL Server Agent performs. Use jobs to define an administrative task that can be run 
+ one or more times and monitored for success or failure. A job can run on one local server or on multiple remote servers.
+ 
+ How to create:
+SQL Server agent and select "Jobs" and right-click and click on "New Job".
