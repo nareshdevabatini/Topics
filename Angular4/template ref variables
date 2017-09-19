@@ -1,0 +1,13 @@
+Template Reference Variable using Input Text Box
+Here we will discuss template reference variable using input text box. Template reference variable is a variable using
+which we can access DOM properties. In our example we are using following DOM properties of input box. 
+
+1. placeholder 
+2. type 
+3. value Now find the code snippet.
+<input type="text" #mobile placeholder="Enter Mobile Number">  
+
+In the above input text box #mobile is a template reference variable. To fetch DOM properties, we do as follows. 
+mobile.placeholder : It will give placeholder of our text box if we have specified. 
+mobile.value : It will give value of our text box. 
+mobile.type : It will give type of input element. In our example type is text.
