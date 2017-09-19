@@ -11,7 +11,8 @@ Lets create a progress bar directive as following:
   </div>
 </div>
 
-Therefore, there are two input progressbar and contextType; progressbar will determine the width of the progressbar and contextType will determine the class type.
+Therefore, there are two input progressbar and contextType; progressbar will determine the width of the progressbar and contextType
+will determine the class type.
 => If  contextType =1 , then class = .progress-bar-success
 => If  contextType =2 , then class =.progress-bar-info
 => If  contextType =3 , then class = .progress-bar-warning
