@@ -1,3 +1,4 @@
+ref : http://www.concretepage.com/angular-2/angular-2-template-reference-variable-example
 Template Reference Variable using Input Text Box
 Here we will discuss template reference variable using input text box. Template reference variable is a variable using
 which we can access DOM properties. In our example we are using following DOM properties of input box. 
