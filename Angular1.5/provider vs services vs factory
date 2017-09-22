@@ -1,0 +1,73 @@
+All are executed once only we can say all are singleton but there is minor difference for each and every providers
+
+Provider: 
+1. It has to give funtion to return the value
+2. It can give you access at config time
+ex: 
+angular.module('myApp', []).config(function(userServiceProvider) {
+  userServiceProvider.addInitialUser("admin", "admin@example.com");
+});
+angular.module("myApp").provider("userService", function() {
+  var privateUserList = [];
+
+  this.addInitialUser = function(username, email) {
+    privateUserList.push({
+      username: username,
+      email: email
+    });
+  };
+});
+
+
+factory:
+1. It'll directly return a value without any function
+2. If you instance an object and use constructor values then use factory
+
+ex:
+app.factory("stDataService", [
+    "$resource",
+       function($resource) {
+          return $resource("api/StudentsApi", {}, {
+            query: { method: "GET", isArray: true },
+            create: { method: "POST" },
+            get: { method: "GET", url: "/api/StudentsApi?id=:id" },
+            remove: { method: "DELETE", url: "/api/StudentsApi?id=:id" },
+            update: { method: "PUT", url: "/api/StudentsApi?id=:id" }
+       });
+    }
+]);
+
+
+Services:
+1. It returns instances an object
+
+ex:
+angular.module('app').service('BookService', function($http) {
+    function getBook(id) {
+        return $http.get('/book/' + id).then(function(response) {
+            return response.data.book || null;
+        }, function(response) {
+            return {};
+        });
+    }
+    
+    /**
+     * Get a list of books matching a title
+     * @param {String} title
+     * @return {Promise}
+     */
+    function findByTitle(title) {
+        var filter = $.param({
+            title: title
+        });
+        
+        return $http.get('/book/?' + filter).then(function(response) {
+            return response.data.list || [];
+        });
+    }
+
+    return {
+        getBook: getBook,
+        findByTitle: findByTitle
+    };
+});
