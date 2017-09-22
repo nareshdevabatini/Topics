@@ -1,0 +1,16 @@
+It'll merge source to destination object
+syntax: angular.merge({},destination, source);
+ex:
+  $scope.data={"name":"Mahesh","age":"15"};
+    $scope.data2={"name":"naresh","no":"asdf"};
+     angular.merge($scope.data2,$scope.data);
+
+Ans
+$scope.data2 will have  {name: "Mahesh", no: "asdf", age: "15"}
+
+Ex2: above both objects is merged into sameobject but name is already there so 2nd object name is removed
+  $scope.data=[{"name":"Mahesh","age":"15"},{"name":"lokesh","age":"21"}];
+    $scope.data2=[{"name":"naresh","no":"asdf"}];
+    
+
+Ans: [{"name":"Mahesh","no":"asdf","age":"15"},{"name":"lokesh","age":"21"}]
