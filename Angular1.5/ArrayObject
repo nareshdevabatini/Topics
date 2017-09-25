@@ -1,0 +1,10 @@
+ $scope.emp = [
+               {'id':1,'name':'naresh','marks':{'maths':50,'sceince':45,'social':60}},
+            {'id':2,'name':'lokesh','marks':{'maths':60,'sceince':65,'social':80}},
+            {'id':3,'name':'ayush','marks':{'maths':45,'sceince':75,'social':90}},
+            {'id':4,'name':'clara','marks':{'maths':55,'sceince':44,'social':40}},
+            {'id':5,'name':'manu','marks':{'maths':57,'sceince':79,'social':60}}
+              ]
+    $scope.abovehalf=$scope.emp.filter(function(obj){
+       return obj.marks["maths"]>50;
+    })      
