@@ -1,3 +1,5 @@
+ 1. Display array whose maths marks is more than 50 desc order
+ 2. Calclute marks
  $scope.emp = [
                {'id':1,'name':'naresh','marks':{'maths':50,'sceince':45,'social':60}},
             {'id':2,'name':'lokesh','marks':{'maths':60,'sceince':65,'social':80}},
