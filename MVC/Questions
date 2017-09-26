@@ -11,7 +11,7 @@
 10. Diff b/w view and partial view
 11. Diff b/w Render partial, Partial, Action, RenderAction
 12. what is modelView and how to bind it and what all the types
-13. Routing and constraints
+13. Routing and constraints? What all properties there in routing table?
 14. Data Anotations
 15. Authentication and types in MVC
 16. How update both partial views parallely in same page
@@ -51,4 +51,5 @@
 49. Mention what is the use of the default route {resource}.axd/{*pathinfo} ?
 50. what are the two ways for adding constraints to a route?
 51. How to create UnitTesing?
-
+52. Form collections
+53. 
