@@ -1,0 +1,24 @@
+1. $eval:
+ which evaluates expression in string format and also gets current scope data
+ 
+ example:
+ $scope.a=10;
+ $scope.b=20;
+ $scope.demo=function(){
+    console.log("result", $scope.$eval("a + b"));
+    //answer will come 30
+    console.log("result: ", $scope.$eval("a + b + 30");
+    // answer will come 60
+    console.log("result; ", $scope.$eval("a + b + 30 + c", {c : 40});
+    //answer will come 100
+    console.log("result: ", $scope.$eval("a + b + 30 + c", {a :1, c: 40});
+    //answer will come 91, because it'll take precedence
+    
+    var data=$scope.$eval(function(scope, locals){
+        return scope.a+scope.b+c;
+    }, {c:30});
+    alert(data);
+    // answer will be same here like 60, but we use this because local var's will not be override
+ }
+ 
+2. 
