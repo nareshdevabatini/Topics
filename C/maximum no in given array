@@ -1,4 +1,5 @@
-Given an array of numbers, arrange them in a way that yields the largest value. For example, if the given numbers are {54, 546, 548, 60}, the arrangement 6054854654 gives the largest value.
+Given an array of numbers, arrange them in a way that yields the largest value. For example, if the given numbers are {54, 546, 548, 60}, 
+the arrangement 6054854654 gives the largest value.
 
 input:
 First line contains an integer N , Next line contains N integers separated by space.
