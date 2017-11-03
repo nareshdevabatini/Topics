@@ -9,28 +9,15 @@ N size of array
 A
 A. 
 Next line contains 
-N
-N space-separated elements of the array.
+N N space-separated elements of the array.
 
 Output format
 Print the length of longest sub-array whose elements are in the non-decreasing order .
 
 Constraints
-1
-≤
-N
-≤
-100000
-1≤N≤100000
+1≤N≤1000001≤N≤100000
 
-0
-≤
-A
-[
-i
-]
-≤
-1000000
+0≤A[i]≤1000000
 0≤A[i]≤1000000
 Sample Input
 4
