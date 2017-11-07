@@ -21,4 +21,20 @@
     // answer will be same here like 60, but we use this because local var's will not be override
  }
  
-2. 
+2. $parse:
+ it can evalutates expression in string format with scope or outside scope
+ inside $eval using behind scenes $parse only
+ example
+ alert($parse("a*b")({a:2,b:3});
+ $scope.a=2; $scope.b=3;
+ alert($parse("a*b")({a:2,b:3});
+ 
+ alert($parse("city")($scope));
+ $parse("city").assign("$scope,"Newyork");
+ alert($parse("city"),($scope));
+ 
+3. $interpolate:
+ It translates and evaluates all the angular expressions inside the string
+ we can include filters and strings all together in $interpolate
+ var f=$interpolate("Result ={{a*b}}");
+ alert(f($scope));
