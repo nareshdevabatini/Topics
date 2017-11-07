@@ -3,6 +3,7 @@ All are executed once only we can say all are singleton but there is minor diffe
 Provider: 
 1. It has to give funtion to return the value
 2. It can give you access at config time
+3. It has $get method
 ex: 
 angular.module('myApp', []).config(function(userServiceProvider) {
   userServiceProvider.addInitialUser("admin", "admin@example.com");
