@@ -1,0 +1,48 @@
+public class PrintReport
+{
+  public class ReportType{get;set;}
+  public void print()
+  {
+    if(ReportType=="xlx")
+    {
+      //Print excel report
+    }
+    if(ReportType=="pdf")
+    {
+      //Print PDF report
+    }
+    if(ReportType=="doc")
+    {
+      //Print DOC report
+    }
+  }
+}
+    
+Problem:
+if new reporttype is added then new if condition should be added for that we can inherit that class
+
+public class PrintReport{
+  public void print()
+  {
+    //print report;
+  }
+}
+
+public class PrintXLXReport:PrintReport{
+  public override print()
+  {
+    //Print XLX report;
+  }
+}
+public class PrintPDFReport:PrintReport{
+  public override print()
+  {
+    //Print PDF report;
+  }
+}
+public class PrintDOCReport:PrintReport{
+  public override print()
+  {
+    //Print DOC report;
+  }
+}
