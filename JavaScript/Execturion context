@@ -1,0 +1,20 @@
+function waitfor3sec(){
+var ms=4000+new Date().getTime();
+while(new Date()<ms){}
+console.log('finished function')
+}
+
+function clickHandler(){
+	console.log("click event");
+}
+
+document.addEventListener('click',clickHandler);
+
+waitfor3sec();
+
+console.log('finished execution')
+
+Sol:
+Finished function
+finished execution
+After click screen: click event
