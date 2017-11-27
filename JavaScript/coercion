@@ -1,0 +1,7 @@
+Coercion: converting a value from one type to another
+
+var a= 1+'2'
+
+console.log(a)
+
+Ans: 12
