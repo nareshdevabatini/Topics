@@ -1,0 +1,18 @@
+function doSomething(){
+    for(var i=0;i<5;i++){
+        console.log(i)
+    }
+    console.log("Finally: "+ i);
+}
+doSomething()
+Answer: 1,2,3,4 Finally: 5 // so it is accessable for outside and it is 5
+
+function doSomething(){
+    for(var i=0;i<5;i++){
+        console.log(i)
+    }
+    console.log("Finally: "+ i);
+}
+doSomething()
+
+Answer: it'll not even compile because i is not accessable outside of for function
