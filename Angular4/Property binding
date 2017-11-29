@@ -1,0 +1,8 @@
+property binding:
+
+<button class="btn btn-primary" [class.active]="isActive">Success</button>
+<button class="btn btn-primary" [style.backgroundColor]="isActive?'red':'blue'">Success</button>
+
+export class CourseComponent{
+  isActive=true;
+}
