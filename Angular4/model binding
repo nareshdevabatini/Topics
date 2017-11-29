@@ -1,0 +1,10 @@
+ngmodel syntax is called as banana on the box
+
+Before entering ngModel imports FormsModule in to @NgbModule
+
+<input [(ngModel)]="email" (keyup.enter)="onKeyUp()">
+
+email="me@example.com";
+  onKeyUp(){
+    console.log(this.email)
+  }
