@@ -1,0 +1,31 @@
+Built-in pipes:
+  {{course.title|uppercase|lowercase}}<br>
+{{course.rating|number:'1.2-2'}}<br>
+{{course.students|number}}<br>
+{{course.price|currency:'INR':true}}<br>
+{{course.releaseDate| date:'shortDate'}}
+course={
+    title: "The complete angular course",
+    rating:3.2323322,
+    students:2343,
+    price:343.23,
+    releaseDate:new Date(2018, 2, 1)
+  }
+  
+  Custom pipes:
+  template- {{text | summary:'20'}}
+  import { Pipe,PipeTransform } from "@angular/core";
+
+@Pipe({
+    name:'summary'
+})
+// Import SummaryPipe in @NgbModule
+export class SummaryPipe implements PipeTransform{ // pipetransfor is interface for transform method which gets value from html
+    transform(value:string, limit?:number){
+        if(!value)
+            return null;
+        let actualLimit=limit?limit:50;
+        return value.substring(0,actualLimit);
+    }
+}
+
