@@ -1,0 +1,16 @@
+
+<div (click)="onDivClicked()">
+  <button (click)="OnButtonClicked($event)">Save</button>
+</div>
+
+export class CourseComponent{
+  onDivClicked(){
+    console.log("Div clicked")
+  }
+  OnButtonClicked($event){
+   $event.stopPropagation();
+    console.log("button clicked:" , $event)
+  }
+}
+
+$event is directly dom element property
