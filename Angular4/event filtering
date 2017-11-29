@@ -1,0 +1,7 @@
+<input type="text" (keyup.enter)="onKeyUp()">
+
+export class CourseComponent{
+  onKeyUp(){
+    console.log("onkey up pressed")
+  }
+}
