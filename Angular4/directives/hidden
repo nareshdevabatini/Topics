@@ -1,0 +1,8 @@
+With this property element will be still present in DOM
+
+<div [hidden]="!courses.length>0" >
+    List of course {{courses|json}}
+</div>
+<div [hidden]="!courses.length==0" >
+        No Courses
+</div>
