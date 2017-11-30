@@ -1,0 +1,22 @@
+HTML:
+<button (click)="loadCourses()">Load Courses</button>
+<ul>
+    <li *ngFor="let course of courses; index as i;trackBy: trackCourse">
+        {{i}}-{{course.name}}
+        
+    </li>
+</ul>
+
+Component:
+
+  courses;
+  loadCourses(){
+    this.courses=[
+      {id:111,name:'course1'},
+      {id:112,name:'course2'},
+      {id:113,name:'course3'}
+    ]
+  }
+  trackCourse(index, course){
+    return course?course.index:undefined;
+  }
