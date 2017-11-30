@@ -1,0 +1,24 @@
+parent html:<input type="text" appInputFormat [format]="'uppercase'">
+
+Directive.ts
+
+@Directive({
+  selector: '[appInputFormat]'
+})
+
+export class InputFormatDirective {
+  @Input('format') format;
+  
+  constructor(private el:ElementRef) { }
+  // @HostListener('focus') onfocus(){
+  //   console.log(" Focus");
+  // }
+  @HostListener('blur') onBlur(){
+    let value:string= this.el.nativeElement.value;
+
+    if(this.format=="lowercase")
+      this.el.nativeElement.value=value.toLowerCase();
+    
+    this.el.nativeElement.value=value.toUpperCase();
+  }
+}
