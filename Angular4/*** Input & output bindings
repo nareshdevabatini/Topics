@@ -1,0 +1,35 @@
+Parent html:
+<favorite [is-Favorite]="data.isSelected" (favChange)="changeFav"></favorite>
+
+Parent Component
+data={
+    isSelected:true,
+    title:"Title"
+  }
+  changeFav(value:FavChangedEventArgs){
+    console.log(value)
+  }
+  
+  child html:
+        <span
+      class="glyphicon"
+      [ngClass]="{
+          'glyphicon-star':isFavorite,
+          'glyphicon-star-empty':!isFavorite
+      }"
+      (click)="onClick()">
+      </span>
+ 
+ child component:
+  @Input("is-Favorite") isFavorite:boolean;
+  @Output('favChange') change=new EventEmitter();
+   onClick(){
+    this.isFavorite=!this.isFavorite
+    this.change.emit();
+    console.log({newValue:this.isFavorite})
+  }
+  
+  Create interface:
+      export interface FavChangedEventArgs{
+        newValue:Boolean
+      }
