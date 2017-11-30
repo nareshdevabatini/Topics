@@ -1,0 +1,6 @@
+<div *ngIf="courses.length>0;then coursesList; else noCourses" ></div>
+<ng-template #coursesList>List of course {{courses|json}}</ng-template>
+
+<ng-template #noCourses>
+    No Courses
+</ng-template>
