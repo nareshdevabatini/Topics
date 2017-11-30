@@ -1,0 +1,21 @@
+<button (click)="onAdd()">Add</button>
+<ul>
+    <li *ngFor="let course of courses; index as i">
+        {{i}}-{{course.name}}
+        <button (click)="onDel(course)">Remove</button>
+    </li>
+</ul>
+
+component:
+ courses=[
+    {id:111,name:'course1'},
+    {id:112,name:'course2'},
+    {id:113,name:'course3'}
+  ]
+  onAdd(){
+    this.courses.push({id:114,name:'course4'})
+  }
+  onDel(course){
+    let index= this.courses.indexOf(course);
+    this.courses.splice(index,1);
+  }
