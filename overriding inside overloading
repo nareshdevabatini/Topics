@@ -1,0 +1,21 @@
+public static void Main()
+	{
+		
+		MethodMasterClass cls= new MethodMasterClass();
+		Console.WriteLine(cls.GetName("Mitchell").ToString());
+	}
+	public class MethodMasterClass : HelperClass{
+		public string GetName(string Name, string surname){
+			return Name+ " from Overload";	
+		}
+		public override string GetName(string Name){
+			return Name + " From overriden";	
+		}
+	}
+	public class HelperClass{
+		public virtual string GetName(string Name){
+			return Name +" From Base";	
+		}
+	}
+  
+  Ans: Mitchell From overriden
