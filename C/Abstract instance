@@ -1,0 +1,23 @@
+public class Program
+{
+	public static void Main()
+	{
+		C objc=new C();
+		Type baseBType=objc.GetType().BaseType;
+		Type baseAType=baseBType.BaseType;
+		object objA=Activator.CreateInstance(baseAType);
+	}
+	abstract class A{
+		public int I;
+	}
+	class B:A{
+		public int j;
+	}
+	class C:B{
+		public int k;
+	}
+}
+
+
+Ans:
+Run-time exception (line 10): Cannot create an abstract class.
