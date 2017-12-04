@@ -1,0 +1,10 @@
+public static void Main()
+	{
+		char A='K';
+		A++;
+		Console.Write(A);
+		
+	}
+  
+ANS: 
+L
