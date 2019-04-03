@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] str = File.ReadAllLines("D:/host_log_00.txt");
+            string fileName = @"D:/records_host_log_00.txt";
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
+            Dictionary<string, int> dt = new Dictionary<string, int>();
+           
+            foreach (string c in str)
+            {
+                string temp = c.Split(new string[] { " - -" }, StringSplitOptions.None)[0];
+                if (dt.ContainsKey(temp))
+                {
+                    int val = dt[temp];
+                    dt[temp] = val + 1;
+                }
+                else
+                    dt.Add(temp, 1);
+            }
+            using (StreamWriter fs = File.CreateText(fileName))
+            {
+                foreach (var c in dt)
+                {
+                    
+                    byte[] title = new UTF8Encoding(true).GetBytes(c.Key);
+                    fs.WriteLine(c.Key + " :" + c.Value);
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
