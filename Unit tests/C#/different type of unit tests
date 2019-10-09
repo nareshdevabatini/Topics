@@ -1,0 +1,4 @@
+Unit tests: We can test without external dependencies, such as files, database, message services, cheap to write and execute first.
+            It can test complex logic methods easily.
+Integration test:Test the application with its external dependencies. take longer to execute, give more confidence to appliaction.
+End to end test:Drives an appliaction through its UI.by using selenium we can test whole application but it's very slow.
