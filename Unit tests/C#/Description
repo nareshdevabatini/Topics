@@ -1,0 +1,8 @@
+Test name should be like  "MethodName_Scenario_ExpectedBehaviour"
+3types of Unit test
+MsUnit,
+Nunit: Parmaterized tests
+Xunit
+
+Inside Test method 
+#Arrange #Act #Assert
