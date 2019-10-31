@@ -1,0 +1,4 @@
+kafka-server-start.bat C:\kafka_2.12-2.3.0\config\server.properties
+kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic Pizza
+kafka-console-producer.bat --broker-list localhost:9092 --topic Pizza
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic Pizza
