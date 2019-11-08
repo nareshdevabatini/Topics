@@ -15,7 +15,7 @@ Delete the topic  in third cmd propmt
   kafka-topics.bat --zookeeper localhost:2181 --topic My_First_Sample_App --delete
 
 Create a producer in third cmd propmt
-  kafka-console-consumer --broker-list 9092 --topic My_First_sample_App
+  kafka-console-producer --broker-list localhost:9092 --topic My_First_sample_App
   
  Create a Consumer in fourth cmd propmt
   kafka-console-consumer --bootstrap-server localhost:9092 --topic My_First_sample_App
