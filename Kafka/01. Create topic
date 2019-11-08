@@ -13,3 +13,12 @@ Check the list and details of the topic
 
 Delete the topic 
   kafka-topics.bat --zookeeper localhost:2181 --topic My_First_Sample_App --delete
+
+Create a producer
+  kafka-console-consumer --broker-list 9092 --topic My_First_sample_App
+  
+ Create a Consumer
+  kafka-console-consumer --bootstrap-server localhost:9092 --topic My_First_sample_App
+  
+Create a group for consumer
+  kafka-console-consumer --bootstrap-server localhost:9092 --topic My_First_sample_App --group My_First_Group
