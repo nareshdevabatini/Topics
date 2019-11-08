@@ -1,4 +1,15 @@
-kafka-server-start.bat C:\kafka_2.12-2.3.0\config\server.properties
-kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic Pizza
-kafka-console-producer.bat --broker-list localhost:9092 --topic Pizza
-kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic Pizza
+First start from kafka folder
+  zookeeper-server-start.bat config\zookeeper.properties
+
+second start kafka server for first broker
+  kafka-server-start.bat config\server.properties
+
+Create a new topic with 3 partitions with one broker(replication factor)
+  kafka-topics.bat --zookeeper localhost:2181 --create --topic My_First_Sample_App --partitions 3 --replication-factor 1
+
+Check the list and details of the topic
+  kafka-topics.bat --zookeeper localhost:2181 --list
+  kafka-topics.bat --zookeeper localhost:2181 --topic My_First_Sample_App --describe
+
+Delete the topic 
+  kafka-topics.bat --zookeeper localhost:2181 --topic My_First_Sample_App --delete
