@@ -5,20 +5,25 @@ second start kafka server for first broker in second cmd propmt
   kafka-server-start.bat config\server.properties
 
 Create a new topic with 3 partitions with one broker(replication factor) in third cmd propmt
-  kafka-topics.bat --zookeeper localhost:2181 --create --topic My_First_Sample_App --partitions 3 --replication-factor 1
+  kafka-topics.bat --zookeeper localhost:2181 --create --topic MyApp --partitions 3 --replication-factor 1
 
 Check the list and details of the topic in third cmd propmt
   kafka-topics.bat --zookeeper localhost:2181 --list
-  kafka-topics.bat --zookeeper localhost:2181 --topic My_First_Sample_App --describe
+  kafka-topics.bat --zookeeper localhost:2181 --topic MyApp --describe
 
 Delete the topic  in third cmd propmt
-  kafka-topics.bat --zookeeper localhost:2181 --topic My_First_Sample_App --delete
+  kafka-topics.bat --zookeeper localhost:2181 --topic MyApp --delete
 
 Create a producer in third cmd propmt
-  kafka-console-producer --broker-list localhost:9092 --topic My_First_sample_App
+  kafka-console-producer --broker-list localhost:9092 --topic MyApp
   
  Create a Consumer in fourth cmd propmt
-  kafka-console-consumer --bootstrap-server localhost:9092 --topic My_First_sample_App
+  kafka-console-consumer --bootstrap-server localhost:9092 --topic MyApp
   
 Create a group for consumer in many cmd propmt's
-  kafka-console-consumer --bootstrap-server localhost:9092 --topic My_First_sample_App --group My_First_Group
+  kafka-console-consumer --bootstrap-server localhost:9092 --topic MyApp --group My_First_Group
+
+check list of consumer groups
+  kafka-consumer-groups --bootstrap-sersver localhost:9092 list
+  kafka-consumer-groups --bootstrap-server localhost:9092 --group My_First_Group --describe
+  
