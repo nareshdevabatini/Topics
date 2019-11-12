@@ -24,6 +24,9 @@ Create a group for consumer in many cmd propmt's
   kafka-console-consumer --bootstrap-server localhost:9092 --topic MyApp --group My_First_Group
 
 check list of consumer groups
-  kafka-consumer-groups --bootstrap-sersver localhost:9092 list
+  kafka-consumer-groups --bootstrap-server localhost:9092 list
   kafka-consumer-groups --bootstrap-server localhost:9092 --group My_First_Group --describe
   
+Reset consumer groups offsets
+  kafka-consumer-groups --bootstrap-server localhost:9092 --topic MyApp --group My_First_Group --reset-offsets --to-earliest --execute
+    kafka-consumer-groups --bootstrap-server localhost:9092 --topic MyApp --group My_First_Group --reset-offsets --shift-by 2 --execute
