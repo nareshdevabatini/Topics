@@ -1,0 +1,10 @@
+docker run --rm ches/kafka kafka-topics.sh --list --zookeeper 192.168.99.100:2181
+
+docker run --rm --interactive ches/kafka kafka-console-producer.sh --topic testtopic --broker-list 192.168.99.100:9092
+docker run --rm ches/kafka kafka-console-consumer.sh --topic testtopic --from-beginning --zookeeper 192.168.99.100:2181
+
+
+docker run --rm wurstmeister/kafka kafka-topics.sh --list --zookeeper 192.168.99.100:2181
+
+docker run --rm --interactive wurstmeister/kafka kafka-console-producer.sh --topic testtopic --broker-list 192.168.99.100:9092
+docker run --rm wurstmeister/kafka kafka-console-consumer.sh --topic testtopic --from-beginning --zookeeper 192.168.99.100:2181
