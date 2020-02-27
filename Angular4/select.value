@@ -1,0 +1,24 @@
+
+
+HTML:
+
+
+<select [(ngModel)]="selectedContact">
+    <option *ngFor="let method of contactMethods" [value]="method.id" >{{ method.label }}</option>
+  </select>
+
+Component:
+
+export class AppComponent implements OnInit {
+
+  public contactMethods = [
+    { id: 1, label: "Email" },
+    { id: 2, label: "Phone" }
+  ]
+  public selectedContact :number;
+
+  constructor() {  }
+  public ngOnInit(): void {
+    this.selectedContact = this.contactMethods.findIndex((item) => item.label == 'Phone')+1;
+  }
+}
