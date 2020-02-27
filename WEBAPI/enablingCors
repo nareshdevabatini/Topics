@@ -1,0 +1,9 @@
+Install Package:
+      Install-Package Microsoft.AspNet.WebApi.Cors
+
+Add into WebApiConfig
+     config.EnableCors(new EnableCorsAttribute("http://localhost:4200", "*", "*"));
+     
+Add data into Application_start or Global.ascx
+    GlobalConfiguration.Configuration.Formatters.Add(new JsonMediaTypeFormatter());
+  
