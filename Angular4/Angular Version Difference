@@ -1,0 +1,15 @@
+Angular 4
+1. It'll support all typescript features
+2. Animation package will be different	
+3. Else block is introduced
+
+Angular 5
+1. Build Optimizer: Remove unnecessary code
+2.Presever White space: Spaces and new line will be removed
+
+Angular 6
+Route ActivationStart, ActicationEnd, ChildActivationStart, ChildActivationEnd,
+GuardsCheckStart, GuardsCheckEnd, ResolveStart and ResolveEnd
+
+Angualar 7
+Added UrlSegment[] to canload interface and bootstrap interface
