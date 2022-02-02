@@ -1,0 +1,4 @@
+var arr = [{x:1},{x:2},{x:4}];
+arr.reduce((a, b) => ({x: a.x + b.x}));
+
+result is 7
