@@ -1,0 +1,14 @@
+Parse: It'll throw an exception while converting other then integer values
+       Advantages: it'll be little bit faster, if we are using multiple loops
+ 
+ToInt32: It'll work for Null and integer values, otherthen that it'll throw an exception
+
+TryParse: It'll return false if data is not an integer.
+
+Syntax:
+            int a;
+            bool b= int.TryParse("ad",out a);
+            Console.WriteLine(b);
+            Output: false
+            
+            
