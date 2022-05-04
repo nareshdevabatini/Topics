@@ -1,0 +1,12 @@
+
+syntax
+
+            Employee emp = new Employee();
+            Type t1 = typeof(Employee);
+            
+            Console.WriteLine(t1.AssemblyQualifiedName);
+            Console.WriteLine(t1.FullName);
+            Console.WriteLine(t1.IsClass);
+            Console.WriteLine(t1.Name);
+            Console.WriteLine(emp.GetType());
+            Console.ReadLine();
