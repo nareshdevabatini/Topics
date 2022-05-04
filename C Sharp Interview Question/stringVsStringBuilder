@@ -1,0 +1,11 @@
+String - can change the reference everytime assign the values(Immutuable)
+  Disadvantages: It'll create no of instances until clear the garbage collection.
+StringBuilder - With same reference, data will appen(Mutuable)
+Syntax
+            StringBuilder str = new StringBuilder();
+            str.Append("data");
+            str.Append("data1");
+            str.Remove(0, 4);
+            str.Insert(0, " data4 ");
+            Console.WriteLine(str);
+            Console.ReadLine();
