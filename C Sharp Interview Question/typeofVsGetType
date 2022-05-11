@@ -1,4 +1,4 @@
-
+Typeof is to check will compile time and Gettype of used at runtime
 syntax
 
             Employee emp = new Employee();
@@ -10,3 +10,21 @@ syntax
             Console.WriteLine(t1.Name);
             Console.WriteLine(emp.GetType());
             Console.ReadLine();
+
+Output: 
+Learning.Program+Employee, Learning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Learning.Program+Employee
+True
+Employee
+Learning.Program+Employee
+System.String
+
+Examples:
+if (exceptionType == typeof(UnauthorizedAccessException))
+            {
+                message = "Access to the Web API is not authorized.";
+                status = HttpStatusCode.Unauthorized;
+            }
+            
+            
+   Assert.Equal(typeof(Employer), result.GetType());
