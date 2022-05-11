@@ -7,8 +7,11 @@ TryParse: It'll return false if data is not an integer.
 
 Syntax:
             int a;
-            bool b= int.TryParse("ad",out a);
+            bool b = int.TryParse("23", out a);
             Console.WriteLine(b);
+            Console.WriteLine(a);
+            Console.ReadLine();
             Output: false
+                     23
             
             
