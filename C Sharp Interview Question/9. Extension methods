@@ -20,3 +20,16 @@ Example:
             Console.WriteLine("static method");
         }
     }
+    
+     public static T ToObject<T>(this JObject json, string path)
+        {
+            var token = json.SelectToken(path, false);
+
+            if (token == null)
+            {
+                return default(T);
+            }
+
+            return token.ToObject<T>();
+        }            
+
