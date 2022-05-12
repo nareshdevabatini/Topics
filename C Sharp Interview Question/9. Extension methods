@@ -4,7 +4,7 @@ If the class is sealed than there in no concept of extending its functionality. 
 Example:
       int price = 20;
       price.ToPrice()
- public class Employee
+ public sealed class Employee
     {
         public static int id { get; set; }
         public static string name { get; set; }
