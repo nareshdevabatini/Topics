@@ -1,3 +1,5 @@
+Extension methods allow existing classes to be extended without relying on inheritance or having to change the class's source code.
+If the class is sealed than there in no concept of extending its functionality. For this a new concept is introduced, in other words extension methods.
 
 Example:
       int price = 20;
