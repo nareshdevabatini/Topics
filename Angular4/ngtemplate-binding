@@ -1,0 +1,17 @@
+Send data thorough ngtemplate and bind the data
+
+ <ng-container *ngIf="isEmployee; else EmptyMessage">
+                  <ng-container
+                    *ngTemplateOutlet="employeeTemplate; context: { employee: employee }"
+                  ></ng-container>
+                </ng-container>
+ 
+ Outside Template
+<ng-template #employeeTemplate let-employee="employee"> 
+<div class="text-bold">Employee Name:</div>
+      <div class="text-gray">
+        {{
+          employee.Name
+        }}
+      </div>
+  </ng-template>
