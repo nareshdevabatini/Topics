@@ -1,0 +1,57 @@
+readonly Keyword:
+==============
+
+Definition: it indicates that assignment to the field can only occur as part of the declaration or in a constructor in the same class. 
+A readonly field can be assigned and reassigned multiple times within the field declaration and constructor
+-----------
+
+
+
+Usage in Code:
+--------------
+<modifier> const <datatype> <constname>
+
+*Modifier is optional or might depend upon situations.
+
+readonly can be optional at the time of declaration.
+
+Example:
+--------
+class Age
+{
+    private readonly int _year;
+    Age(int year)
+    {
+        _year = year;
+    }
+    void ChangeYear()
+    {
+        //_year = 1967; // Compile error if uncommented.
+    }
+}
+
+
+What if cases to the questions:
+--------------------------------
+
+What if => Can't be used with static, if we are re-assigning in Constructor
+         => Can't be re-assign in Derived class constructor
+         
+
+Why not the other alternatives:
+--------------------------------
+
+There is no alternatives
+
+Need for that concept:
+-----------------------
+
+
+Other notable points:
+----------------------
+
+
+
+Realtime application of that concept in our project codes:
+-----------------------------------------------------------
+Depedency Injection
