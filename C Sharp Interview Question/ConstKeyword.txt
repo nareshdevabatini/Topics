@@ -1,0 +1,66 @@
+Const Keyword:
+==============
+
+Definition:
+-----------
+
+1. Const keyword is used to create a field for which the value should not be changed and it remains the same throughout the program.
+2. It can be number, string, null or boolean.
+3. Compile time constant.
+
+Usage in Code:
+--------------
+<modifier> const <datatype> <constname>
+
+*Modifier is optional or might depend upon situations.
+
+const should be initialised at the time of declaration.
+
+Example:
+--------
+class ConstDemo {
+ 
+    // Constant fields
+    public const int myvar = 10;
+    public const string str = "Hari";
+ 
+    // Main method
+    static public void Main()
+    {
+ 
+        // Display the value of Constant fields
+        Console.WriteLine("The value of myvar: {0}", myvar);
+        Console.WriteLine("The value of str: {0}", str);
+    }
+}
+
+
+What if cases to the questions:
+--------------------------------
+
+What if => I try to change the const value.
+		=> Try to use static at the time of declaration.
+		=> Try not to initialise at declaration.
+		=> Try to use expressions at RHS.
+
+Why not the other alternatives:
+--------------------------------
+
+Why not use readonly => refer readonly doc
+
+Need for that concept:
+-----------------------
+
+1. To avoid hardcoded logic at various places in program.
+2. To make a centralised value which can be accessed from multiple locations.
+
+Other notable points:
+----------------------
+
+1. const value cannot be static.
+
+Realtime application of that concept in our project codes:
+-----------------------------------------------------------
+
+1. Declaring Stored Procedures, table names, parameter names.
+2. Hardcoded logics in more than 2 places.
