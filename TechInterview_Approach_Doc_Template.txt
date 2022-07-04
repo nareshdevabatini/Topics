@@ -1,0 +1,26 @@
+Const Keyword:
+==============
+
+Definition:
+-----------
+
+Usage in Code:
+--------------
+
+Example:
+--------
+
+What if cases to the questions:
+--------------------------------
+
+Why not the other alternatives:
+--------------------------------
+
+Need for that concept:
+-----------------------
+
+Other notable points:
+----------------------
+
+Realtime application of that concept in our project codes:
+-----------------------------------------------------------
