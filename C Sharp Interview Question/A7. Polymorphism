@@ -1,1 +1,60 @@
 
+Run Time Polymorphism Keyword: Polymorphism ise nables us to invoke derirved class methods using a base class reference variables at run time.
+Virtual keyword indicated, the method can be overridden in any derived class.
+late binding and dynamic binding.
+==============
+
+Definition: 
+-----------
+
+
+
+Usage in Code:
+--------------
+
+
+Example:
+--------
+public class A
+    {
+        public virtual void Print()
+        {
+            Console.WriteLine("Base Class");
+        }
+    }
+
+    public class B : A
+    {
+        public new void Print()
+        {
+            Console.WriteLine("Dervice Class");
+        }
+    }
+    
+    Method Hiding
+    example1: using new keyword in dervice class
+    example2:  B a = new B();
+              ((A)a).Print();
+
+What if cases to the questions:
+--------------------------------
+
+What if => can we intiazise base class object into derived class B b = new A(): 
+         
+
+Why not the other alternatives:
+--------------------------------
+
+
+
+Need for that concept:
+-----------------------
+
+
+Other notable points:
+----------------------
+
+
+
+Realtime application of that concept in our project codes:
+-----------------------------------------------------------
