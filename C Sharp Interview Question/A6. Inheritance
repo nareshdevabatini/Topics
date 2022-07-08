@@ -67,4 +67,45 @@ B Constructor
 Name: AN
 A Custroctor
 B Constructor
+
+What if cases to the questions:
+--------------------------------
+
+What if => Can we have Parmeter constructor in base class and not having parmeter constructor in Derived Class? (No) we should have constructor and use base as parameter constructor.
+Can we call static constructor multiple times? No it's should call only once because it's intiliaze before creating instance of the class.
          
+
+Why not the other alternatives:
+--------------------------------
+
+There is no alternatives
+
+Need for that concept:
+-----------------------
+Code Reusability
+
+Other notable points:
+----------------------
+
+
+
+Realtime application of that concept in our project codes:
+-----------------------------------------------------------
+Property Inhertance
+public class Person{
+public string LastName;
+public string FirstName;
+}
+public class Employee{
+public string Type;
+}
+
+Method Inheritance
+public sealed class AuthorizeUserAttribute : AuthorizeAttribute
+    {
+        public override void OnAuthorization(HttpActionContext actionContext)
+        {
+            return true or false
+         }
+     
+    }
