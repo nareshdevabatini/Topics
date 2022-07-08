@@ -96,7 +96,7 @@ public class Person{
 public string LastName;
 public string FirstName;
 }
-public class Employee{
+public class Employee:Person{
 public string Type;
 }
 
