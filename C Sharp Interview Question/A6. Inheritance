@@ -10,47 +10,61 @@ using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 
-public class Program{
-	public  static void Main(){
-		
-		A a = new C();
-		a.method1();
-		a.method2();
-		
-		B b = new C();
-		b.method1();
-		b.method2();
-	}  
-	
-}
-public class A{
-	public virtual void method1(){
-		Console.WriteLine("Base Method1 A");
-	}
-	public virtual void method2(){
-		Console.WriteLine("Base Method2 A");
-	}
-}
-public class B:A{
-	public override void method1(){
-		Console.WriteLine("derived class B");
-	}
-	public new void method2(){
-		Console.WriteLine("method Hiding B");
-	}
-}
-public class C:B{
-	public override void method1(){ 
-		Console.WriteLine("Derived Class C");
-	}
-	public new void method2(){
-		Console.WriteLine("method hiding C");
-	}
-}
+class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            B a = new B();
+            a.FirstName = "N";
+            a.LastName = "A";
+            a.PrintName();
+            B d = new B();
+            Console.ReadLine();
+        }
+    }
+    public class A
+    {
+        static A()
+        {
+            Console.WriteLine("A Static Custroctor");
+        }
+        public A()
+        {
+            Console.WriteLine("A Custroctor");
+        }
+        public A(string Age)
+        {
+            Console.WriteLine("A Custroctor with Age");
+        }
+        public string LastName;
+        public string FirstName;
+        public void PrintName() {
+            Console.WriteLine("Name: " + LastName + FirstName);
+        }
+    }
+    public class B:A
+    {
+        public B()
+        {
+            Console.WriteLine("B Constructor");
+        }
+        static B()
+        {
+            Console.WriteLine("B Static Custroctor");
+        }
+        public void PrintName()
+        {
+            base.PrintName();
+            //Console.WriteLine("Name: " + LastName + FirstName + " Age");
+        }
+    }
 Ans:
-Derived Class C
-Base Method2 A
-
-Derived Class C
-method Hiding B
+B Static Custroctor
+A Static Custroctor
+A Custroctor
+B Constructor
+Name: AN
+A Custroctor
+B Constructor
          
