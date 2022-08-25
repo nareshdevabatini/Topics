@@ -1,0 +1,10 @@
+export class Employee{
+ id: string;
+ firstName: string;
+ LastName: string;
+ Address: string;
+ Type:string;
+}
+
+Create new Employee with by Type
+const empoyee = { ... new Employee(),...{Type:'Medical'}};
