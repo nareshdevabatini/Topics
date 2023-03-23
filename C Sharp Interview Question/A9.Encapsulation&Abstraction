@@ -37,3 +37,43 @@ Public class iphone{
 
 In above example when we inherit we can see model, size, display, so these are abstractions from parent class and Cameracompany,
 Processor or also features but no need to show derived class.
+
+Absctraction:
+          Hiding the implemention and acheiving what is required for the functionality.
+ Example:
+ pulic class BusinessService{
+          IDataService _service;
+          public BusinessService(private IdataService service){
+                    _servie = service;
+          }
+          public List<Employee> getEmployees(){
+                    return _service.getEmployees();
+          }
+          
+ }
+ Interface IDataService{
+       List<Employee> getEmployees();   
+ }
+ pulic class DataService: IDataService{
+          public List<Employee> getEmployees(){
+                    Ado.net code to return values
+                    return Emplyees();
+          }
+ }
+In Above example, we are calling ado.net code to get the employees and converting into businnes class, here we are hiding the implementation from business service.
+
+Encapsulation:
+   Hiding the properties, enums, methods from object intialization or controlling the scope of class members by using Access Modifiers.
+   Maintaining the relationship b/w class members known as Encapsulation.
+Example
+          public class RSAAuthorization{
+                    private const string key="ters3rntest";
+                    public Username getCredentials(string credentials){
+                              //decrypt the RSA Property of credentials
+                              Username uname = new UserName();
+                              uname.name= decrypt.uname;
+                              uname.password = decrypt.password;
+                    }
+          }
+          In above example, we are decrypting credentials string to username and password by using key property, Here we don't need to share this property to any class
+          member called encapsulation.
