@@ -2,5 +2,40 @@
 Abstract Class:
    Main reason for this class is not create a instance of the base class and we can declare abstract and non abstract members, where abstract members doesn't have body in
    in base class.
+         Abstract is special kind of class that has no implementation. it cannot be instantiated , it can be having abstract methods, 
+          non abstract methods.
+          An abstract class can never be sealed or static. 
+          An abstract member cannot be static or private. 
+          An abstract method cannot be marked virtual. 
+          Without an abstract class, we cannot implement the Template Method Pattern.
    
 Example:
+   Report report = new RegistrationReport();
+   report.getQuery();
+   Console.WriteLine();
+   public abstract class Report
+   {
+       public Report()
+       {
+           Name = "Patient";
+       }
+       public string Name { get; set; } 
+       public void getReportConnection()
+       {
+           //It'll get Login credentials and get connection for report
+           throw new NotImplementedException();
+       }
+       public abstract void getQuery();
+       public void generateReport()
+       {
+           //It'll generate a report
+           throw new NotImplementedException();
+       }
+   }
+   public class RegistrationReport : Report
+   {
+       public override void getQuery()
+       {
+           Console.WriteLine("This is the Registration query");
+       }
+   }
