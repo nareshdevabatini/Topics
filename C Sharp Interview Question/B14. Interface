@@ -7,6 +7,8 @@ Example:
     cal.Add();
     IComplexCalculator cal2 = new Calculator();
     cal2.Add();
+    Calculator cal = new Calculator();
+    ((IsmpleCalcluator)cal).Add();//This is called as Explicit Interface calling
     interface ISimpleCalculator
     {
         public int MyProperty { get; set; }
