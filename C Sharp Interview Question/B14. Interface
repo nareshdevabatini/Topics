@@ -1,1 +1,32 @@
+Interface: Interface can only have method signature, by using this we can achieve multiple inheritance. and Definetly need to implement
+            interface methods once we inherits.
+            Bydefault interface is public.
+            
+Example:
+    ISimpleCalculator cal =  new Calculator();
+    cal.Add();
+    IComplexCalculator cal2 = new Calculator();
+    cal2.Add();
+    interface ISimpleCalculator
+    {
+        public int MyProperty { get; set; }
+        void Add();
+    }
+    interface IComplexCalculator
+    {
+        void Add();
+    }
+    class Calculator : ISimpleCalculator, IComplexCalculator
+    {
+        public int MyProperty { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
+        //This is explicit implementation
+        void ISimpleCalculator.Add()
+        {
+            Console.WriteLine("Simple Caluclator");
+        }
+        void IComplexCalculator.Add()
+        {
+            Console.WriteLine("Complex Caluclator");
+        }
+    }
