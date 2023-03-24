@@ -15,10 +15,6 @@ Example:
    Console.WriteLine();
    public abstract class Report
    {
-       public Report()
-       {
-           Name = "Patient";
-       }
        public string Name { get; set; } 
        public void getReportConnection()
        {
