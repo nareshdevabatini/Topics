@@ -1,1 +1,26 @@
+DIP:
+  High level module are shouldn't depedent on lower level modules, both should be dependent on 
+  abstractions(abstract class or Interface)
+By using Interface, we can decouple the each layer and will instance into the higher Level modules.
 
+public class LoginController: APIController{
+  public static readonly ILoginBusinessService _loginService;
+  public LoginController(ILoginBusinessService loginService)
+  {
+    _loginService = loginService;
+   }
+   public bool Login(){
+     _loginService.login();
+   }
+}
+
+interface ILoginBusinessService{
+  bool Login();
+}
+
+public class LoginBusinessService: ILoginBusinessService{
+ 
+  public bool Login
+  {
+   }
+}
