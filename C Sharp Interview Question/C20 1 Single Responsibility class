@@ -1,1 +1,34 @@
+1. Easy to understand 
+2. Easy to Maintain
+3. Flexibility & extensibility
+4. Easy to Test the code 
+5. Reusability
 
+SRP: 
+class UserBusinessService{
+  public bool Login(string Uname, string pwd){
+    if(string.isnullorEmpty(uname)){
+     _userdataService.LogError();
+     }
+  }
+  public bool Register(string Uname, string pwd, string email){
+  }
+}
+class UserDataService{
+  public bool Login(string Uname, string pwd){
+    
+  }
+  public bool Register(string Uname, string pwd, string email){
+  }
+}
+public class LogErrorService{
+  public ErrorRespnose LogError(){
+  }
+}
+public class EmailService{
+ public bool SendEmail(string emailId){
+  }
+}
+
+In above example, LogErrorService, EmailService are different function from UserService,
+so created new class method for each class
