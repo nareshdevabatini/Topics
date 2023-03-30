@@ -1,1 +1,31 @@
+ISP:
+1. We can't force user or client to depend on one single big interface
+2. This principle is formulated by Robert C.Marting
 
+Bad coding techniquet;
+  interface INetfixUserSubscription{
+    void TVAccess(){}
+    void mobileAccess(){}
+    void tabletOrDesktopAccess(){}
+  }
+In above example, who ever has subscribe he will access all the features irrespective of amount;
+
+Example:
+    PremiumUser 1000rs -> TvAccess, mobileAccess, tablet or DesktopAccess
+    Gold User 400rs -> mobileAccess, tablet or DesktopAccess
+    Standard User 200rs  -> mobile Access
+ 
+interface IPremimumUser{
+    void TVAccess(){}
+    void mobileAccess(){}
+    void tabletOrDesktopAccess(){}
+   }
+interface IGoldUser{
+  void mobileAccess(){}
+  void tabletOrDesktopAccess(){}
+}
+interface IstandarUser{
+  void mobileAccess(){}
+}
+
+As per above example, we can give features as per package standards
