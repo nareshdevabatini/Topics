@@ -4,7 +4,8 @@
 4. Easy to Test the code 
 5. Reusability
 
-SRP: 
+SRP:  A class can have only one responsibilty for each functionality
+
 class UserBusinessService{
   public bool Login(string Uname, string pwd){
     if(string.isnullorEmpty(uname)){
