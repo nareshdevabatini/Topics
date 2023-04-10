@@ -1,0 +1,60 @@
+
+Factory pattern: when return type of instance is differents based on condition then use this pattern
+
+
+
+ReportFactory factory = new ReportFactory();
+IReport report = factory.getReportInstance("Registration");
+report.getQuery();
+Console.WriteLine();
+public abstract class IReport
+{
+    public IReport()
+    {
+        Name = "Patient";
+    }
+    public string Name { get; set; } 
+    public void getReportConnection()
+    {
+        //It'll get Login credentials and get connection for report
+        throw new NotImplementedException();
+    }
+    public abstract void getQuery();
+    public void generateReport()
+    {
+        //It'll generate a report
+        throw new NotImplementedException();
+    }
+}
+public class RegistrationReport : IReport
+{
+    public override void getQuery()
+    {
+        Console.WriteLine("This is the Registration query");
+    }
+}
+public class LoginReport : IReport
+{
+    public override void getQuery()
+    {
+        Console.WriteLine("This is the Login query");
+    }
+}
+public class ReportFactory
+{
+    public IReport getReportInstance(string name)
+    {
+        IReport report = null;
+        switch (name)
+        {
+            case "Registration":
+                report = new RegistrationReport();
+                break;
+            case "Login":
+                report = new LoginReport();
+                break;
+
+        }
+        return report;
+    }
+}
