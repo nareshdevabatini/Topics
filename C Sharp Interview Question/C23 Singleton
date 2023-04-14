@@ -5,9 +5,9 @@
 Types of Singleton.
 1. Normal Singleton
 2. Thread Safe
-3. double Lock
-4. Lazy
-5. Eager
+3. double checking Lock
+4. Eager
+5. Lazy
 
 1. Normal Singleton
 	Singleton.Instance().getMethodName("Abosolute Barbeque");
