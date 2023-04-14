@@ -1,69 +1,181 @@
-using System;
+1. Singleton is used to create a single instance at a time and passed as reference, static keyword has members in the class.
+2. it'll store into heap memory, Static will store into stack memory.
+3. Singleton object can be disposable.
 
-static class Employee
-{
-	
-	public static  void Emp()
-	{
-		
-		Console.WriteLine("Employee");
-	}
-}
+Types of Singleton.
+1. Normal Singleton
+2. Thread Safe
+3. double Lock
+4. Lazy
+5. Eager
 
-static class Managers
-{
-	
-	public static void Man()
-	{
-		
-		Console.WriteLine("Managers");
-	}
-}
-					
-public class Company
-{
-	
-	public static void Main_X()
-	{
-		
-		Console.WriteLine("Company");
-		Employee.Emp();
-	}
-}
+1. Normal Singleton
+	Singleton.Instance().getMethodName("Abosolute Barbeque");
+	Singleton.Instance().getMethodName("Pirate");
 
-
-public sealed class DBClass
+	public sealed class Singleton
 	{
-		private static DBClass instance=null;
-		private static readonly object padlock=new Object();
-		private DBClass()
+	    private static Singleton _instance = null;
+	    private static int counter=0;
+	    private Singleton()
+	    {
+		counter+=1;
+		Console.WriteLine("Number of instances: "+ counter);
+
+	    }
+	    public static Singleton Instance()
+	    {
+		if (_instance == null)
 		{
-			
+		    _instance = new Singleton();
 		}
-		public static DBClass Instance
+		return _instance;
+	    }
+	    public void getMethodName(string methodName)
+	    {
+		Console.WriteLine("Method name: "+ methodName);
+	    }
+	}
+	
+2. Thread Safe
+	Parallel.Invoke(() =>
+	    {
+		Singleton.Instance().getMethodName("Abosolute Barbeque");
+	    },  
+	    () =>
+	    {
+		Singleton.Instance().getMethodName("Pirate");
+	    });
+
+
+	public sealed class Singleton
+	{
+	    private static readonly object obj = new object ();  
+	    private static Singleton _instance = null;
+	    private static int counter=0;
+	    private Singleton()
+	    {
+		counter+=1;
+		Console.WriteLine("Number of instances: "+ counter);
+
+	    }
+	    public static Singleton Instance()
+	    {
+		lock(obj)
 		{
-			get{
-				lock(padlock){
-					if(instance==null)
-					{
-						Console.WriteLine("Call Singleton");
-						instance= new DBClass();
-					}
-				}
-				return instance;
+		    if (_instance == null)
+		    {
+			_instance = new Singleton();
+		    }
+		}
+		return _instance;
+	    }
+	    public void getMethodName(string methodName)
+	    {
+		Console.WriteLine("Method name: "+ methodName);
+	    }
+	}
+
+3. Double Lock : checking lock is very costly every time, so here we will check the instance before 
+	Parallel.Invoke(() =>
+	    {
+		Singleton.Instance().getMethodName("Abosolute Barbeque");
+	    },  
+	    () =>
+	    {
+		Singleton.Instance().getMethodName("Pirate");
+	    });
+
+
+	public sealed class Singleton
+	{
+	    private static readonly object obj = new object ();  
+	    private static Singleton _instance = null;
+	    private static int counter=0;
+	    private Singleton()
+	    {
+		counter+=1;
+		Console.WriteLine("Number of instances: "+ counter);
+
+	    }
+	    public static Singleton Instance()
+	    {
+		if (_instance == null) { 
+		    lock (obj)
+		    {
+			if (_instance == null)
+			{
+			    _instance = new Singleton();
 			}
+		    }
 		}
-	
-	public static void Main()
-	{
-		Console.WriteLine(DBClass.Instance.Call());
-		
-		
+		return _instance;
+	    }
+	    public void getMethodName(string methodName)
+	    {
+		Console.WriteLine("Method name: "+ methodName);
+	    }
 	}
-	
-	public  int Call()
+
+4. Eager Instance
+ 	Parallel.Invoke(() =>
+	    {
+		Singleton.Instance().getMethodName("Abosolute Barbeque");
+	    },  
+	    () =>
+	    {
+		Singleton.Instance().getMethodName("Pirate");
+	    });
+
+
+	public sealed class Singleton
 	{
-		return 0;
+	    private static Singleton _instance = new Singleton();
+	    private static int counter=0;
+	    private Singleton()
+	    {
+		counter+=1;
+		Console.WriteLine("Number of instances: "+ counter);
+
+	    }
+	    public static Singleton Instance()
+	    {
+		return _instance;
+	    }
+	    public void getMethodName(string methodName)
+	    {
+		Console.WriteLine("Method name: "+ methodName);
+	    }
 	}
-	 
+
+5. Lazy Instance
+	Parallel.Invoke(() =>
+	    {
+		Singleton.Instance().getMethodName("Abosolute Barbeque");
+	    },  
+	    () =>
+	    {
+		Singleton.Instance().getMethodName("Pirate");
+	    });
+
+
+	public sealed class Singleton
+	{
+	    private static readonly object obj = new object ();  
+	    private static Lazy<Singleton> _instance = new Lazy<Singleton>(()=> new Singleton());
+	    private static int counter=0;
+	    private Singleton()
+	    {
+		counter+=1;
+		Console.WriteLine("Number of instances: "+ counter);
+
+	    }
+	    public static Singleton Instance()
+	    {
+		return _instance.Value;
+	    }
+	    public void getMethodName(string methodName)
+	    {
+		Console.WriteLine("Method name: "+ methodName);
+	    }
 	}
