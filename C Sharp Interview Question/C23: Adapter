@@ -1,0 +1,30 @@
+Adapter: A class needs to be reused which doesn't have an interface or where class adapts base class method and creating interface for derived class.
+We needs to used existing class without changing it.
+
+In base class, we are returning String of XMLDocument in Adapter class(derived class), we are converting XMLdocument to business class modal.
+
+using System.Xml;
+
+public class EmployeeService
+{
+   public string getEmployeList() { return new XmlDocument().InnerXml; }
+   public string getEmploye() { return new XmlDocument().InnerXml; }
+   public void UpdateEmployee(string employe) { }
+}
+public interface IEmployeeAdapter
+{
+    Employee getEmployeList();
+}
+public class EmployeeAdapter: EmployeeService, IEmployeeAdapter
+{
+    public new Employee getEmployeList()
+    {
+       var employee = base.getEmployeList();
+        return new Employee();
+    } 
+}
+public class Employee
+{
+    public int Id { get; set; }
+    public string FullName { get; set; }
+}
