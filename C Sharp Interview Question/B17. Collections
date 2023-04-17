@@ -1,0 +1,56 @@
+Collections allow the user to create a group of objects which can dynamically grow or shrink as per the need.
+
+1. Non - generic Collections - Values can be of any type. Ex. ArrayList, Hashtable
+
+ArrayList: 
+The ArrayList is a non-generic collection of objects whose size increases dynamically. It is the same as Array except that its size increases dynamically
+ArrayList arlist = new ArrayList(); 
+
+Ex: 
+var arlist1 = new ArrayList();
+arlist1.Add(1);
+arlist1.Add("Bill");
+arlist1.Add(" ");
+arlist1.Add(true);
+arlist1.Add(4.5);
+arlist1.Add(null);
+
+Hashtable:
+
+Ex: 
+// Hashtable
+using System.Collections;
+Hashtable numberNames = new Hashtable();
+numberNames.Add(1, "One"); //adding a key/value using the Add() method
+numberNames.Add(2, 3333);
+numberNames.Add("three", "Three");
+
+foreach(DictionaryEntry item in numberNames)
+{
+    Console.WriteLine(item.Key + " " + item.Value);
+}
+
+//Output: three Three
+//2 3333
+//1 One
+
+2. Generic Collections - Value must be defeined a specific type <T>. Ex. List<T>, Dictionary<TK, TV>, SortedList<TK, TV>
+
+List<T>:
+
+List<T> is a collection class which can hold a set of values or set of objects as per strongly typed or weakly typed.
+
+Ex:
+
+var skills = new List<string>();
+skills.Add("C# .Net");
+skills.Add("Java");
+skills.Add("Python");
+
+
+IList or IList<T>:
+
+1. IList<T> is a interface which is implemented by List<T>, Collection<T>, Array, ArrayList
+2. Since IList is a base interface for all the above collection classes, we can directly assign those values into the IList variable or arguement.
+
+Ex: IList<string> carBrands = new List<string>();
