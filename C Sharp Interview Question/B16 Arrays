@@ -1,1 +1,35 @@
 Array: 
+1. Array can have fixed length
+2. Array can have ranks which shows number of dimensions into the array.
+3. The default values of numeric array elements are set to zero, and reference elements are set to null.
+4. A jagged array is an array of arrays, and therefore its elements are reference types and are initialized to null.
+
+Single-dimensional:
+====================
+Declaration:
+int[] array = new int[5];
+string[] weekDays2 = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+
+As per the 3rd point above, we are getting 0 as a default value for un initialised. 
+Ex: 
+//Single Dimensional Array
+int[] arr = new int[5];
+arr[0] = 2;
+Console.WriteLine("0th Index: " + arr[0] + " 4th Index: " + arr[4] + " Rank: " + arr.Rank );
+//Output: 0th Index: 2 4th Index: 0 Rank: 1
+
+Multidimensional Arrays:
+=========================
+
+Declaration:
+int[,] array = new int[4, 2];
+string[,] array2Db = new string[3, 2] { { "one", "two" }, { "three", "four" }, { "five", "six" } };
+
+Ex:
+//Multi Dimensional Array
+string[,] array2D = new string[3, 2] { { "one", "two" }, { "three", "four" }, { "five", "six" } };
+Console.WriteLine("0th Index: " + array2D[0,0]  + ", Rank: " + array2D.Rank );
+//Output: 0th Index: one, Rank: 2
+                                        
+ 
+
