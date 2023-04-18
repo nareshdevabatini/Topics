@@ -1,0 +1,53 @@
+Tuples are commonly used in C# to group multiple values together into a single object. Values can be fetched using Item1, Item2,....
+
+Ex:
+//Tuples Implementions
+using System.Globalization;
+
+Tuple<int, string, bool> t2 = new Tuple<int, string, bool>(2, "Tool", true);
+
+(int, string) t1 = (1, "w");
+
+Console.WriteLine(t1.Item1);
+Console.WriteLine(t1.Item2);
+Console.WriteLine(t2.Item1);
+Console.WriteLine(t2.Item2);
+Console.WriteLine(t2.Item3);
+
+Output:
+1
+w
+2
+Tool
+True
+
+Usage:
+1. Returning multiple values from a method
+Ex:
+public static (string, int) GetPersonDetails(int personId)
+{
+    // retrieve person details from database
+    string name = "John Doe";
+    int age = 30;
+
+    // return person details as a tuple
+    return (name, age);
+}
+
+2. Storing multiple values in a collection
+Ex:
+List<(string, int)> personList = new List<(string, int)>();
+
+personList.Add(("John Doe", 30));
+personList.Add(("Jane Smith", 25));
+personList.Add(("Bob Johnson", 45));
+
+3. Passing multiple arguments to a method
+
+public static void UpdatePersonDetails((string, int) personDetails)
+{
+    string name = personDetails.Item1;
+    int age = personDetails.Item2;
+
+    // update person details in database
+}
