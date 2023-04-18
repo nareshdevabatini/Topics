@@ -3,6 +3,7 @@ Collections allow the user to create a group of objects which can dynamically gr
 1. Non - generic Collections - Values can be of any type. Ex. ArrayList, Hashtable
 
 ArrayList: 
+===============
 The ArrayList is a non-generic collection of objects whose size increases dynamically. It is the same as Array except that its size increases dynamically
 ArrayList arlist = new ArrayList(); 
 
@@ -16,7 +17,7 @@ arlist1.Add(4.5);
 arlist1.Add(null);
 
 Hashtable:
-
+============
 Ex: 
 // Hashtable
 using System.Collections;
@@ -37,7 +38,7 @@ foreach(DictionaryEntry item in numberNames)
 2. Generic Collections - Value must be defeined a specific type <T>. Ex. List<T>, Dictionary<TK, TV>, SortedList<TK, TV>
 
 List<T>:
-
+==========
 List<T> is a collection class which can hold a set of values or set of objects as per strongly typed or weakly typed.
 
 Ex:
@@ -49,7 +50,7 @@ skills.Add("Python");
 
 
 IList or IList<T>:
-
+======================
 1. IList<T> is a interface which is implemented by List<T>, Collection<T>, Array, ArrayList
 2. Since IList is a base interface for all the above collection classes, we can directly assign those values into the IList variable or arguement.
 
@@ -57,7 +58,7 @@ Ex: IList<string> carBrands = new List<string>();
 
 
 Dictionary<TK, TV>:
-
+======================
 1. Represents a collection of keys and values.
 2. In Dictionary, key must be unique. Duplicate keys are not allowed if you try to use duplicate key then compiler will throw an exception.
 
@@ -85,3 +86,39 @@ Console.WriteLine(employees[2]); // Fetches the Value
 //Naresh
 
 Sorted List & Sorted Dictionary
+1. Follows the same syntax and behaviour as dictionary.
+2. When it comes to difference bw the both, Sorted Dictionary exceeds in performance when compared to Sorted List.
+
+Declaration:
+SortedDictionary<int, string> My_sdict = 
+            new SortedDictionary<int, string>();
+            
+
+
+IEnumerable:
+==================
+The IEnumerable interface is widely used in C# projects to represent collections of elements that can be iterated.
+
+Ex: 
+// IEnumerable Implementation
+
+static IEnumerable<int> GetSequence()
+{
+    // Yield a sequence of integers from 1 to 5
+    yield return 1;
+    yield return 2;
+    yield return 3;
+    yield return 4;
+    yield return 5;
+}
+IEnumerator<int> rank = GetSequence().GetEnumerator();
+while (rank.MoveNext())
+{
+    Console.WriteLine(rank.Current);
+}
+
+Difference between IList Vs IEnumerable Vs IQueryable:
+==========================================================
+In IList where we can assign data of derived collection classes and use the derived class methods. 
+In IEnumerable, we can iterate a collection values without returning by using yield keyword for continuing the iteration process.
+In IQueryable, where we can fetch the query using dbContext and validate the query then fetch the values using LINQ operator (Ex: FirstorDefault, SingleorDefault)
