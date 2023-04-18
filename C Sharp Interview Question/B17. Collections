@@ -54,3 +54,34 @@ IList or IList<T>:
 2. Since IList is a base interface for all the above collection classes, we can directly assign those values into the IList variable or arguement.
 
 Ex: IList<string> carBrands = new List<string>();
+
+
+Dictionary<TK, TV>:
+
+1. Represents a collection of keys and values.
+2. In Dictionary, key must be unique. Duplicate keys are not allowed if you try to use duplicate key then compiler will throw an exception.
+
+Ex.
+
+// Dictionary Implementation
+Dictionary<int, string> employees =
+    new Dictionary<int, string>();
+
+employees.Add(1, "Naresh");
+employees.Add(2, "Manoj");
+employees.Add(3, "Hari");
+
+foreach (KeyValuePair<int, string> emp in employees)
+{
+    Console.WriteLine("Emp Id: " + emp.Key + " Emp Name: " + emp.Value);
+}
+
+Console.WriteLine(employees[2]); // Fetches the Value
+
+// Output:
+//Emp Id: 1 Emp Name: Naresh
+//Emp Id: 2 Emp Name: Manoj
+//Emp Id: 3 Emp Name: Hari
+//Naresh
+
+Sorted List & Sorted Dictionary
