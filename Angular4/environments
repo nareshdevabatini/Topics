@@ -1,1 +1,32 @@
+1.  Create a file name environment-qa.ts and paste below code
+    export const environment = {
+      production: false,
+      url: 'http://api.gateway-develop.com'
+    };
 
+2.  Go to angular.json and create one object under configuration same as below
+    "qa": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/test-app/src/environments/environment.ts",
+                  "with": "projects/test-app/src/environments/environment-qa.ts"
+                }
+              ]
+            }
+
+3. In angular.json, under serve, create new object for qa
+     "qa": {
+              "browserTarget": "test-app:build:qa"
+            }
+4. In package.json, add one property under scripts object
+     "start-qa": "ng serve --configuration qa",
+5. Now you can access then evironemt variables from this import 
+    import { environment } from '../environments/environment';
+6. Finally run "npm run start-qa" command
+  
