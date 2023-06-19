@@ -3,11 +3,11 @@ Type of Contenct Projection
 2. Multi
 3. Conditional
 
-1. ##Single Contenct Projection
+1. **Single Contenct Projection**
     In Parent component, if we want to send any template then we can write that element inside child selector and access the element in child using ng-content
     example: <child-component><h1>These are latest products</h1></child-component>
             In child Component.html, we can access this using ng-content
-2. #Multi Content Projection
+2. **Multi Content Projection**
     By using selector we can access multi contents
      example: <child-component>
                     <h1>These are latest products</h1>
