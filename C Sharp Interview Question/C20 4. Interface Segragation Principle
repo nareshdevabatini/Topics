@@ -16,12 +16,9 @@ Example:
     Standard User 200rs  -> mobile Access
  
 interface IPremimumUser{
-    void TVAccess(){}
     void mobileAccess(){}
-    void tabletOrDesktopAccess(){}
    }
 interface IGoldUser{
-  void mobileAccess(){}
   void tabletOrDesktopAccess(){}
 }
 interface IstandarUser{
