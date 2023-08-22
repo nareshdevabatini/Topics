@@ -1,0 +1,7 @@
+1. Linq is used to connect SQL, Inmemory, XML content type.
+2. It'll gives us run time free errors as compared to .net
+3. Types
+   Lambda Expression: 
+      _repository.students.getAll().where(student.Gender =="Male")
+  Query Expression: 
+      from student in _repository.students.getAll() where student.Gender == "Male" select student;
