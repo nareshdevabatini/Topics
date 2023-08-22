@@ -7,3 +7,11 @@
   ex: string[] country = { "India", "UK", "USA" };
         country.Aggregate((a,b)=> a +", "+ b);
         Result = "India, UK, USA"
+
+3. Find the Even number in integer array
+    ex: int[] number = { 1,2,3,4,5,6,7,8,9 };
+        var evennumber = number.Select((x, index) => new {Index= index, Number = x }).Where(x => x.Number % 2 == 0);
+        result: Index:1, Number: 2
+                Index:3, Number: 4
+                Index:5, Number: 6
+                Index:7, Number: 8
