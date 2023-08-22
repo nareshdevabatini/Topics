@@ -1,0 +1,9 @@
+1. Find a min value length in string array
+    ex: string[] country = { "India", "UK", "USA" };
+        country.Min(x=>x.Length);
+        result = 2
+
+2. Concat Array of string
+  ex: string[] country = { "India", "UK", "USA" };
+        country.Aggregate((a,b)=> a +", "+ b);
+        Result = "India, UK, USA"
