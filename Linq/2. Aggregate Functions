@@ -1,14 +1,14 @@
-1. Find a min value length in string array
+1. Min: Find a min value length in string array
     ex: string[] country = { "India", "UK", "USA" };
         country.Min(x=>x.Length);
         result = 2
 
-2. Concat Array of string
+2. Aggregate: Concat Array of string
   ex: string[] country = { "India", "UK", "USA" };
         country.Aggregate((a,b)=> a +", "+ b);
         Result = "India, UK, USA"
 
-3. Find the Even number in integer array
+3. Select: Find the Even number in integer array
     ex: int[] number = { 1,2,3,4,5,6,7,8,9 };
         var evennumber = number.Select((x, index) => new {Index= index, Number = x }).Where(x => x.Number % 2 == 0);
         result: Index:1, Number: 2
