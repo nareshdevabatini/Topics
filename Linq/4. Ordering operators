@@ -1,0 +1,7 @@
+1. OrderBy
+2. OrderByDescending
+3. ThenBy
+4. ThenByDescending
+5. Reverse
+
+Example: OrderedEnumerable<Employee> employees = Employee.GetAllEmployees().OrderBy(x=> x.EmployeeID).ThenBy(x=>x.Name).ThenByDescending(x=>x.AnnualSalary);
