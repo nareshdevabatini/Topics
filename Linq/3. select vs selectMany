@@ -1,0 +1,46 @@
+Projection Operators: 
+1. Select: can be used to select a particular type from given data, 
+  In the below example, we are getting only Name and Gender as the new anonymous return type list from selectedEmployees
+  var selectedEmployees = Employee.GetAllEmployees().Where(x=>x.AnnualSalary> 50000).Select(x => new {Name= x.Name, x.Gender});
+
+2. Selectmany: It can fetch a list inside of a list as a single list of data
+  In the below example, Subject is a list of strings for each object, here we are combining all the strings in one IEnumberble<string> with selectMany operator.
+  Ex: IEnumerable<string> subjects = Employee.GetAllEmployees().SelectMany(x=>x.Subjects).Distinct();
+
+
+   public class Employee
+    {
+        public int EmployeeID { get; set; }
+        public string Name { get; set; }
+        public string Gender { get; set; }
+        public int AnnualSalary { get; set; }
+        public List<string> Subjects { get; set; }
+
+        public static List<Employee> GetAllEmployees()
+        {
+            List<Employee> listEmployees = new List<Employee>
+            {
+                new Employee
+                {
+                    EmployeeID = 101,Name = "Tom Daely",Gender = "Male",AnnualSalary = 60000,
+                     Subjects = new List<string> { "ASP.NET", "C#" }
+                },
+                new Employee
+                {
+                    EmployeeID = 102,Name = "Mike Mist",Gender = "Male",AnnualSalary = 72000,
+                     Subjects = new List<string> { "ADO.NET", "C#", "AJAX" }
+                },
+                new Employee
+                {
+                    EmployeeID = 103,Name = "Mary Lambeth",Gender = "Female",AnnualSalary = 48000,
+                     Subjects = new List<string> { "WCF", "SQL Server", "C#" }
+                },
+                new Employee
+                {
+                    EmployeeID = 104,Name = "Pam Penny",Gender = "Female",AnnualSalary = 84000,
+                      Subjects = new List<string> { "WPF", "LINQ", "ASP.NET" }
+                },
+            };
+         return listEmployees;
+        }
+    }
