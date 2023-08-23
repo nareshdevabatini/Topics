@@ -8,12 +8,13 @@ Projection Operators:
   Ex: IEnumerable<string> subjects = Employee.GetAllEmployees().SelectMany(x=>x.Subjects).Distinct();
 
 
-   public class Employee
+    public class Employee
     {
         public int EmployeeID { get; set; }
         public string Name { get; set; }
         public string Gender { get; set; }
         public int AnnualSalary { get; set; }
+        public string  Department { get; set; }
         public List<string> Subjects { get; set; }
 
         public static List<Employee> GetAllEmployees()
@@ -22,22 +23,22 @@ Projection Operators:
             {
                 new Employee
                 {
-                    EmployeeID = 101,Name = "Tom Daely",Gender = "Male",AnnualSalary = 60000,
+                    EmployeeID = 101,Name = "Tom Daely",Gender = "Male",AnnualSalary = 60000, Department= "CSE",
                      Subjects = new List<string> { "ASP.NET", "C#" }
                 },
                 new Employee
                 {
-                    EmployeeID = 102,Name = "Mike Mist",Gender = "Male",AnnualSalary = 72000,
+                    EmployeeID = 102,Name = "Mike Mist",Gender = "Male",AnnualSalary = 72000,Department= "CSE",
                      Subjects = new List<string> { "ADO.NET", "C#", "AJAX" }
                 },
                 new Employee
                 {
-                    EmployeeID = 103,Name = "Mary Lambeth",Gender = "Female",AnnualSalary = 48000,
+                    EmployeeID = 103,Name = "Mary Lambeth",Gender = "Female",AnnualSalary = 48000,Department= "IT",
                      Subjects = new List<string> { "WCF", "SQL Server", "C#" }
                 },
                 new Employee
                 {
-                    EmployeeID = 104,Name = "Pam Penny",Gender = "Female",AnnualSalary = 84000,
+                    EmployeeID = 104,Name = "Pam Penny",Gender = "Female",AnnualSalary = 84000,Department= "CSE",
                       Subjects = new List<string> { "WPF", "LINQ", "ASP.NET" }
                 },
             };
