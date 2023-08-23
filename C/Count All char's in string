@@ -22,4 +22,6 @@ public class Program
 			Console.WriteLine("String:{0} Count:{1}",c.Key,c.Value);
 		
 	}
+	//Using Linq query
+	 var NoofDeptarments = name.SelectMany(x => x.ToString()).GroupBy(x => x.ToString()).Select(x => new { Char = x.Key, No = x.Count() });
 }
