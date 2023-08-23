@@ -1,0 +1,9 @@
+GroupBy: 
+        var NoofDeptarments = Employee.GetAllEmployees().GroupBy(x=> x.Department);
+            foreach(var department in NoofDeptarments)
+            {
+                Console.WriteLine("{0} - {1}", department.Key, department.Count());
+            }
+No of Characters in Given string
+  string name = "malayalam";
+  var NoofDeptarments = name.SelectMany(x => x.ToString()).GroupBy(x => x.ToString()).Select(x => new { Char = x.Key, No = x.Count() });
