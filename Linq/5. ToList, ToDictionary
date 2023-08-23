@@ -1,0 +1,11 @@
+Conversion Operators category
+  1. ToList
+  2. ToArray
+  3. ToDictionary : Employee.GetAllEmployees().ToDictionary(x=> x.EmployeeID, x=> x.Name)
+  4. ToLookup
+  5. Cast
+  6. OfType
+  7. AsEnumerable 
+  8. AsQueryable
+
+  
