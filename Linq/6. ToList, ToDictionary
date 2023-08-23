@@ -5,7 +5,7 @@ Conversion Operators category
   4. ToLookup
   5. Cast
   6. OfType
-  7. AsEnumerable 
+  7. AsEnumerable: It will break into 2 parts one is a query another one will become in memory 
   8. AsQueryable
 
   
