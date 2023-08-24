@@ -1,0 +1,5 @@
+1. First / FirstOrDefault: First will fetch, the first element of the record if the array is empty then it'll throw an error, in that case, FirstOrDefault will give default value according to datatype.
+2. Last / LastOrDefault: It is same as First but it'll give us last record
+3. ElementAt / ElementAtOrDefault
+4. Single / SingleOrDefault: It'll return a Single element or default value, if it has more then one match it'll throw an error
+5. DefaultIfEmpty
