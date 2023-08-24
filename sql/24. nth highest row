@@ -18,3 +18,9 @@ fetch next 1 row only
 	)
 
 select top 1 salary from (select top 5 salary from employees order by salary desc) result order by salary
+
+With CTE:
+	with Result as
+		(select salary, DENSE_RANK() over(order by salary desc) as DENSERANK from employees)
+	select top 1 salary from Result where Result.DENSERANK=3
+
