@@ -23,5 +23,5 @@ public class Program
 		
 	}
 	//Using Linq query
-	 var NoofDeptarments = name.SelectMany(x => x.ToString()).GroupBy(x => x.ToString()).Select(x => new { Char = x.Key, No = x.Count() });
+	 var NoofDeptarments = name.GroupBy(x => x.ToString()).Select(x => new { Char = x.Key, No = x.Count() });
 }
