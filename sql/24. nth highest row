@@ -16,6 +16,5 @@ fetch next 1 row only
 		select COUNT(distinct(p2.id))
 			from Person p2 where p2.Id<p1.Id
 	)
-select * from Person order by id asc
-offset 2-1 rows 
-fetch next 1 row only
+
+select top 1 salary from (select top 5 salary from employees order by salary desc) result order by salary
