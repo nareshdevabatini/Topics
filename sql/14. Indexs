@@ -1,0 +1,2 @@
+1. Clustered Index: By default Primary key has a Clustered Index and it work as Binary Search format and it'll directly search the row
+2. Non Clustered Index: 
