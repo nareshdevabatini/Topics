@@ -1,0 +1,48 @@
+Getting Hierary from the same table using Recursive CTE
+
+Go
+Declare @employeeId int = 7;
+with EmployeeCTE as
+	(
+		select EmployeeId, EmployeeName, ManagerID  from Employees where employeeid= @employeeId
+		union All
+		select E1.EmployeeId,  E1.EmployeeName,  E1.ManagerID  from Employees E1
+		Inner Join EmployeeCTE CTE on E1.EmployeeID = CTE.ManagerID
+		)
+		select CTE1.EmployeeID, CTE1.EmployeeName, ISNULL(CTE2.EmployeeName,'No Boss') as Manager from EmployeeCTE CTE1 
+		left Join EmployeeCTE CTE2 on CTE1.ManagerID = CTE2.EmployeeID
+
+  Result
+  EmployeeID	EmployeeName	Manager
+    7	        David	        Tom
+    4	        Tom	          Steve
+    3	        Steve	        Ben
+    8	        Ben	          No Boss
+    
+------------------------------------------
+  Create table Employees
+  (
+       EmployeeID int primary key identity,
+       EmployeeName nvarchar(50),
+       ManagerID int foreign key references Employees(EmployeeID)
+  )
+  GO
+
+  Insert into Employees values ('John', NULL)
+  Insert into Employees values ('Mark', NULL)
+  Insert into Employees values ('Steve', NULL)
+  Insert into Employees values ('Tom', NULL)
+  Insert into Employees values ('Lara', NULL)
+  Insert into Employees values ('Simon', NULL)
+  Insert into Employees values ('David', NULL)
+  Insert into Employees values ('Ben', NULL)
+  Insert into Employees values ('Stacy', NULL)
+  Insert into Employees values ('Sam', NULL)
+  GO
+
+  Update Employees Set ManagerID = 8 Where EmployeeName IN ('Mark', 'Steve', 'Lara')
+  Update Employees Set ManagerID = 2 Where EmployeeName IN ('Stacy', 'Simon')
+  Update Employees Set ManagerID = 3 Where EmployeeName IN ('Tom')
+  Update Employees Set ManagerID = 5 Where EmployeeName IN ('John', 'Sam')
+  Update Employees Set ManagerID = 4 Where EmployeeName IN ('David')
+  GO
