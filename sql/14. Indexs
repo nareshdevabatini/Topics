@@ -1,2 +1,8 @@
-1. Clustered Index: By default Primary key has a Clustered Index and it work as Binary Search format and it'll directly search the row
-2. Non Clustered Index: 
+1. Clustered Index: By default Primary key has a Clustered Index and it works in Binary Search format and it'll directly search the row
+    And we can create 1 index per table
+2. Non-Clustered Index: It uses (keys, values) & (row, locators), it searches from Left -> Right, Top -> Bottom and it uses Clustered Indexes finally to get the values
+    And we can create 999 indexes per table
+  Query: CREATE NONCLUSTERED INDEX IX_Employees_Name ON [dbo].[Employees] ([Name])
+
+Disadvantages: It'll use extra space in sql.
+
