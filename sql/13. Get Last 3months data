@@ -1,0 +1,7 @@
+1. Get Last 3months data
+    select * from employees where DATEDIFF(MONTH, created_date, GETDATE()) between 1 and 3
+    order by created_date desc
+
+2. Get Last 2 years of data
+    select * from employees where DATEDIFF(Year, created_date, GETDATE()) between 1 and 2
+    order by created_date desc
