@@ -1,0 +1,2 @@
+   string name = "one two three";
+            name = string.Join(" ", name.Split(" ").Select(x => new string(x.Reverse().ToArray())));
