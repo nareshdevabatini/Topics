@@ -1,0 +1,20 @@
+CREATE TABLE EMPLOYEE (
+  ee_Id INTEGER PRIMARY KEY,
+  ee_name TEXT NOT NULL,
+  dept_id int NOT NULL,
+  ee_sal Int 
+  );
+  
+  INSERT INTO EMPLOYEE VALUES (0001, 'Clark', 1,4000);
+INSERT INTO EMPLOYEE VALUES (0003, 'Ava',   1,2000);
+INSERT INTO EMPLOYEE VALUES (0002, 'Dave1', 2,3000);
+INSERT INTO EMPLOYEE VALUES (0005, 'Dave2', 2,9000);
+INSERT INTO EMPLOYEE VALUES (0006, 'Dav',   3,8000);
+INSERT INTO EMPLOYEE VALUES (0007, 'Dav1',  3,6000);
+
+With Cte as (
+  select  EE_id, ee_name, dept_id, ee_sal ,Dense_Rank() 
+  over(partition by dept_id order by ee_sal) as Rn
+  from EMPLOYEE
+)
+select * from Cte where rn = 1
