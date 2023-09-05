@@ -1,0 +1,6 @@
+Declare @table Table(
+	Column1 int
+	)
+	Insert into @table(Column1) values (0), (1), (0), (1),(1)
+
+	select Column1, case when Column1 =0 then 1 else 0  end as Column2 from @table
