@@ -1,0 +1,25 @@
+Create a DataTable: First, create a DataTable to hold your data. Define the columns and add rows to it.
+
+using System;
+using System.Data;
+using System.Data.SqlClient;
+
+DataTable dataTable = new DataTable();
+dataTable.Columns.Add("Column1", typeof(string));
+dataTable.Columns.Add("Column2", typeof(int));
+
+// Add rows to the DataTable
+dataTable.Rows.Add("Value1", 42);
+dataTable.Rows.Add("Value2", 55);
+// Add more rows as needed...
+
+using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
+{
+    bulkCopy.DestinationTableName = "YourTable"; // Specify your destination table name
+    bulkCopy.ColumnMappings.Add("Column1", "Column1"); // Map DataTable columns to table columns
+    bulkCopy.ColumnMappings.Add("Column2", "Column2");
+
+    bulkCopy.WriteToServer(dataTable);
+}
+
+In Above code, we are using bulkCopy to save all the columns
