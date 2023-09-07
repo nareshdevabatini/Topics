@@ -1,0 +1,45 @@
+1. Arrays:
+An array is a collection of elements stored at contiguous memory locations. Here's a simple example in Python:
+
+  my_array = [1, 2, 3, 4, 5]
+
+  Console>wtireLin(my_array[2])  # Output: 3
+
+# Modifying elements
+my_array[0] = 10
+-----------------------------------------------------------------------------------------------------------------------------------------
+2. Linked Lists:
+A singly linked list consists of nodes where each node has data and a reference to the next node. Here's an example in C#:
+
+  public class Node
+  {
+      public int Data;
+      public Node Next;
+  }
+
+  Node head = new Node { Data = 1 };
+  head.Next = new Node { Data = 2 };
+  head.Next.Next = new Node { Data = 3 };
+-----------------------------------------------------------------------------------------------------------------------------------------
+3. Stacks:
+A stack follows the Last-In-First-Out (LIFO) principle. Here's an example in Java:
+
+  Stack<Integer> stack = new Stack<>();
+  stack.push(1);
+  stack.push(2);
+  int topElement = stack.pop();  // Removes and returns 2
+-----------------------------------------------------------------------------------------------------------------------------------------
+4. Queues:
+A queue follows the First-In-First-Out (FIFO) principle. Here's an example in C++:
+
+  std::queue<int> queue;
+  queue.push(1);
+  queue.push(2);
+  int frontElement = queue.front();  // Retrieves but does not remove 1
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+5. Hash Tables:
+A hash table allows fast key-value lookups. Here's a C# dictionary as an example:
+  Hashtable numberNames = new Hashtable();
+  numberNames.Add(1, "One"); //adding a key/value using the Add() method
+  numberNames.Add(2, 3333);
