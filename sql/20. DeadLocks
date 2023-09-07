@@ -1,0 +1,11 @@
+Whenever we run Begin Transaction and execute update command, if we update same table without completing commit transaction then deadlock will occur for the table
+It'll not release the table until first transaction got complete.
+
+Window 1
+Begin Transaction
+	update employees set employeeName = 'Keenu' where EmployeeID = 2 
+  //Run above code only
+	Commit Transaction
+
+ Window 2
+ update employees set employeeName = 'Keenu' where EmployeeID = 2 
