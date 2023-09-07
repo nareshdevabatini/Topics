@@ -1,0 +1,75 @@
+1. Primary Key Constraint:
+
+  public class MyEntity
+  {
+      [Key]
+      public int Id { get; set; }
+  }
+
+  public class MyEntityConfiguration : EntityTypeConfiguration<MyEntity>
+  {
+      public MyEntityConfiguration()
+      {
+          HasKey(e => e.Id);
+      }
+  }
+-------------------------------------------------------------------------------------------------------------------------------------------------  
+2. Unique Constraint:
+
+  public class MyEntity
+  {
+      [Index(IsUnique = true)]
+      public string UniqueColumn { get; set; }
+  }
+
+  public class MyEntityConfiguration : EntityTypeConfiguration<MyEntity>
+  {
+      public MyEntityConfiguration()
+      {
+          HasKey(e => e.Id);
+          Property(e => e.UniqueColumn).HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute { IsUnique = true }));
+      }
+  }
+-------------------------------------------------------------------------------------------------------------------------------------------------
+3. Foreign Key Constraint:
+
+  public class Order
+  {
+      public int OrderId { get; set; }
+      public int CustomerId { get; set; }
+      [ForeignKey("CustomerId")]
+      public Customer Customer { get; set; }
+  }
+
+  public class OrderConfiguration : EntityTypeConfiguration<Order>
+  {
+      public OrderConfiguration()
+      {
+          HasKey(o => o.OrderId);
+          HasRequired(o => o.Customer)
+              .WithMany()
+              .HasForeignKey(o => o.CustomerId);
+      }
+  }
+-------------------------------------------------------------------------------------------------------------------------------------------------
+4. Check Constraint:
+
+  public class MyEntity
+  {
+      [Key]
+      public int Id { get; set; }
+      
+      [Column("SomeColumn")]
+      public int SomeProperty { get; set; }
+  }
+
+  public class MyEntityConfiguration : EntityTypeConfiguration<MyEntity>
+  {
+      public MyEntityConfiguration()
+      {
+          HasKey(e => e.Id);
+          Property(e => e.SomeProperty)
+              .HasColumnName("SomeColumn")
+              .HasColumnAnnotation("CheckConstraint", "SomeProperty >= 0"); // Check constraint
+      }
+  }
