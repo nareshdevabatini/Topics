@@ -1,0 +1,2 @@
+INSERT into Employees values('Ponky', 8)
+SELECT SCOPE_IDENTITY();
