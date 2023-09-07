@@ -1,0 +1,15 @@
+In Entity Framework, the AddRange method is a convenient way to add multiple entities (or objects) to an DbSet<T> in a single operation. 
+
+Example
+List<MyEntity> entitiesToAdd = new List<MyEntity>
+{
+    new MyEntity { Name = "Row 1" },
+    new MyEntity { Name = "Row 2" },
+    // Add more rows as needed...
+};
+
+using (var context = new YourDbContext())
+{
+    context.MyEntities.AddRange(entitiesToAdd);
+    context.SaveChanges();
+}
