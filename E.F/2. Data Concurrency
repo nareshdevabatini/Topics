@@ -1,0 +1,35 @@
+In Entity Framework's Code First approach involves dealing with situations where multiple users or processes attempt to modify the same data simultaneously.
+This can lead to conflicts that need to be resolved to maintain data integrity. 
+
+1. Timestamps (Row Versioning):
+  public class MyEntity
+  {
+      public int Id { get; set; }
+      public string Name { get; set; }
+      
+      [Timestamp]
+      public byte[] RowVersion { get; set; }
+  }
+
+2. Concurrency Handling with DbUpdateConcurrencyException:
+  try
+  {
+      // Retrieve the entity to be updated
+      var entityToUpdate = dbContext.MyEntities.Find(id);
+  
+      // Make changes to the entity
+  
+      // Attempt to save changes
+      dbContext.SaveChanges();
+  }
+  catch (DbUpdateConcurrencyException ex)
+  {
+      // Handle concurrency conflict here
+      // You can access the conflicting entity versions using ex.Entries
+  }
+
+3. IsRowVersion
+    modelBuilder.Entity<MyEntity>()
+    .Property(e => e.RowVersion)
+    .IsRowVersion();
+
