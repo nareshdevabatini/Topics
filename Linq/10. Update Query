@@ -1,0 +1,22 @@
+To update credit limit for all the customers
+
+	public class Customer
+  {
+      public int CustomerId { get; set; }
+      public string FirstName { get; set; }
+      public string LastName { get; set; }
+      public int CreditLimit { get; set; }
+  }
+
+  List<Customer> customers = new List<Customer>
+            {
+                new Customer { CustomerId = 1, FirstName = "John", LastName = "Doe", CreditLimit= 0 },
+                new Customer { CustomerId = 2, FirstName = "Jane", LastName = "Smith" , CreditLimit= 0},
+                new Customer { CustomerId = 3, FirstName = "Alice", LastName = "Johnson", CreditLimit= 0 }
+            };
+
+             var result = customers.Select(c =>
+                  {
+                      c.CreditLimit = 500;
+                      return c;
+                  });
