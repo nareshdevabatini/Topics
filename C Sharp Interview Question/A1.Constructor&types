@@ -10,7 +10,7 @@ Constructors can be divided into 5 types:
 1. Default Constructor: with same class name without parameter
 2. Parametrized Constructor: It contains parameter , when intialize we have to pass parameter
 3. Copy Constructor: 
-4. Static Constructor: Without parameter, Accessmodifier and it contains only one static constructor and compiler will call without instance
+4. Static Constructor: Without parameter & Accessmodifier and it contains only one static constructor and compiler will call without instance
 5. Private Constructor: It'll be use on normal class with private access modifier constructor, and all method of inside the class be use 
                         static keyword
 
