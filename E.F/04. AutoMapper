@@ -1,0 +1,31 @@
+1. AutoMapper is used to map DTO's to business model in web projects
+Example: 
+  using AutoMapper;
+
+  [ApiController]
+  [Route("api/[controller]")]
+  public class YourController : ControllerBase
+  {
+      private readonly IMapper _mapper;
+  
+      public YourController(IMapper mapper)
+      {
+          _mapper = mapper;
+      }
+  
+     [HttpPost]
+      public IActionResult Create([FromBody] SourceModel sourceModel)
+      {
+          if (sourceModel == null)
+          {
+              return BadRequest();
+          }
+      
+          // Map the SourceModel to a DestinationDTO
+          var destinationDTO = _mapper.Map<DestinationDTO>(sourceModel);
+      
+          // Perform your API logic with destinationDTO
+      
+          return Ok(destinationDTO);
+      }
+  }
