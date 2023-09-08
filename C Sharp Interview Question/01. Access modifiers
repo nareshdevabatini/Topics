@@ -1,0 +1,36 @@
+1. public: it will allow all the users to use this code
+2. Protected: it can accessible only for derived class
+3. Internal: it can accessible only for with in the project 
+4. Private: it can be accessible with in scope 
+5. protected internal: it allows access within the same assembly or from a derived class in another assembly.
+          // Assembly A
+            public class MyBaseClass
+            {
+                protected internal int ProtectedInternalField;
+                protected internal void ProtectedInternalMethod()
+                {
+                    Console.WriteLine("Protected Internal Method");
+                }
+            }
+            
+            // Assembly B (references Assembly A)
+            public class MyDerivedClass : MyBaseClass
+            {
+                public void AccessProtectedInternalMember()
+                {
+                    ProtectedInternalField = 42; // Accessible in derived class
+                    ProtectedInternalMethod();   // Accessible in derived class
+                }
+            }
+
+6. private protected: it allows access within the same assembly and only from derived classes in the same assembly.
+7. readonly: it allows you to set a constant value for a field that can only be modified during initialization or in a constructor.
+        Example: 
+                  public class Program
+                	{
+                	   static Program(){
+                          ReadOnlyField = 52;
+                      }
+                	    public static readonly int ReadOnlyField = 42;
+                  }
+8. Constant: The const modifier is used for fields that have a constant value that cannot be changed after declaration. It is implicitly public, static, and readonly.
