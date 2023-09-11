@@ -1,0 +1,21 @@
+It is a is used to declare a variable that can hold values of any data type at runtime.  
+This means that the type of a dynamic variable is not known at compile time but is determined at runtime.
+
+Example1: 
+    dynamic dynamicVariable;
+    dynamicVariable = 42; // Assign an integer
+    Console.WriteLine(dynamicVariable); 
+    dynamicVariable = new List<int> { 1, 2, 3 }; // Assign a List of integers
+    Console.WriteLine(dynamicVariable.Count);
+ In Above example, I can add any type to dynamic variable after assignment also.
+
+Example2: 
+    dynamic jsonData = JsonConvert.DeserializeObject(jsonString);
+    string name = jsonData.Name;
+    int age = jsonData.Age;
+  It'll work with serialize data and directly can use inside variable data.
+
+Example3: 
+    dynamic comObject = GetCOMObject();
+    comObject.DoSomething();
+  It'll work with COM objects as well.
