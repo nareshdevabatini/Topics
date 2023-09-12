@@ -14,3 +14,21 @@ Constructors can be divided into 5 types:
 5. Private Constructor: It'll be use on normal class with private access modifier constructor, and all method of inside the class be use 
                         static keyword
 
+Example 1: 	
+  public class Program
+  {
+          public static void Main(string[] args)
+          {
+              B b = new B();
+          }
+  	}
+	public class A 
+  {
+		  public A():this(10) {Console.WriteLine("hello from default constructor of A");} 
+	    public A(int num) { 	Console.WriteLine("hello from parametirized constructor of A"); }
+  }
+ public class B:A 
+ { 
+	public B() { 	Console.WriteLine("hello from default constructor of B"); } 
+	} 
+
