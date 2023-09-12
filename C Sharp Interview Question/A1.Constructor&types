@@ -21,8 +21,8 @@ Example 1:
           {
               B b = new B();
           }
-  	}
-	public class A 
+  }
+public class A 
   {
 		  public A():this(10) {Console.WriteLine("hello from default constructor of A");} 
 	    public A(int num) { 	Console.WriteLine("hello from parametirized constructor of A"); }
@@ -30,5 +30,8 @@ Example 1:
  public class B:A 
  { 
 	public B() { 	Console.WriteLine("hello from default constructor of B"); } 
-	} 
+} 
+Output: hello from parametirized constructor of A
+	hello from default constructor of A
+	hello from default constructor of B
 
