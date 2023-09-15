@@ -1,0 +1,29 @@
+What is difference between Use, Run , Next
+
+First we should get IApplicationBuilder, it contains use & run properties
+
+1. RUN: it allows to complete a middleware execution that means it'll terminate the request pipelint.
+
+2. USE: it allows to add a new middleware component and it'll call next sequence middleware component in request pipeline.
+
+3. Next : If we want to run next middleware then we have to call next method from first component.
+
+Example1: 
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        app.Use(async (context, next) =>
+        {
+            await context.Response.WriteAsync("Use Middleware1 Incoming Request \n");
+            await next();
+            await context.Response.WriteAsync("Use Middleware1 Outgoing Response \n");
+        });
+        app.Use(async (context, next) =>
+        {
+            await context.Response.WriteAsync("Use Middleware2 Incoming Request \n");
+            await next();
+            await context.Response.WriteAsync("Use Middleware2 Outgoing Response \n");
+        });
+        app.Run(async context => {
+            await context.Response.WriteAsync("Run Middleware3 Request Handled and Response Generated\n");
+        });
+    } 
