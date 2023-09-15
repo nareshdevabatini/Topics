@@ -1,0 +1,13 @@
+01. AddSingleton:  Use when you want to share the same instance of a service throughout the entire application's lifetime.
+                Good for caching, configuration, or stateful services that should maintain state between requests.
+Example: var emailConfig = configuration.GetSection("EmailConfiguration")
+          .Get<EmailConfiguration>();
+      builder.Services.AddSingleton(emailConfig);
+      In Above example, We are getting data from appsetting.config and creating singleton for EmailConfiguaration class. So that we can create one instance for lifetime for that class.
+      
+02. AddScope: Use when you want to share a service instance within a single request but have different instances for different requests. 
+              Suitable for services that need to maintain state within a single HTTP request
+Example: builder.Services.AddScoped<IEmailService, EmailService>();
+          builder.Services.AddScoped<IUserService, UserService>();
+          
+03. AddTransient: Use when you want a new instance of a service every time it's requested. This is typically used for lightweight, stateless services.
