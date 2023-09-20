@@ -13,11 +13,9 @@ IQueryable
 2. IQueryable is suitable for querying data from out-memory (like remote database, service) collections.
 3. While querying data from a database, IQueryable executes a "select query" on server-side with all filters.
 
-using System;
-using System.Text;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+IEnumerator: IEnumerator retains its cursor's current state.
+
+
 
 public class Program
 {
@@ -36,3 +34,33 @@ public class Program
 		}
 	}
 }
+---------------------------------------------------------------------------
+IEnumerator Example
+ public static void Main(string[] args)
+        {
+            
+            IEnumerator<string> iEnumeratorOfString = new List<string> {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep","Oct", "Nov", "Dec"}.GetEnumerator();
+            iEnumeratorMethodOne(iEnumeratorOfString);
+            
+        }
+        static void iEnumeratorMethodOne(IEnumerator<string> i)
+            {
+               while(i.MoveNext())
+               {
+                  Console.WriteLine(i.Current);
+            
+                   if(i.Current == "Jun")
+                   {
+                      iEnumeratorMethodTwo(i);
+                   }
+                }
+            }
+            static void iEnumeratorMethodTwo(IEnumerator<string> i)
+            {
+                while(i.MoveNext())
+                {
+                   Console.WriteLine(i.Current);
+                 }
+            }
+
+In Above Example, State is started from Jul in method two
