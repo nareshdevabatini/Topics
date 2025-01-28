@@ -1,1 +1,12 @@
-
+App Service Overview: 
+  1. Multiple languages and framework: Appservice has first class support for ASP.net , Java, Ruby, Node.js, PHP or Python
+  2. Managed production environment: Maintains the OS and language framework for apps
+  3. Containerzation and docker: it can host in custom windows or Linux container, this can give ability to run in multi container apps with docker composed and migrate docker service to app service
+  4. DevOps Optimazation: Can setup continous integration and deployment with Azure DevOps, Github, Bitbucket, Docker Hub or Azure Container Registry
+  5. Global scal with high availabitly: scale up or out/in manually or automatically, can host app anywhere globla datacenter infrastucture.
+  6. Connection to Saas and on-Premissis(sales force): More than 50 connectors for enterprise system(such as Sap), SAS service(such as Salesforce and internet services(such as Facebook)
+  7. Security and compliance: Appservice is ISO, SOC and PCI compliant, can able to authenticate such as Google, apple, FB
+  8. Application Template: Template in the Azure Marketplace, such as WordPress, Joomla and drupal.
+  9. Visual Studio and VS Code Integration: Streamline the work of creating, deploying and debugging.
+  10. API and mobile features: Turn-key CORS support for Restful API scenarios and enables authentication, offline data sync, push notification, and more
+  11. Servless Code: Run code on-demant without having to explicitly provision or manage infrastucture.
