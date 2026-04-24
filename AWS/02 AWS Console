@@ -1,0 +1,11 @@
+Global Service: 
+    Identity and Access Management
+    Route 53(DNS service)
+    Cloud Front(CDN content delevery Network)
+    WAF(Web Application Firewall)
+
+Region Based Services
+    EC2(Infrastructure as service)
+    Elastic as BeanStalk(Platform for service)
+    Lambda(Function as Service)
+    Rekognition(Software as service)
