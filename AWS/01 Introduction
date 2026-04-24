@@ -1,1 +1,4 @@
 
+AWS operates across many regions worldwide. 
+Each region consists of a cluster of data centers
+And most AWS services are scoped to a specific region.
