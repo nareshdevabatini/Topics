@@ -9,5 +9,5 @@ Search IAM(Global Service)
 2. Select as IAM User in radio button
 3. Set Password and click don't change password in next login.
 4. Create a group and group name shouldbe admin and policy name should be Administrator Access.
-5. Now go click on user and it'll go to stephane dashboard.
+5. Now go click on user and it'll go to stephane and click dashboard.
 6. Edit Account Alias and rename with custome.
