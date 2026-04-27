@@ -1,0 +1,19 @@
+IAM Policy Structure:
+{
+    "Version": "2012-10-17", //this is always fixed
+    "Id": "S3-Account-Permissions", - can be optional
+    "Statement": [ //Mandatory- array of statement
+        {
+            "Sid": "1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": ["arn:aws:iam::123456789012:root"]
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": ["arn:aws:s3:::mybucket/*"]
+        }
+    ]
+}
