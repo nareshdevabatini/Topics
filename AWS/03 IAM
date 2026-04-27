@@ -1,0 +1,7 @@
+Identity & Access Management Group(Global Service)
+
+Groups only contains users not other groups.
+User can belongs to multiple groups
+Users or Group can be assigned JSON documents called policies
+
+Search IAM(Global Service
