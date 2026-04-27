@@ -1,0 +1,8 @@
+Sometimes AWS Services need to do things on your behalf
+But they need permission to do so!
+
+Real Life Example:
+You hire a driver (EC2 Instance)
+Driver needs to access your garage (AWS Services)
+You give driver a KEY (IAM Role) to access garage
+Driver can now access garage on your behalf 
