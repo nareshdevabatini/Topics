@@ -17,3 +17,22 @@ IAM Policy Structure:
         }
     ]
 }
+
+In AWS IAM, policies can be created and attached to users, or existing policies can be directly attached to users or groups.
+Custom policies can be created and attached to individual users or groups as required.
+Custom Policy: A specific AWS service can be selected, and a defined set of actions within that service can be configured along with the applicable resources, and saved as a managed or inline policy.
+Custom Policy:
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "VisualEditor0",
+			"Effect": "Allow",
+			"Action": [
+				"iam:ListUsers",
+				"iam:GetUser"
+			],
+			"Resource": "*"
+		}
+	]
+}
