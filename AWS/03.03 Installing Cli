@@ -1,0 +1,10 @@
+Install Cli version 2
+Search Cli version 2 and download it for windows msi.
+After installation, open Cmd and type aws --version
+
+Go to User and click Security Credentials
+Click on Create Access Key and select CLI and go to next where you'll get acccess 
+Now open CMD and type command "aws Configure"
+add access key, code, default region
+
+Now type command "aws iam list-users"
