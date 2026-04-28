@@ -17,3 +17,27 @@ t3.medium	Medium workload	Dev environment
 t3.large	Production apps	Your AOM server
 r5.xlarge	Memory heavy	Large databases
 c5.xlarge	CPU heavy	Computing tasks
+
+Point 1️⃣ — EBS is Storage for EC2
+EC2 by itself has NO permanent storage!
+
+Without EBS:
+EC2 starts  → Data stored temporarily
+EC2 stops   → ❌ ALL DATA LOST!
+
+With EBS:
+EC2 starts  → Data stored on EBS
+EC2 stops   → ✅ Data still safe on EBS!
+EC2 starts again → Data still there ✅
+
+
+
+Point 1️⃣ — ELB Distributes Traffic to EC2
+Without ELB:
+1000 users → Only 1 EC2 → 💥 Server crashes!
+
+With ELB:
+1000 users → ELB → EC2 #1 (333 users) ✅
+                 → EC2 #2 (333 users) ✅
+                 → EC2 #3 (334 users) ✅
+All servers balanced — No crash! ✅
