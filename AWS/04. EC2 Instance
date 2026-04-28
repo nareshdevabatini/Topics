@@ -1,1 +1,12 @@
 EC2(Elastic Computing Cloud)  - Infrastructure as a Service
+
+Real Life Analogy
+Without EC2 (Old Way):
+  Buy a house → Very expensive
+   You own it → You maintain it
+   Fixed size → Can't change easily
+
+With EC2 (AWS Way):
+   Rent a hotel room → Pay only what you use
+   AWS maintains it → No headache
+   Change size anytime → Flexible!
