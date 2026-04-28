@@ -10,3 +10,10 @@ With EC2 (AWS Way):
    Rent a hotel room → Pay only what you use
    AWS maintains it → No headache
    Change size anytime → Flexible!
+
+Type	    Use Case	Example
+t3.micro	Small apps, testing	Free tier
+t3.medium	Medium workload	Dev environment
+t3.large	Production apps	Your AOM server
+r5.xlarge	Memory heavy	Large databases
+c5.xlarge	CPU heavy	Computing tasks
