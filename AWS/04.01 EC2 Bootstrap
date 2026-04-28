@@ -1,0 +1,16 @@
+🏥 Another Real Scenario: Hospital App
+Situation:
+A hospital uses a Patient Management System.
+A new hospital branch opens → needs a new server.
+Server must have: SQL Server + .NET App + Security Settings
+
+Script to load what all the files and applications are required have to specify in the script
+
+Now:
+Launch EC2 #1  → Script runs automatically → Ready in 5 mins ✅
+Launch EC2 #2  → Script runs automatically → Ready in 5 mins ✅
+Launch EC2 #3  → Script runs automatically → Ready in 5 mins ✅
+...
+Launch EC2 #10 → Script runs automatically → Ready in 5 mins ✅
+
+Total: 5 MINUTES for all 10 servers! 🚀
