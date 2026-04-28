@@ -41,3 +41,7 @@ With ELB:
                  → EC2 #2 (333 users) ✅
                  → EC2 #3 (334 users) ✅
 All servers balanced — No crash! ✅
+
+
+ASG is the brain that keeps your EC2 fleet healthy, right-sized, and cost-efficient
+— automatically launching or terminating EC2 instances in response to real-world demand.
