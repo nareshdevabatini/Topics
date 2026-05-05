@@ -19,8 +19,8 @@ EC2 Instance → Network & Security → Security Groups
                         If Web is not working then we need to take a look into this port
 
 Type	      Port	  Use Case
-SSH	        22	    Remote server access
+SSH	      22	    Remote server access
 HTTP	      80	    Web traffic
 HTTPS	      443	    Secure web traffic
-MS SQL	    1433	  SQL Server database access
+MS SQL	1433	    SQL Server database access
 Custom TCP	Any	    Application-specific ports
