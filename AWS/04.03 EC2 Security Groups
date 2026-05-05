@@ -1,0 +1,26 @@
+EC2 Instance → Network & Security → Security Groups
+│
+├── Default Security Group
+│     (Auto-created by AWS for the VPC — allows internal communication
+│      between resources within the same security group)
+│
+└── launch-wizard-1
+      (Auto-created by AWS when you launched your EC2 instance via the wizard)
+      │
+      └── Inbound Rules
+            (Control incoming traffic allowed to reach your EC2 instance)
+            (Part of a Security Group — acts as a virtual firewall)
+            │
+            ├── 1. HTTP  | TCP | Port 80  | Source: 0.0.0.0/0
+            │         → Allows web traffic from ANY IP address
+            │
+            └── 2. SSH   | TCP | Port 22  | Source: 0.0.0.0/0
+                      → Allows remote terminal/command line access from ANY IP address
+                        If Web is not working then we need to take a look into this port
+
+Type	      Port	  Use Case
+SSH	        22	    Remote server access
+HTTP	      80	    Web traffic
+HTTPS	      443	    Secure web traffic
+MS SQL	    1433	  SQL Server database access
+Custom TCP	Any	    Application-specific ports
