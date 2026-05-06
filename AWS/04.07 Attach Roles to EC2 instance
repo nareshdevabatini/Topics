@@ -1,0 +1,14 @@
+Step 1 — Modify IAM Role on EC2:
+      Go to AWS Console → EC2 → Instances
+      Select your running EC2 Instance
+      Click Actions → Security → Modify IAM Role
+Step 2 — Attach the Role:
+      In the IAM Role dropdown, select: DemoForEC2
+      Click "Update IAM Role" to save
+Step 3 — Verify via EC2 Instance Terminal:
+      Connect to your EC2 Instance via SSH or EC2 Instance Connect
+      Run the following AWS CLI command: aws iam list-users
+      If the role is attached correctly, it will return the list of IAM users ✅
+Step 4 — Result:
+      The DemoForEC2 Role is now attached to the EC2 Instance, 
+      which allows the EC2 instance to make AWS API calls on your behalf.
