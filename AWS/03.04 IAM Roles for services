@@ -1,3 +1,26 @@
+Step 1 — Navigate to IAM:
+      Go to AWS Console → Search for IAM
+      In the left panel, click Roles → Click "Create Role"
+Step 2 — Select Trusted Entity Type:
+      Under Trusted Entity Type → Select AWS Service
+Step 3 — Select Use Case:
+      Under Service or Use Case → Search and Select EC2
+      Under Use Case → Select EC2 → Click Next
+Step 4 — Attach Permission Policies:
+      In the Permission Policies search bar, 
+      search for: AmazonEC2ReadOnlyAccess
+      Check the box to attach the Read Only Access policy → Click Next
+Step 5 — Name the Role:
+      Under Role Name, enter:  DemoRoleEC2Instance
+      Review the details → Click "Create Role"
+
+✅ Result:
+A new IAM Role DemoRoleEC2Instance is created with:
+Trusted Entity: AWS Service (EC2)
+Permission: EC2 Read Only Access
+
+
+Example:
 Sometimes AWS Services need to do things on your behalf
 But they need permission to do so!
 
