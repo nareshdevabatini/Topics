@@ -4,10 +4,31 @@ Groups only contains users not other groups.
 User can belongs to multiple groups
 Users or Group can be assigned JSON documents called policies
 
-Search IAM(Global Service)
-1. Go to IAM User and Click Create
-2. Select as IAM User in radio button
-3. Set Password and click don't change password in next login.
-4. Create a group and group name shouldbe admin and policy name should be Administrator Access.
-5. Now go click on user and it'll go to User page and click dashboard.
-6. Edit Account Alias and rename with custom name.
+Step 1 — Navigate to IAM:
+      Go to AWS Console → Search for IAM(IAM is a Global Service — it applies across all AWS regions)
+      In the left panel, click Users → Click "Create User"
+Step 2 — Set User Details:
+      Enter a User Name
+      Check "Provide user access to the AWS Management Console"
+      Under Select Console Access → Select "I want to create an IAM User" radio button → Click Next
+Step 3 — Set Password:
+      Choose "Custom Password" and enter your desired password
+      Uncheck "Users must create a new password at next sign-in"(This means the user will NOT be prompted to change the password on next login)
+      Click Next
+Step 4 — Create a User Group:
+      Click "Create Group"
+      Enter Group Name: admin
+      Search and attach the policy: AdministratorAccess
+      Click "Create User Group"
+      Select the newly created admin group → Click Next
+Step 5 — Review and Create:
+      Review all the details
+      Click "Create User"
+      ⚠️ Download or copy the Console sign-in URL and password before closing
+Step 6 — Set Account Alias:
+      In the left panel, click on Dashboard
+      Under AWS Account section, find "Account Alias"
+      Click "Create" or "Edit" → Enter your custom alias name
+      Click "Save changes"
+      💡 The Account Alias replaces the default AWS Account ID in the sign-in URL:
+https://your-alias.signin.aws.amazon.com/console
