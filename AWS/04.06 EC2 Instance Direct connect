@@ -1,0 +1,18 @@
+Step 1 — Connect to EC2 Instance via AWS Console:
+    Go to AWS Console → Navigate to EC2
+    Click on Instances and select your running instance
+    Click the "Connect" button at the top
+
+Step 2 — Connect to Instance Page:
+    It will redirect you to the "Connect to Instance" page
+    You will see multiple connection options:
+    ✅ EC2 Instance Connect(easiest — browser based)
+    SSH Client
+    Session Manager
+    RDP Client
+    Stay on the "EC2 Instance Connect" tab
+    Click the "Connect" button at the bottom of the page
+
+Step 3 — Result:
+    It will redirect you to a browser-based EC2 terminal (command line) 
+    where you are already connected to your EC2 instance — no PuTTY or .pem file required!
