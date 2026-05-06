@@ -7,9 +7,9 @@ Step 2 — Connect to Instance Page:
     It will redirect you to the "Connect to Instance" page
     You will see multiple connection options:
     ✅ EC2 Instance Connect(easiest — browser based)
-    SSH Client
-    Session Manager
-    RDP Client
+
+    SSH Client ||    Session Manager ||    RDP Client
+
     Stay on the "EC2 Instance Connect" tab
     Click the "Connect" button at the bottom of the page
 
