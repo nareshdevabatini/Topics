@@ -1,0 +1,11 @@
+1. Download PuTTY for Windows. Open the PuTTYgen application, click Load, and select your EC2Instance.pem file. Once loaded, click Save private key and save it with a .ppk extension.
+
+2. Open PuTTY. In the Host Name field, enter:
+ec2-user@13.127.207.240
+(The IP address 13.127.207.240 is your EC2 instance's Public IP)
+
+3. In PuTTY, navigate to:
+Connection → SSH → Auth → Credentials
+Browse and load the .ppk file you saved in Step 1.
+
+4. Go back to Session, enter a name under Saved Sessions, click Save, then click Open to connect.
