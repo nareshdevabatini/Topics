@@ -1,0 +1,17 @@
+Step 1 — Fix .pem File Permissions:
+  Navigate to your EC2Tutorial1.pem file in File Explorer
+  Right-click the file → Select Properties
+  Go to the Security tab → Click Advanced
+  Click Disable Inheritance → Select "Remove all inherited permissions from this object"
+  Click Add → Select a principal → Type your Windows username (e.g., naresh) → Click OK
+  Check Full Control → Click OK → Apply → OK
+
+Step 2 — Connect to EC2 via PowerShell:
+  Open PowerShell
+  Navigate to the folder where your .pem file is located:
+      ssh -i .\EC2Tutorial1.pem ec2-user@13.127.207.240
+
+Step 3 — Result:
+  If permissions are set correctly, this will successfully connect you to your EC2 instance 
+  at IP address 13.127.207.240 via the terminal.
+
