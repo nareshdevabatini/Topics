@@ -1,0 +1,17 @@
+What is EC2 Instance Store?
+EC2 Instance Store is a temporary physical storage that is directly attached to the host server where your EC2 instance runs. 
+Unlike EBS, it is not a network drive — it is a real physical disk attached to the server.
+
+Simple Analogy:
+    EBS Volume → Network USB Stick 🖥️ (connects over network)
+    Instance Store → Internal Hard Drive 💾 (physically inside the computer
+
+Advantages:
+    1. Very High Performance
+    2. No Extra Cost
+    3. High I/O Performance
+Disadvantages:
+    1. Data is Lost When Instance Stops
+    2. Cannot Detach or Move
+    3. Cannot Take Snapshots
+    4. Fixed Size
