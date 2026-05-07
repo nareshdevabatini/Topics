@@ -1,0 +1,23 @@
+By default, one EBS volume can only attach to one EC2 instance at a time. But with Multi-Attach (available only on io1/io2), 
+you can attach the same EBS volume to multiple EC2 instances simultaneously within the same Availability Zone.
+
+💡 Use Cases:
+1. Higher Application Availability:
+      Used in clustered Linux applications
+      Example: Teradata
+      Multiple instances can read and write simultaneously
+2. Concurrent Write Operations:
+    Applications must be able to manage concurrent writes
+    The application itself is responsible for handling conflicts
+
+              Availability Zone 1
+          ┌─────────────────────────────┐
+          │                             │
+          │  EC2        EC2        EC2  │
+          │  Instance   Instance   Instance│
+          │    │          │          │  │
+          │    └──────────┴──────────┘  │
+          │               │             │
+          │         io2 EBS Volume      │
+          │        (Multi-Attach) ✅    │
+          └─────────────────────────────┘
