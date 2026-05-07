@@ -1,0 +1,20 @@
+## EBS Volume Types — Quick Reference Table
+
+| Feature | gp2 | gp3 | io1 | io2 | st1 | sc1 |
+|---|---|---|---|---|---|---|
+| **Type** | SSD | SSD | SSD | SSD | HDD | HDD |
+| **Category** | General Purpose | General Purpose | Provisioned IOPS | Provisioned IOPS | Throughput Optimized | Cold HDD |
+| **Size** | 1GB–16TB | 1GB–16TB | 4GB–16TB | 4GB–64TB | 125GB–16TB | 125GB–16TB |
+| **Max IOPS** | 16,000 | 16,000 | 64,000 | 256,000 | 500 | 250 |
+| **Max Throughput** | 250 MB/s | 1,000 MB/s | 1,000 MB/s | 4,000 MB/s | 500 MB/s | 250 MB/s |
+| **Boot Volume** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+| **Cost** | Moderate | Low ✅ | High | Higher | Low | Lowest ✅ |
+| **Best For** | General Use | General Use | Databases | Critical DBs | Big Data | Archiving |
+| **Recommended** | Old Default | ✅ New Default | High Perf | Best Perf | Throughput | Lowest Cost |
+
+> 💡 **Quick Rules:**
+> - **Boot Volume** → Only SSD types *(gp2, gp3, io1, io2)* ✅
+> - **Best Value** → **gp3** *(cheaper & better than gp2)* ✅
+> - **Best Performance** → **io2** *(highest IOPS & durability)* ✅
+> - **Lowest Cost** → **sc1** *(rarely accessed data)* ✅
+> - **HDD types** *(st1, sc1)* → **Cannot** be used as boot volume ❌
