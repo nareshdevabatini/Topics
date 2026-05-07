@@ -1,0 +1,28 @@
+1. "A network drive you can attach to your instances while they run"
+      It is not a physical hard drive inside your computer
+      It is a storage drive connected over the network to your EC2 instance
+      Just like how you connect an external hard drive to your laptop — but over the internet
+      You can attach and detach it from EC2 instances anytime
+
+2. "It allows your instances to persist data, even after their termination"
+      Normally when you stop or terminate an EC2 instance, all data is lost
+      But with EBS, your data is saved even after the EC2 instance is terminated
+      Example: Your database files, application logs, configurations — all remain safe
+
+3. "They can only be mounted to one instance at a time"
+      One EBS volume can only be attached to one EC2 instance at a time
+      You cannot attach the same EBS volume to two EC2 instances simultaneously
+      (Note: This is at the CCP/basic level — advanced multi-attach exists for specific volume types)
+
+4. "They are bound to a specific Availability Zone"
+    An EBS volume created in us-east-1a can only be attached to an EC2 instance in us-east-1a
+    It cannot be directly attached to an instance in us-east-1b
+    To move it, you need to create a snapshot first
+
+5. Analogy — "Think of them as a network USB stick"
+      Just like a USB stick:
+      You can plug it in (attach to EC2)
+      Save data on it
+      Unplug it (detach from EC2)
+      Plug into another computer (attach to another EC2 instance)
+      But instead of physically plugging it in, it connects over the network
