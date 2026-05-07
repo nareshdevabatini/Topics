@@ -13,6 +13,9 @@
       One EBS volume can only be attached to one EC2 instance at a time
       You cannot attach the same EBS volume to two EC2 instances simultaneously
       (Note: This is at the CCP/basic level — advanced multi-attach exists for specific volume types)
+      	
+            One EBS → Multiple EC2 instances	❌ NOT allowed
+            One EC2 → Multiple EBS volumes	✅ ALLOWED
 
 4. "They are bound to a specific Availability Zone"
     An EBS volume created in us-east-1a can only be attached to an EC2 instance in us-east-1a
