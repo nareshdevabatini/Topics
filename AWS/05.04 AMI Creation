@@ -1,0 +1,83 @@
+🖥️ Part 1 — Launch a New EC2 Instance:
+          Step 1 — Navigate to EC2:
+                  Go to AWS Console → EC2
+                  Click "Launch Instance"
+          Step 2 — Configure the Instance:
+          ----------------------------------------------------
+          Setting	        Value
+          Name	          second instance
+          OS/AMI	        Amazon Linux 2
+          Instance Type	  t2.micro (Free Tier eligible) ✅
+          Key Pair	      Select existing → EC2Tutorial1
+          --------------------------------------------------------
+          ⚠️ Correction:t3.macro does not exist and is not Free Tier eligible. The correct Free Tier instance type is t2.micro
+          
+          Step 3 — Network Settings:
+                Under Firewall (Security Groups)
+                Select "Select Existing Security Group"
+                From the dropdown → Select launch-wizard-1
+          Step 4 — Add User Data:
+                Expand "Advanced Details"
+                Scroll down to "User Data"
+                Paste the following script:
+          
+        
+          #!/bin/bash
+          # Use this for your user data (script from top to bottom)
+          # Install httpd (Amazon Linux 2 version)
+          yum update -y
+          yum install -y httpd
+          systemctl start httpd
+          systemctl enable httpd
+
+          Click "Launch Instance" ✅
+
+===============================================================================
+🖼️ Part 2 — Create an AMI (Amazon Machine Image):
+        💡 What is AMI? It is a snapshot/template of your entire EC2 instance — OS, 
+          installed software, configurations — used to launch identical instances quickly.
+        
+        Step 1 — Create Image:
+                Go to EC2 → Instances
+                Right-click on second instance
+                Click "Image and Templates" → "Create Image"
+        Step 2 — Configure the Image:
+        -------------------------------------------------------
+        Setting	      Value
+        Image Name	   DemoImageAMI
+        Description	  AMI with httpd installed
+        --------------------------------------------------------
+        Click "Create Image" ✅
+        💡 The AMI will now appear under AMIs in the left panel. It may take a few minutes to become Available
+
+=====================================================================================================================
+🚀 Part 3 — Launch a New Instance from AMI:
+            Step 1 — Navigate to AMIs:
+                    In the left panel → Click "AMIs"
+                    Select DemoImageAMI
+                    Click "Launch Instance from AMI"
+            Step 2 — Configure the Instance:
+            ---------------------------------------------------------
+            Setting	            Value
+            OS Images	          Go to "My AMIs" tab → "Owned by Me" → Select DemoImageAMI
+            Instance Type	      t2.micro
+            Key Pair	          EC2Tutorial1
+            Security Group	    launch-wizard-1
+            -----------------------------------------------------------
+            Step 3 — Add User Data:
+                    Expand "Advanced Details"
+                    Scroll down to "User Data"
+                    Paste the following script:
+            
+            Copy
+            bash
+            #!/bin/bash
+            # Use this for your user data (script from top to bottom)
+            # httpd is already installed via AMI
+            # Just create the Hello World webpage
+            echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
+            Click "Launch Instance" ✅
+            Step 4 — Result:
+            
+            Open browser → http://<EC2-Public-IP>
+            You will see → "Hello World from <hostname>" ✅
