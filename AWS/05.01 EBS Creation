@@ -1,0 +1,20 @@
+Step 1 — Navigate to Volumes:
+        Go to AWS Console → EC2
+        In the left panel, under Elastic Block Store → Click "Volumes"
+        Click "Create Volume"
+Step 2 — Configure the Volume:
+      Under Volume Type → Select gp2(General Purpose SSD)
+      Under Size → Enter 2 GB
+      Under Availability Zone → Select the same Availability Zone as your EC2 instance
+      ⚠️ (This is important — EBS volumes can only attach to EC2 instances in the same Availability Zone)
+      Click "Create Volume"
+Step 3 — Attach the Volume to EC2:
+        Once the volume is created, select the newly created volume
+        Click Actions → "Attach Volume"
+        In the Instance dropdown → Select your EC2 Instance
+        Click "Attach Volume"
+Step 4 — Verify the Attached Volume:
+        Go to EC2 → Instances
+        Select your EC2 Instance
+        Click the "Storage" tab at the bottom
+        Under Block Devices → You will now see 2 volumes:
