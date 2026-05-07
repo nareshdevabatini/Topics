@@ -1,0 +1,15 @@
+AMI is a ready-to-use template that contains everything needed to launch an EC2 instance.
+
+Component	                      Description
+Operating System	e.g.,         Amazon Linux 2, Ubuntu, Windows
+Installed Software	e.g.,       httpd, MySQL, Node.js
+Configurations	                All settings and configurations pre-applied
+Storage Mapping	                EBS volume details
+
+💡 Simple Analogy:
+Think of AMI like a Xerox/Photocopy 🖨️
+
+You have one original document (your EC2 instance)
+AMI takes a photocopy of it
+You can print as many copies as you want from that photocopy
+Every copy will be exactly the same as the original
