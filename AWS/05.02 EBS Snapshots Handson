@@ -1,0 +1,56 @@
+Part 1 — Create a Snapshot (Backup):
+      Step 1 — Navigate to Volumes:
+            Go to AWS Console → EC2
+            In the left panel, under Elastic Block Store → Click "Volumes"
+            Select the EBS Volume you want to back up
+      Step 2 — Create a Snapshot:
+            Click Actions → "Create Snapshot"
+            Enter a Name/Description for the snapshot
+            (e.g., MyEBSBackup-Snapshot)
+            Click "Create Snapshot" ✅
+
+📦 Part 2 — Create a New Volume from Snapshot (Move to Another Instance/Region):
+      Step 1 — Navigate to Snapshots:
+            In the left panel, under Elastic Block Store → Click "Snapshots"
+            Select your newly created snapshot
+      Step 2 — Create Volume from Snapshot:
+            Click Actions → "Create Volume from Snapshot"
+            Configure the volume:
+     --------------------------------------------------------
+      Setting	              Value
+      Volume Type	          gp2(or same as previous)
+      Size	                Same or larger than original
+      Availability Zone	    Same or different region ✅
+      --------------------------------------------------------------
+              Click "Create Volume"
+              The new volume will now appear in the Volumes screen ✅
+              💡 This is how you move an EBS volume from one EC2 instance to another — even across different regions!
+
+🗑️ Part 3 — Set Up Recycle Bin (Retention Rule):
+      Step 1 — Navigate to Recycle Bin:
+            In the left panel → Click "Snapshots"
+            Click "Recycle Bin"
+      Step 2 — Create a Retention Rule:
+            Click "Create Retention Rule"
+            Configure the rule:
+     ---------------------------------------------------
+      Setting	            Value
+      Rule Name	e.g.,     EBSSnapshotRetentionRule
+      Resource Type	      EBS Snapshots
+      Retention Period	    1 Day
+      ----------------------------------------------------
+      Click "Create Retention Rule" ✅
+      💡 This means if a snapshot is deleted, it will be kept in Recycle Bin for 1 day before permanent deletion
+
+♻️ Part 4 — Delete and Recover Snapshot:
+      Step 1 — Delete the Snapshot:
+              Go to Snapshots
+              Select your snapshot
+              Click Actions → "Delete Snapshot" → Confirm
+      Step 2 — Recover from Recycle Bin:
+              Go to Recycle Bin → Click "Resources"
+              Select the deleted snapshot
+              Click "Recover" ✅
+      Step 3 — Verify Recovery:
+              Go back to Snapshots screen
+              The recovered snapshot will now be visible and available again ✅
