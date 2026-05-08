@@ -1,0 +1,101 @@
+🔐 Part 1 — Create a Security Group for EFS:
+          Step 1 — Navigate:
+            Go to AWS Console → EC2 ->  In the left panel → Network & Security → Security Groups ->   Click "Create Security Group"
+          Step 2 — Configure:
+                  ------------------------------------
+                  Setting	  Value
+                  Name	    EFS-Demo
+                  ------------------------------------
+                  Click "Create Security Group" ✅
+======================================================================================================================
+📁 Part 2 — Create EFS File System:
+            Step 1 —  Go to AWS Console → Search EFS
+                      Click "File Systems" → Click "Create File System"
+            Step 2 — Configure:  Leave Name empty
+                      Select Default VPC    ->   Click "Customize"
+            Step 3 — File System Settings: Leave all settings as default ->  Click Next
+            Step 4 — Network Settings: ->Under Network Access → Mount Targets
+                    For each Availability Zone, change the Security Group:
+                      -------------------------------------------
+                      Availability     Zone	Security Group
+                      ap-south-1a	      EFS-Demo
+                      ap-south-1b	      EFS-Demo
+                      ap-south-1c	      EFS-Demo
+                      -------------------------------------------
+                    Click Next
+            Step 5 — File System Policy:   Leave as default   ->   Click Next
+            Step 6 — Review & Create: Review all settings  ->      Click "Create" ✅
+            💡 EFS File System is now created and available across all 3 Availability Zones
+=======================================================================================================================
+🖥️ Part 3 — Launch EC2 Instance A (AZ: ap-south-1a):
+          Step 1 — Navigate: Go to EC2 → Click "Launch Instance"
+          Step 2 — Configure Instance:
+                    --------------------------
+                    Name	          EFS-InstanceA
+                    OS	            Amazon Linux 2
+                    Instance Type	    t2.micro
+                    ----------------------------------------
+                    Key Pair	Proceed without Key Pair
+          Step 3 — Network Settings (Important):  Click "Edit" in Network Settings
+                    Configure:
+                    Setting	    Value
+                    VPC	        Default VPC
+                    Subnet	    ap-south-1a
+          Step 4 — Configure Storage & EFS:  Scroll down to "Configure Storage" -> Select EFS
+                  Click "Add Shared File System"
+                  ----------------------------------------
+                  Setting	          Value
+                  File System	      Select the EFS created above
+                  Mount Point	      /mnt/efs/fs1
+                  ----------------------------------------
+                  Click "Launch Instance" ✅
+====================================================================================================
+🖥️ Part 4 — Launch EC2 Instance A (AZ: ap-south-1a):
+          Step 1 — Navigate: Go to EC2 → Click "Launch Instance"
+          Step 2 — Configure Instance:
+                    --------------------------
+                    Name	          EFS-InstanceB
+                    OS	            Amazon Linux 2
+                    Instance Type	    t2.micro
+                    ----------------------------------------
+                    Key Pair	Proceed without Key Pair
+          Step 3 — Network Settings (Important):  Click "Edit" in Network Settings
+                    Configure:
+                    --------------------------------------------------
+                    Setting	      Value
+                    VPC	          Default VPC
+                    Subnet	      ap-south-1b(make sure different subnet)
+                    Security Group	launch-wizard-1
+                    ------------------------------------------------------
+          Step 4 — Configure Storage & EFS:  Scroll down to "Configure Storage" -> Select EFS
+                  Click "Add Shared File System"
+                  ----------------------------------------
+                  Setting	          Value
+                  File System	      Select the EFS created above
+                  Mount Point	      /mnt/efs/fs1
+                  ----------------------------------------
+                  Click "Launch Instance" ✅
+==============================================================================================================
+🔗 Part 5 — Verify EFS Shared Storage:
+            Step 1 — Connect to Instance A:  Go to EC2 → Instances
+                    Select EFS-InstanceA → Click "Connect"
+                    Click "Connect" in EC2 Instance Connect tab
+            Step 2 — Check & Create File on Instance A:
+                    # Check if EFS mount is empty
+                    ls /mnt/efs/fs1
+                    
+                    # Create a new file
+                    echo "hello world" > /mnt/efs/fs1/hello.txt
+                    
+                    # Verify the file is created
+                    cat /mnt/efs/fs1/hello.txt
+                Result:  hello world ✅
+==================================================================================================================
+🔗 Part 6 — Verify EFS Shared Storage:
+          Step 1 — Connect to Instance B: Go to EC2 → Instances -> Select EFS-InstanceB → Click "Connect"
+                  
+          Step 2 — Read the Same File on Instance B:
+
+                    # Read the file created from Instance A
+                    cat /mnt/efs/fs1/hello.txt
+                     Result:  hello world ✅
