@@ -1,0 +1,16 @@
+EFS (Elastic File System) is a fully managed, shared network file system provided by AWS. 
+Unlike EBS which attaches to one EC2 instance,
+EFS can be mounted on hundreds of EC2 instances at the same time across multiple Availability Zones.
+
+📌 Simple Analogy:
+EBS Volume → Personal USB Stick 🖥️ (one person uses it)
+EFS → Shared Network Drive 🌐 (everyone in the office accesses it)
+
+Feature	              EFS	                          EBS	                    Instance Store
+Type	                Shared Network File System	  Network Block Storage	  Physical Disk
+Attachment	          Hundreds of EC2s ✅	          One EC2 at a time	      Fixed to one EC2
+Availability Zone	    Multiple AZs ✅	              Single AZ only	        Single AZ only
+Data Persistence	    ✅ Persistent	                ✅ Persistent	          ❌ Lost on stop
+Cost	                Higher	                      Moderate	              Free with instance
+Scaling	              Auto scales ✅	              Manual resize	          Fixed size
+OS Support	          Linux only	                  Linux & Windows	        Linux & Windows
