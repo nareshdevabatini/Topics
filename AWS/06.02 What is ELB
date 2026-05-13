@@ -69,115 +69,102 @@ AWS provides 4 types of Load Balancers:
               Best For	Web apps, microservices
 ========================================================================================================
 2️⃣ NLB — Network Load Balancer
-Layer 4 (TCP/UDP) — Fastest load balancer
+          Layer 4 (TCP/UDP) — Fastest load balancer
+          How it works:
+          Does NOT look at content
+          Routes based on IP and Port only
+          Handles millions of requests per second
+          Users
+            │
+            ▼
+          NLB (Ultra Fast ⚡)
+            │
+            ├── TCP Port 80  → EC2 #1
+            ├── TCP Port 443 → EC2 #2
+            └── UDP Port 53  → EC2 #3
+          (Routes by IP + Port only — no content inspection)
+          Real Time Example:
+          Online Gaming (PUBG/Fortnite):
+                    Millions of players connect simultaneously
+                    NLB handles millions of TCP/UDP connections per second
+                    Ultra-low latency required ⚡
+                    No need to inspect content — just route fast
+          Use Cases:
+                    Gaming applications
+                    IoT applications
+                    Real-time streaming
+                    Anything needing ultra-low latency
+          Table        
+          Feature	Details
+          Protocol	TCP, UDP, TLS
+          Layer	Layer 4 (Transport)
+          Routing	IP + Port only
+          Speed	Millions of req/sec ⚡
+          Best For	Gaming, IoT, streaming
+=============================================================================================
+3️⃣ GLB — Gateway Load Balancer  : Layer 3 (IP) — Security focused load balancer
 
-How it works:
+          How it works:
+                    Routes traffic through third-party security appliances
+                    Inspect ALL traffic before it reaches your app
+                    Acts as a security gateway
+          Users
+            │
+            ▼
+          GLB (Gateway Load Balancer)
+            │
+            ▼
+          Security Appliances
+            ├── Firewall Check
+            ├── Intrusion Detection
+            └── Deep Packet Inspection
+            │
+            ▼
+          EC2 Instances (Only clean traffic reaches here) ✅
+          Real Time Example:
+          Bank or Financial Institution:
+                    ALL incoming traffic must pass through security checks
+                    Firewall inspects every packet
+                    Intrusion detection system scans for attacks
+                    Only safe traffic reaches the banking application ✅
+          Use Cases:
+          Network security
+          Firewall management
+          Intrusion detection
+          Deep packet inspection
 
-Does NOT look at content
-Routes based on IP and Port only
-Handles millions of requests per second
-Users
-  │
-  ▼
-NLB (Ultra Fast ⚡)
-  │
-  ├── TCP Port 80  → EC2 #1
-  ├── TCP Port 443 → EC2 #2
-  └── UDP Port 53  → EC2 #3
-(Routes by IP + Port only — no content inspection)
-Real Time Example:
-
-Online Gaming (PUBG/Fortnite):
-
-Millions of players connect simultaneously
-NLB handles millions of TCP/UDP connections per second
-Ultra-low latency required ⚡
-No need to inspect content — just route fast
-Use Cases:
-
-Gaming applications
-IoT applications
-Real-time streaming
-Anything needing ultra-low latency
-Table
-
-
-Feature	Details
-Protocol	TCP, UDP, TLS
-Layer	Layer 4 (Transport)
-Routing	IP + Port only
-Speed	Millions of req/sec ⚡
-Best For	Gaming, IoT, streaming
-3️⃣ GLB — Gateway Load Balancer
-Layer 3 (IP) — Security focused load balancer
-
-How it works:
-
-Routes traffic through third-party security appliances
-Inspect ALL traffic before it reaches your app
-Acts as a security gateway
-Users
-  │
-  ▼
-GLB (Gateway Load Balancer)
-  │
-  ▼
-Security Appliances
-  ├── Firewall Check
-  ├── Intrusion Detection
-  └── Deep Packet Inspection
-  │
-  ▼
-EC2 Instances (Only clean traffic reaches here) ✅
-Real Time Example:
-
-Bank or Financial Institution:
-
-ALL incoming traffic must pass through security checks
-Firewall inspects every packet
-Intrusion detection system scans for attacks
-Only safe traffic reaches the banking application ✅
-Use Cases:
-
-Network security
-Firewall management
-Intrusion detection
-Deep packet inspection
-Table
-
-
-Feature	Details
-Protocol	IP (Layer 3)
-Layer	Layer 3 (Network)
-Routing	All IP traffic
-Best For	Security appliances
+          Table
+          Feature	Details
+          Protocol	IP (Layer 3)
+          Layer	Layer 3 (Network)
+          Routing	All IP traffic
+          Best For	Security appliances
+========================================================================================
 4️⃣ CLB — Classic Load Balancer
-Layer 4 + 7 — Old generation (Deprecated ⚠️)
-
-How it works:
-
-Old generation load balancer
-Supports both HTTP and TCP
-Not recommended for new applications
-Users
-  │
-  ▼
-CLB (Old Generation ⚠️)
-  │
-  ├── HTTP  → EC2 #1
-  └── TCP   → EC2 #2
-(Basic routing only)
-⚠️ AWS recommends using ALB or NLB instead of CLB
+                    Layer 4 + 7 — Old generation (Deprecated ⚠️)
+                    How it works:
+                    
+                    Old generation load balancer
+                    Supports both HTTP and TCP
+                    Not recommended for new applications
+                    Users
+                      │
+                      ▼
+                    CLB (Old Generation ⚠️)
+                      │
+                      ├── HTTP  → EC2 #1
+                      └── TCP   → EC2 #2
+                    (Basic routing only)
+                    ⚠️ AWS recommends using ALB or NLB instead of CLB
 
 📊 All 4 Types — Quick Comparison:
 Table
 
-
-Feature	ALB	NLB	GLB	CLB
-Layer	7 (App)	4 (Transport)	3 (Network)	4 + 7
-Protocol	HTTP/HTTPS	TCP/UDP/TLS	IP	HTTP/TCP
-Speed	Fast	Ultra Fast ⚡	Fast	Moderate
-Routing	URL/Headers	IP + Port	All IP	Basic
-Best For	Web/Microservices	Gaming/IoT	Security	Legacy apps
-Generation	New ✅	New ✅	New ✅	Old ⚠️
-Recommended	✅ Yes	✅ Yes	✅ Yes	❌ No
+Feature	          ALB	          NLB	          GLB	          CLB
+Layer	          7 (App)	          4 (Transport)	3 (Network)	4 + 7
+Protocol	          HTTP/HTTPS	TCP/UDP/TLS	IP	          HTTP/TCP
+Speed	          Fast	          Ultra Fast ⚡	Fast	          Moderate
+Routing	          URL/Headers	IP + Port	          All IP	          Basic
+Best For	          Web/Microservices	Gaming/IoT	Security	          Legacy apps
+Generation	New ✅	          New ✅	          New ✅	          Old ⚠️
+Recommended	✅ Yes	          ✅ Yes	          ✅ Yes	          ❌ No
