@@ -1,190 +1,143 @@
 🖥️ Part 1 — Launch Two EC2 Instances:
-        Step 1 — Navigate:
-            Go to AWS Console → EC2
-            Click "Launch Instance"
+        Step 1 — Navigate:  Go to AWS Console → EC2 ->             Click "Launch Instance"
         Step 2 — Configure Instances:
-        
-        Table
-        
-        
-        Setting	Value
-        Name	First Instance
-        Number of Instances	2(right side of the page)
-        OS	Amazon Linux 2
-        Instance Type	t2.micro (Free Tier)
-        Key Pair	Proceed without Key Pair
-        Security Group	Select Existing → launch-wizard-1
+
+                Setting	                Value
+                Name	                First Instance
+                Number of Instances	2(right side of the page)
+                OS	                Amazon Linux 2
+                Instance Type	        t2.micro (Free Tier)
+                Key Pair	        Proceed without Key Pair
+                Security Group	        Select Existing → launch-wizard-1
         Step 3 — Add User Data:
+                Expand "Advanced Details",     Scroll down to "User Data",   Paste the following script:
         
-        Expand "Advanced Details"
-        Scroll down to "User Data"
-        Paste the following script:
-        
-        Copy
-        bash
-        #!/bin/bash
-        # Use this for your user data (script from top to bottom)
-        # Install httpd (Amazon Linux 2 version)
-        yum update -y
-        yum install -y httpd
-        systemctl start httpd
-        systemctl enable httpd
-        echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
-        Click "Launch Instance" ✅
-        Step 4 — Rename Second Instance:
-        
-        Go to EC2 → Instances
-        Find the second instance → Click the pencil icon on the name
-        Rename it to Second Instance ✅
-        💡 Both instances will display "Hello World from <hostname>" but with different hostnames — this proves ELB is routing to different instances
-
+                        bash
+                        #!/bin/bash
+                        # Use this for your user data (script from top to bottom)
+                        # Install httpd (Amazon Linux 2 version)
+                        yum update -y
+                        yum install -y httpd
+                        systemctl start httpd
+                        systemctl enable httpd
+                        echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
+                        Click "Launch Instance" ✅
+        Step 4 — Rename Second Instance: 
+                Go to EC2 → Instances
+                Find the second instance → Click the pencil icon on the name
+                Rename it to Second Instance ✅
+                💡 Both instances will display "Hello World from <hostname>" but with different hostnames — this proves ELB is routing to different instances
+==============================================================================================================
 ⚖️ Part 2 — Create Application Load Balancer:
-Step 1 — Navigate:
-
-In the left panel → Click "Load Balancers"
-Click "Create Load Balancer"
-Select "Application Load Balancer" → Click "Create"
-Step 2 — Configure ALB:
-
-Table
-
-
-Setting	Value
-Load Balancer Name	ELB-Demo-ALB
-Scheme	Internet Facing
-Availability Zones	Select ALL available AZs ✅
-Step 3 — Create New Security Group:
-
-Under Security Groups → Click "Create New Security Group"(opens new tab)
-Configure:
-Table
-
-
-Setting	Value
-Name	demo-sg-alb
-Description	Security Group for ALB
-Inbound Rule Type	HTTP
-Port	80
-Source	0.0.0.0/0 (Anywhere)
-Click "Create Security Group" ✅
-Go back to ALB page → Click Refresh on Security Groups
-Remove the existing default security group
-Selectdemo-sg-alb ✅
-Step 4 — Create Target Group:
-
-Under Listeners and Routing → Click "Create Target Group"(opens new tab)
-Configure:
-Table
-
-
-Setting	Value
-Target Type	Instances
-Target Group Name	demo-tg-alb
-Protocol	HTTP
-Port	80
-Click Next
-Select both instances (First Instance and Second Instance)
-Click "Include as Pending Below"
-Click "Create Target Group" ✅
-Go back to ALB page → Click Refresh on Target Group dropdown
-Select demo-tg-alb ✅
-Step 5 — Create Load Balancer:
-
-Review all settings
-Click "Create Load Balancer" ✅
-⏳ Wait 2-5 minutes for state to change from Provisioning → Active
-
-Step 6 — Test ALB:
-
-Copy the DNS Name from ALB details
-Open browser → Paste the DNS URL
-Every time you refresh → Page loads from different instances:
-Refresh 1 → Hello World from First Instance  (ip-172-31-x-x)
-Refresh 2 → Hello World from Second Instance (ip-172-31-x-y)
-Refresh 3 → Hello World from First Instance  (ip-172-31-x-x)
-(Round Robin Load Balancing) ✅
+        Step 1 — Navigate:
+                In the left panel → Click "Load Balancers"
+                Click "Create Load Balancer"
+                Select "Application Load Balancer" → Click "Create"
+        Step 2 — Configure ALB:
+                Setting	                Value
+                Load Balancer Name	ELB-Demo-ALB
+                Scheme	                Internet Facing
+                Availability Zones	Select ALL available AZs ✅
+        Step 3 — Create New Security Group:
+                Under Security Groups → Click "Create New Security Group"(opens new tab)
+        Configure:
+                Setting	                Value
+                Name	                demo-sg-alb
+                Description	        Security Group for ALB
+                Inbound Rule Type	HTTP
+                Port	                80
+                Source	                0.0.0.0/0 (Anywhere)
+                Click "Create Security Group" ✅
+                Go back to ALB page → Click Refresh on Security Groups
+                Remove the existing default security group
+                Selectdemo-sg-alb ✅
+        Step 4 — Create Target Group:
+               Under Listeners and Routing → Click "Create Target Group"(opens new tab)
+        Configure:
+                Setting	                Value
+                Target Type	        Instances
+                Target Group Name	demo-tg-alb
+                Protocol	        HTTP
+                Port	                80
+                Click Next
+                Select both instances (First Instance and Second Instance)
+                Click "Include as Pending Below"
+                Click "Create Target Group" ✅
+                Go back to ALB page → Click Refresh on Target Group dropdown
+                Select demo-tg-alb ✅
+        Step 5 — Create Load Balancer:
+                Review all settings
+                Click "Create Load Balancer" ✅
+                ⏳ Wait 2-5 minutes for state to change from Provisioning → Active
+        Step 6 — Test ALB:
+                Copy the DNS Name from ALB details
+                Open browser → Paste the DNS URL
+                Every time you refresh → Page loads from different instances:
+                Refresh 1 → Hello World from First Instance  (ip-172-31-x-x)
+                Refresh 2 → Hello World from Second Instance (ip-172-31-x-y)
+                Refresh 3 → Hello World from First Instance  (ip-172-31-x-x)
+                (Round Robin Load Balancing) ✅
+============================================================================================================
 🔐 Part 3 — Restrict Access via ALB Only:
-⚠️ Problem: Currently both the ALB DNS and direct EC2 IP address can access the instances. We need to restrict access so that only ALB DNS can reach the instances.
+        ⚠️ Problem: Currently both the ALB DNS and direct EC2 IP address can access the instances. We need to restrict access so that only ALB DNS can reach the instances.
 
-Step 1 — Edit launch-wizard-1 Inbound Rules:
-
-Go to EC2 → Security Groups
-Select launch-wizard-1
-Click "Inbound Rules" → "Edit Inbound Rules"
-Delete the existing HTTP rule ❌
-Step 2 — Add New HTTP Rule:
-
-Click "Add Rule"
-Configure:
-Table
-
-
-Setting	Value
-Type	HTTP
-Port	80
-Source	Custom → Search demo-sg-alb → Select it
-Click "Save Rules" ✅
-Step 3 — Verify:
-
-Direct EC2 IP → http://13.127.x.x      ❌ Not accessible
-ALB DNS       → http://ELB-Demo-ALB... ✅ Accessible
-
-Traffic flow now:
-Users → ALB (demo-sg-alb) → launch-wizard-1 → EC2 Instances
-💡 Now instances are only accessible through the ALB DNS — direct IP access is blocked ✅
-
+        Step 1 — Edit launch-wizard-1 Inbound Rules:
+                Go to EC2 → Security Groups
+                Select launch-wizard-1
+                Click "Inbound Rules" → "Edit Inbound Rules"
+                Delete the existing HTTP rule ❌
+        Step 2 — Add New HTTP Rule:        Click "Add Rule"
+                Setting	        Value
+                Type	        HTTP
+                Port	        80
+                Source	Custom → Search demo-sg-alb → Select it
+                Click "Save Rules" ✅
+        Step 3 — Verify:
+                Direct EC2 IP → http://13.127.x.x      ❌ Not accessible
+                ALB DNS       → http://ELB-Demo-ALB... ✅ Accessible
+        
+                Traffic flow now:
+                Users → ALB (demo-sg-alb) → launch-wizard-1 → EC2 Instances
+                💡 Now instances are only accessible through the ALB DNS — direct IP access is blocked ✅
+=============================================================================================================================
 📋 Part 4 — Add Custom HTTP Rule (Path-Based Routing):
-💡 What is this? ALB can route traffic to different responses based on the URL path. Here we create a rule that returns a custom error for /error path.
+                💡 What is this? ALB can route traffic to different responses based on the URL path. 
+                Here we create a rule that returns a custom error for /error path.
 
-Step 1 — Navigate to ALB Rules:
-
-Go to EC2 → Load Balancers
-Select ELB-Demo-ALB
-Click "Listeners and Rules" tab
-Click "HTTP:80"
-Step 2 — Add New Rule:
-
-Click "Add Rule"
-Configure Name/Tags:
-Table
-
-
-Setting	Value
-Name	Demo Rule
-Click Next
-Step 3 — Add Condition:
-
-Click "Add Condition"
-Select Path
-Enter path value:
-/error
-Click Next
-Step 4 — Add Action:
-
-Select "Return Fixed Response"
-Configure:
-Table
-
-
-Setting	Value
-Response Code	404
-Content Type	text/plain
-Response Body	Not found, custom error
-Click Next
-Step 5 — Set Priority:
-
-Table
-
-
-Setting	Value
-Priority	1(Highest priority)
-Click Next → "Save" ✅
-Step 6 — Test the Rule:
-
-Open browser → Paste ALB DNS + /error:
-http://ELB-Demo-ALB-xxxx.ap-south-1.elb.amazonaws.com/error
-Result:
-Not found, custom error ✅
+        Step 1 — Navigate to ALB Rules:
+                Go to EC2 → Load Balancers
+                Select ELB-Demo-ALB
+                Click "Listeners and Rules" tab
+                Click "HTTP:80"
+        Step 2 — Add New Rule:
+                Click "Add Rule"
+                Configure Name/Tags:
+                Setting	        Value
+                Name	        Demo Rule
+                Click Next
+        Step 3 — Add Condition:
+                Click "Add Condition"
+                Select Path
+                Enter path value:
+                /error
+                Click Next
+        Step 4 — Add Action:
+                Select "Return Fixed Response"
+                Setting	        Value
+                Response Code	404
+                Content Type	text/plain
+                Response Body	Not found, custom error
+                Click Next
+        Step 5 — Set Priority:
+                Setting	        Value
+                Priority	1(Highest priority)
+                Click Next → "Save" ✅
+        Step 6 — Test the Rule:
+                Open browser → Paste ALB DNS + /error:
+                http://ELB-Demo-ALB-xxxx.ap-south-1.elb.amazonaws.com/error
+                Result:
+                Not found, custom error ✅
+================================================================================================
 📊 Visual Flow — Complete ALB Setup:
 Users
   │
