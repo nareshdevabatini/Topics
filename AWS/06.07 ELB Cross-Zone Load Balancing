@@ -16,9 +16,9 @@ Step 3 — Enable Cross-Zone:
 
 Load Balancer	       Default	       Can Change?
 ALB	              ✅ Always ON	       ❌ Cannot disable
-NLB	              ❌ OFF by default	✅ Can enable
-GLB	              ❌ OFF by default	✅ Can enable
-CLB	              ❌ OFF by default	✅ Can enable
+NLB	              ❌ OFF by default	       ✅ Can enable
+GLB	              ❌ OFF by default	       ✅ Can enable
+CLB	              ❌ OFF by default	       ✅ Can enable
 
 Internet Traffic
        │
