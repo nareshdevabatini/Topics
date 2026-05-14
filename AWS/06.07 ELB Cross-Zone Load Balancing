@@ -1,0 +1,22 @@
+What is Cross-Zone Load Balancing?
+Cross-Zone Load Balancing is a setting on AWS Load Balancers that allows traffic to be distributed evenly across
+ALL registered EC2 instances in ALL Availability Zones — regardless of which AZ the traffic originally entered through.
+
+
+Internet Traffic
+       │
+  ┌────┴────┐
+  │         │
+  AZ-1      AZ-2
+  │         │
+  ▼         ▼
+  NLB distributes across ALL instances
+  in ALL zones equally
+       │
+  ┌────┼────┐
+  │    │    │
+EC2#1 EC2#2 EC2#3
+(33%) (33%) (33%)
+
+Result: Even load distribution ✅
+ALL EC2 instances get equal traffic
