@@ -3,6 +3,6 @@ OSI Layer	          Layer 3 (Network)	      Layer 7 (Application)	  Layer 4 (Tra
 Protocol	          GENEVE / IP          	  HTTP / HTTPS	          TCP / UDP
 Purpose	            Security inspection	    Web app routing	        Fast TCP routing
 Inspects Content?	  Full packet	            HTTP headers/URL	      No inspection
-Target	            Security appliances	    EC2 / Lambda	          EC2 / IP
+Target	              Security appliances	    EC2 / Lambda	          EC2 / IP
 Transparent?	      ✅ Yes	                ❌ No	                  ❌ No
-Best For	          Firewalls / IDS / IPS	  Microservices / Web	    Gaming / IoT
+Best For	            Firewalls / IDS / IPS	  Microservices / Web	    Gaming / IoT
