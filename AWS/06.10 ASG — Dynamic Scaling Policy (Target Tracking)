@@ -1,0 +1,3 @@
+ 📌What is Dynamic Scaling?
+Dynamic Scaling automatically adjusts the number of EC2 instances in your ASG in real time based on a metric (like CPU usage). 
+When load increases → ASG adds instances. When load decreases → ASG removes instances.
