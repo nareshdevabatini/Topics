@@ -14,8 +14,8 @@ Step 3 — Enable Cross-Zone:
        Click "Save Changes" ✅
 ⏳ Takes effect immediately — no restart required.
 
-Load Balancer	       Default	       Can Change?
-ALB	              ✅ Always ON	       ❌ Cannot disable
+Load Balancer	       Default	              Can Change?
+ALB	              ✅ Always ON	              ❌ Cannot disable
 NLB	              ❌ OFF by default	       ✅ Can enable
 GLB	              ❌ OFF by default	       ✅ Can enable
 CLB	              ❌ OFF by default	       ✅ Can enable
