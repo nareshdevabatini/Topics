@@ -1,4 +1,4 @@
-Feature	            GLB	                    ALB	                    NLB
+Feature	              GLB	                    ALB	                    NLB
 OSI Layer	          Layer 3 (Network)	      Layer 7 (Application)	  Layer 4 (Transport)
 Protocol	          GENEVE / IP          	  HTTP / HTTPS	          TCP / UDP
 Purpose	            Security inspection	    Web app routing	        Fast TCP routing
