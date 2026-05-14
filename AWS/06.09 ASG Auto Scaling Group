@@ -1,0 +1,41 @@
+📌 What is Auto Scaling Group (ASG)?
+        ASG (Auto Scaling Group) is an AWS service that automatically launches or terminates EC2 instances based on demand 
+      — ensuring your application always has the right number of instances running at the right time.
+
+🖥️ Part 1 — Create Launch Template:
+Step 1 — Navigate:
+
+Go to AWS Console → EC2
+In the left panel → Click "Launch Templates"
+Click "Create Launch Template"
+Step 2 — Configure Launch Template:
+
+Table
+
+
+Setting	Value
+Launch Template Name	demo-lt
+Description	Launch Template for ASG Demo
+OS / AMI	Amazon Linux 2
+Instance Type	t2.micro(Free Tier)
+Key Pair	EC2 Tutorial1
+Security Group	launch-wizard-1
+⚠️ Correction: You wrote demo-tg as the launch template name — but demo-tg is already used for the Target Group. Use demo-lt to avoid confusion.
+
+Step 3 — Add User Data (Bootstrap Script):
+
+Expand "Advanced Details"
+Scroll down to "User Data"
+Paste the following:
+
+Copy
+bash
+#!/bin/bash
+# Use this for your user data (script from top to bottom)
+# Install httpd (Amazon Linux 2 version)
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
+Click "Create Launch Template" ✅
