@@ -3,39 +3,133 @@
       — ensuring your application always has the right number of instances running at the right time.
 
 🖥️ Part 1 — Create Launch Template:
-Step 1 — Navigate:
+        Step 1 — Navigate:
+                Go to AWS Console → EC2
+                In the left panel → Click "Launch Templates"
+                Click "Create Launch Template"
+        Step 2 — Configure Launch Template:
+                Setting	                Value
+                Launch Template Name	demo-lt
+                Description	        Launch Template for ASG Demo
+                OS / AMI	        Amazon Linux 2
+                Instance Type	        t2.micro(Free Tier)
+                Key Pair	        EC2 Tutorial1
+                Security Group	        launch-wizard-1
+                ⚠️ Correction: You wrote demo-tg as the launch template name — but demo-tg is already used for the Target Group. Use demo-lt to avoid confusion.
+        Step 3 — Add User Data (Bootstrap Script):
+                Expand "Advanced Details"
+                Scroll down to "User Data"
+                Paste the following: from Bootstraping page   
+                Click "Create Launch Template" ✅
+====================================================================================================================
+⚖️ Part 2 — Create Auto Scaling Group:
+        Step 1 — Navigate:
+                Go to AWS Console → EC2
+                In the left panel → Scroll down → Click "Auto Scaling Groups"
+                Click "Create Auto Scaling Group"
+        Step 2 — Name & Launch Template:
+                Setting	                        Value
+                Auto Scaling Group Name	        Demo-ASG
+                Launch Template	Click Refresh → Select demo-lt
+                Click "Next" ✅
+        Step 3 — Network / Availability Zones:
+                Under Network → Select your VPC(Default VPC)
+                Under Availability Zones and Subnets → Select ALL available AZs
+        
+                AZ	        Action
+                ap-south-1a	✅ Select
+                ap-south-1b	✅ Select
+                ap-south-1c	✅ Select
+                Click "Next" ✅
+        Step 4 — Attach to Existing Load Balancer:
+                Select "Attach to an existing load balancer"
+                Select "Choose from your load balancer target groups"
+                Select demo-tg-alb from the dropdown ✅
+                            Setting	        Value
+                        Load Balancing	        Attach to existing load balancer
+                        Target Group	        demo-tg-alb
+                        Health Check Type	EC2 (leave as default)
+                        Click "Next" ✅
+        Step 5 — Configure Group Size:
+                        Setting	                Value
+                        Desired Capacity	1
+                        Minimum Capacity	1
+                        Maximum Capacity	3
+                💡 Start with Desired: 1 — we will scale up to 2 manually after creation to verify everything works.
+                Leave all other settings as default
+                Click "Next" → "Next" → "Next" → "Create Auto Scaling Group" ✅
+================================================================================================================
+✅ Part 3 — Verify ASG Created Instance:
+        Step 1 — Check Activity Tab:
+                Go to EC2 → Auto Scaling Groups
+                Select Demo-ASG
+                Click "Activity" tab
+                You will see a log entry:
+                Status: Successful ✅
+                Description: Launching a new EC2 instance: i-0xxxxxxxxxx
+                Start Time: [timestamp]
+                💡 ASG has automatically launched 1 EC2 instance based on Desired Capacity = 1
+        Step 2 — Verify Target Group Health:
+                Go to EC2 → Target Groups
+                Select demo-tg-alb
+                Click "Targets" tab
+                The ASG-launched instance should show:
+                Instance	Health Status
+                i-0xxxxxxxxxx (ASG instance)	✅ Healthy
+        Step 3 — Test via ALB DNS:
+                Go to EC2 → Load Balancers
+                Select ELB-Demo-ALB
+                Copy the DNS Name
+                Open browser → Paste DNS URL:
+                http://ELB-Demo-ALB-xxxx.ap-south-1.elb.amazonaws.com
+                Result:
+                Hello World from ip-172-31-x-x.ap-south-1.compute.internal ✅
+================================================================================================================
+📈 Part 4 — Scale Up to 2 Instances:
+        Step 1 — Edit Desired Capacity:
+                Go to EC2 → Auto Scaling Groups
+                Select Demo-ASG
+                Click "Edit"(top right of Overview section)
+                Update:
+        
+                Setting	Old Value	New Value
+                Desired Capacity	1	2
+                Minimum Capacity	1	1
+                Maximum Capacity	3	3
+                Click "Update" ✅
+                ⏳ ASG will automatically launch a second EC2 instance within 1–2 minutes.
+        Step 2 — Verify Both Instances Healthy:
+                Go to EC2 → Target Groups
+                Select demo-tg-alb → "Targets" tab
+                Both instances should show:
+                Instance	Health Status
+                i-0xxxxxxxxxx (Instance 1)	✅ Healthy
+                i-0yyyyyyyyyy (Instance 2)	✅ Healthy
+        Step 3 — Test Load Balancing:
+                Open browser → Paste ALB DNS URL
+                Refresh multiple times:
+                Refresh 1 → Hello World from ip-172-31-x-x (Instance 1) ✅
+                Refresh 2 → Hello World from ip-172-31-y-y (Instance 2) ✅
+                Refresh 3 → Hello World from ip-172-31-x-x (Instance 1) ✅
+                (Round Robin — both instances serving traffic) ✅
+==============================================================================================
+🔑 Key Rules to Remember:
+ASG = Auto Scaling Group
+    = Automatically manages EC2 instance count
 
-Go to AWS Console → EC2
-In the left panel → Click "Launch Templates"
-Click "Create Launch Template"
-Step 2 — Configure Launch Template:
+Key Settings:
+├── Desired Capacity → How many instances RIGHT NOW
+├── Minimum Capacity → NEVER go below this count
+├── Maximum Capacity → NEVER go above this count
+└── Launch Template  → HOW to launch each new instance
 
-Table
+ASG + ALB + Target Group:
+ASG launches EC2 → Auto registers in demo-tg-alb
+ALB distributes traffic → Across all healthy instances
+Health check fails → ASG terminates & replaces instance ✅
 
-
-Setting	Value
-Launch Template Name	demo-lt
-Description	Launch Template for ASG Demo
-OS / AMI	Amazon Linux 2
-Instance Type	t2.micro(Free Tier)
-Key Pair	EC2 Tutorial1
-Security Group	launch-wizard-1
-⚠️ Correction: You wrote demo-tg as the launch template name — but demo-tg is already used for the Target Group. Use demo-lt to avoid confusion.
-
-Step 3 — Add User Data (Bootstrap Script):
-
-Expand "Advanced Details"
-Scroll down to "User Data"
-Paste the following:
-
-Copy
-bash
-#!/bin/bash
-# Use this for your user data (script from top to bottom)
-# Install httpd (Amazon Linux 2 version)
-yum update -y
-yum install -y httpd
-systemctl start httpd
-systemctl enable httpd
-echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
-Click "Create Launch Template" ✅
+Path:
+EC2 → Auto Scaling Groups → Demo-ASG
+→ Activity tab → verify instance launched
+→ Target Groups → demo-tg-alb → Healthy ✅
+→ ALB DNS → Traffic works across all instances ✅
