@@ -9,22 +9,93 @@ When load increases → ASG adds instances. When load decreases → ASG removes 
              Select Demo-ASG
              Click "Automatic Scaling" tab
        Step 2 — Create Dynamic Scaling Policy:
-       Click "Create Dynamic Scaling Policy"
-       Configure:
-       seting	Value
-       Policy Type	Target Tracking Scaling
-       Scaling Policy Name	target-tracking-policy
-       Metric Type	Average CPU Utilization
-       Target Value	40(percent)
-       Instance Warmup	300 seconds (default — leave as is)
-       💡 Target Value = 40 means ASG will try to keep average CPU at 40% across all instances. If it goes above → add instances. If it drops below → remove instances.
-       Click "Create" ✅
+               Click "Create Dynamic Scaling Policy"
+               Configure:
+               seting	                Value
+               Policy Type	           Target Tracking Scaling
+               Scaling Policy Name	   target-tracking-policy
+               Metric Type	           Average CPU Utilization
+               Target Value	          40(percent)
+               Instance Warmup	       300 seconds (default — leave as is)
+               💡 Target Value = 40 means ASG will try to keep average CPU at 40% across all instances. If it goes above → add instances. If it drops below → remove instances.
+               Click "Create" ✅
        Step 3 — Update Maximum Capacity:
-       Go to Demo-ASG → Click "Edit"(Overview section)
-       Update:
-       Setting	Old Value	New Value
-       Desired Capacity	2	2
-       Minimum Capacity	1	1
-       Maximum Capacity	2	3
+              Go to Demo-ASG → Click "Edit"(Overview section)
+              Update:
+              Setting	         Old Value	      New Value
+              Desired Capacity	 2	             1
+              Minimum Capacity	 1	             1
+              Maximum Capacity	 2	             3
        Click "Update" ✅
        ⚠️ Important: Maximum Capacity must be set to 3 so ASG has room to launch a 3rd instance when CPU goes above 40% under stress testing.
+==============================================================================================================================
+🖥️ Part 2 — Stress Test the EC2 Instance:
+          Step 1 — Connect to EC2 Instance:
+                   Go to EC2 → Instances
+                   Select any running instance (launched by ASG)
+                   Click "Connect"
+                   Select "EC2 Instance Connect" tab
+                   Click "Connect" ✅
+                   (Opens a browser-based terminal — no SSH key needed)
+          Step 2 — Install Stress Tool:
+                     💡 stress is a Linux tool that artificially generates CPU, memory, or disk load — used to simulate high traffic for testing purposes.
+                     Run the following commands one by one in the terminal
+                     # Step 1 — Enable EPEL repository (required for stress package)
+                     sudo amazon-linux-extras install epel -y
+          # Step 2 — Install the stress tool
+                    sudo yum install stress -y
+          # Step 3 — Run stress test (uses 4 CPU cores at 100%)
+                     stress --cpu 4
+          ⚠️ What this does:
+                  --cpu 4 → Spawns 4 worker processes each consuming 100% of one CPU core
+                  This forces the instance CPU to spike to ~100%
+                  ASG detects CPU > 40% target → triggers Scale Out
+          Step 3 — What You Will See in Terminal:
+                   $ stress --cpu 4
+                   stress: info: [2847] dispatching hogs:
+                  4 cpu, 0 io, 0 vm, 0 hdd
+          stress: info: [2848] successful run
+                  completed in 0s
+          ⏳ Leave stress running — do NOT press Ctrl+C yet. Let it run for 3–5 minutes so CloudWatch collects the CPU metrics.
+=====================================================================================================================
+📊 Part 3 — Monitor CPU & Watch ASG Scale:
+              Step 1 — Go to Monitoring Tab:
+                         Go to EC2 → Auto Scaling Groups
+                         Select Demo-ASG
+                         Click "Monitoring" tab
+                         Click "EC2" sub-tab
+                         💡 You will see the CPU Utilization graph spike toward 100%
+                         CPU Utilization
+                         100% ┤                    ████████████████
+                          80% ┤               █████
+                          60% ┤          ██████
+                          40% ┤─ ─ ─ ─ ─ Target Line ─ ─ ─ ─ ─ ─
+                          20% ┤ ████
+                           0% ┼──────────────────────────────────
+                              Time →
+                                    (stress starts)   (ASG scales out)
+              Step 2 — Watch New Instance Launch:
+                          Click "Activity" tab in Demo-ASG
+                          You will see a new entry:
+                          Status:      Successful ✅
+                          Description: Launching a new EC2 instance: i-0zzzzzzzzz
+                          Cause:       Target tracking policy triggered
+                                       (Average CPU Utilization = 100% > Target 40%)
+              Step 3 — Verify 3 Instances Are Healthy:
+                         Go to EC2 → Target Groups
+                         Select demo-tg-alb → "Targets" tab
+                         
+                         Instance	Launched By	Health Status
+                         i-0xxxxxxxxxx	ASG	✅ Healthy
+                         i-0yyyyyyyyyy	ASG	✅ Healthy
+                         i-0zzzzzzzzz	ASG (new — stress triggered)	✅ Healthy
+              Step 4 — Stop Stress & Watch Scale In:
+                        Go back to the EC2 terminal
+                        Press Ctrl + C to stop the stress test
+                        Wait 5–10 minutes
+                        ASG will detect CPU dropped below 40% → terminate the extra instance
+                        Activity Tab — Scale In:
+                        Status:      Successful ✅
+                        Description: Terminating EC2 instance: i-0zzzzzzzzz
+                        Cause:       Target tracking policy — CPU < 40%
+                                     (Cooldown period expired)
