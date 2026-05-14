@@ -1,0 +1,150 @@
+🖥️ Part 1 — Pre-requisite: EC2 Instances Already Running
+
+💡 The First Instance and Second Instance EC2 instances launched in the ALB guide are reused here. Both are running httpd and belong to security group launch-wizard-1. No new instances need to be launched for NLB.
+
+⚖️ Part 2 — Create Network Load Balancer:
+
+Step 1 — Create Security Group for NLB:
+
+Go to AWS Console → EC2
+In the left panel → Click "Security Groups"
+Click "Create Security Group"
+Table
+
+
+Setting	Value
+Name	demo-sg-nlb
+Description	Security Group for NLB
+VPC	Default VPC
+Inbound Rule — Type	HTTP
+Inbound Rule — Port	80
+Inbound Rule — Source	Anywhere (0.0.0.0/0)
+Click "Create Security Group" ✅
+Step 2 — Navigate to Load Balancer:
+
+In the left panel → Click "Load Balancers"
+Click "Create Load Balancer"
+Select "Network Load Balancer" → Click "Create"
+Step 3 — Configure NLB:
+
+Table
+
+
+Setting	Value
+Load Balancer Name	ELB-Demo-NLB
+Scheme	Internet-facing
+IP Address Type	IPv4
+Availability Zones	Select ALL available AZs ✅
+⚠️ Important: These are Availability Zones (e.g., ap-south-1a, ap-south-1b) — NOT regions. A region is the entire geographic area (e.g., ap-south-1). Always select AZs, not regions.
+
+Under Security Groups → Remove the default security group
+Select demo-sg-nlb ✅
+Step 4 — Create Target Group:
+
+Under Listeners and Routing → Click "Create Target Group"(opens in new tab)
+Configure:
+Table
+
+
+Setting	Value
+Target Type	Instances
+Target Group Name	demo-tg-nlb
+Protocol	TCP
+Port	80
+VPC	Default VPC
+Leave all other settings as default
+Expand "Advanced Health Check Settings" and configure:
+Table
+
+
+Setting	Value
+Healthy Threshold	2
+Timeout	2 seconds
+Interval	5 seconds
+Click "Next" → Register Targets page will appear
+Select First Instance and Second Instance
+Click "Include as pending below"
+Click "Create Target Group" ✅
+Step 5 — Attach Target Group & Create NLB:
+
+Go back to the NLB creation tab(that you left open)
+Under Listeners and Routing → Click Refresh on the Target Group dropdown
+Select demo-tg-nlb ✅
+Review all settings
+Click "Create Load Balancer" ✅
+⏳ Wait 2–5 minutes for state to change from Provisioning → Active
+
+🔴 Part 3 — Why DNS Doesn't Work Initially:
+
+⚠️ Problem: Once the NLB is Active — copy the DNS name and open it in the browser. The page will NOT load.
+
+Step 1 — Check Target Health:
+
+Go to EC2 → Target Groups
+Select demo-tg-nlb → Click "Targets" tab
+Both instances will show status as Unhealthy ❌
+Root Cause:
+
+NLB (demo-sg-nlb)
+        │
+        │  Sends health check HTTP :80
+        ▼
+launch-wizard-1  ← ❌ Does NOT allow traffic from demo-sg-nlb
+        │
+        ▼
+EC2 Instances (Unreachable — health check fails)
+💡 The NLB health check traffic originates from demo-sg-nlb. The EC2 instances belong to launch-wizard-1, which does not yet allow inbound HTTP from demo-sg-nlb. So all health checks fail → targets show Unhealthy → DNS does not work.
+
+🔐 Part 4 — Fix Instance Security Group:
+
+Step 1 — Edit launch-wizard-1 Inbound Rules:
+
+Go to EC2 → Security Groups
+Select launch-wizard-1
+Click "Inbound Rules" → "Edit Inbound Rules"
+Step 2 — Add New HTTP Rule:
+
+Click "Add Rule"
+Configure:
+Table
+
+
+Setting	Value
+Type	HTTP
+Protocol	TCP
+Port	80
+Source	Custom → Search and Select demo-sg-nlb
+Description	Allow NLB health checks and traffic
+Click "Save Rules" ✅
+⚠️ Source must be demo-sg-nlb (the NLB security group) — NOT "Anywhere". This ensures only NLB traffic can reach the EC2 instances. Direct IP access remains blocked.
+
+Step 3 — Verify Target Health:
+
+Go to EC2 → Target Groups
+Select demo-tg-nlb → Click "Targets" tab
+Both instances will now show as Healthy ✅
+NLB (demo-sg-nlb)
+        │
+        │  Sends health check HTTP :80
+        ▼
+launch-wizard-1  ← ✅ Now allows traffic from demo-sg-nlb
+        │
+        ▼
+EC2 Instances (Reachable — health check passes ✅)
+✅ Part 5 — Test NLB:
+
+Step 1 — Open DNS in Browser:
+
+Go to EC2 → Load Balancers
+Select ELB-Demo-NLB
+Copy the DNS Name
+Open browser → Paste the DNS URL:
+http://ELB-Demo-NLB-xxxx.ap-south-1.elb.amazonaws.com
+Step 2 — Verify Load Balancing:
+
+Every time you refresh → Page loads from a different instance:
+Refresh 1 → Hello World from First Instance  (ip-10-0-1-xxx)
+Refresh 2 → Hello World from Second Instance (ip-10-0-2-yyy)
+Refresh 3 → Hello World from First Instance  (ip-10-0-1-xxx)
+(TCP Round Robin Load Balancing) ✅
+⚠️ Note: Unlike ALB, NLB uses TCP-level routing — it does NOT inspect HTTP headers or URL paths. Traffic is distributed purely based on TCP connections.
