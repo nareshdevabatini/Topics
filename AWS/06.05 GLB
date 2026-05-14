@@ -1,67 +1,67 @@
 GLB (Gateway Load Balancer) is an AWS load balancer that operates at Layer 3 (Network Layer) of the OSI model. 
-It is specifically designed to deploy, scale, and manage third-party security virtual appliances — such as firewalls, intrusion detection systems (IDS), and deep packet inspection tools — transparently in your network traffic path.
+It is specifically designed to deploy, scale, and manage third-party security virtual appliances 
+— such as firewalls, intrusion detection systems (IDS), and deep packet inspection tools 
+— transparently in your network traffic path.
 
-📌 Simple Analogy:
-Think of GLB like a Security Checkpoint at an Airport 🛡️
+      📌 Simple Analogy:
+                  Think of GLB like a Security Checkpoint at an Airport 🛡️
 
-Every passenger (network packet) MUST pass through security screening (firewall/IDS)
-Security staff (3rd party appliances) inspect every bag (packet)
-Only cleared passengers (safe traffic) board the plane (reach the application)
-Passengers don't know the checkpoint exists — it's transparent
-📊 How GLB Works — From Your Image:
-Users (Source)
-      │
-      │  All traffic
-      ▼
-Route Table
-(172.16.0.0 / 172.16.1.0 / 172.16.2.0)
-      │
-      ├──────────────────────────────┐
-      │ traffic                      │ traffic
-      ▼                              ▼
-Gateway Load Balancer          Application
-      │                         (destination)
-      │ Forwards ALL traffic
-      ▼
-  Target Group
-┌─────────────────────────────────┐
-│  3rd Party Security Appliances  │
-│  [Firewall] [IDS] [DPI Tool]    │
-└─────────────────────────────────┘
-      │
-      │ Inspected & approved traffic
-      ▼
-Application (destination) ✅
-💡 Key Point from your image: Traffic from users goes through the Route Table first, then hits the Gateway Load Balancer, which sends it to the Target Group of 3rd Party Security Virtual Appliances before it reaches the actual application. The application never receives uninspected traffic.
-
-🔍 What Are 3rd Party Security Virtual Appliances?
-Table
-
-
-Appliance	Purpose
-Firewall	Block/allow traffic based on rules
-IDS (Intrusion Detection System)	Detect suspicious/malicious traffic
-IPS (Intrusion Prevention System)	Detect AND block malicious traffic
-Deep Packet Inspection (DPI)	Inspect packet content for threats
-Web Application Firewall (WAF)	Protect against web-based attacks
-Examples: Palo Alto Networks, Fortinet, Check Point, Cisco — all can run as virtual appliances behind a GLB.
-
-⚙️ How GLB Works Technically:
-Protocol Used: GENEVE (port 6081)
-
-Step 1 — Traffic arrives from internet/user
-         │
-         ▼
-Step 2 — Route Table redirects traffic to GLB endpoint
-         │
-         ▼
-Step 3 — GLB encapsulates packets using GENEVE protocol
-         and sends to security appliances (Target Group)
-         │
-         ▼
-Step 4 — Security appliance inspects the packet:
-         ├── Malicious? → Drop it ❌
-         └── Safe?      → Return to GLB ✅
-         │
-         ▼
-Step 5 — GLB forwards approved traffic to Application
+      Every passenger (network packet) MUST pass through security screening (firewall/IDS)
+      Security staff (3rd party appliances) inspect every bag (packet)
+      Only cleared passengers (safe traffic) board the plane (reach the application)
+      Passengers don't know the checkpoint exists — it's transparent
+      📊 How GLB Works — From Your Image:
+            Users (Source)
+                  │
+                  │  All traffic
+                  ▼
+            Route Table
+            (172.16.0.0 / 172.16.1.0 / 172.16.2.0)
+                  │
+                  ├──────────────────────────────┐
+                  │ traffic                      │ traffic
+                  ▼                              ▼
+            Gateway Load Balancer          Application
+                  │                         (destination)
+                  │ Forwards ALL traffic
+                  ▼
+              Target Group
+            ┌─────────────────────────────────┐
+            │  3rd Party Security Appliances  │
+            │  [Firewall] [IDS] [DPI Tool]    │
+            └─────────────────────────────────┘
+                  │
+                  │ Inspected & approved traffic
+                  ▼
+            Application (destination) ✅
+            💡 Key Point from your image: Traffic from users goes through the Route Table first, then hits the Gateway Load Balancer, which sends it to the Target Group of 3rd Party Security Virtual Appliances before it reaches the actual application. The application never receives uninspected traffic.
+            
+            🔍 What Are 3rd Party Security Virtual Appliances?
+   
+            Appliance	                              Purpose
+            Firewall	                              Block/allow traffic based on rules
+            IDS (Intrusion Detection System)	      Detect suspicious/malicious traffic
+            IPS (Intrusion Prevention System)	      Detect AND block malicious traffic
+            Deep Packet Inspection (DPI)	            Inspect packet content for threats
+            Web Application Firewall (WAF)	      Protect against web-based attacks
+            Examples: Palo Alto Networks, Fortinet, Check Point, Cisco — all can run as virtual appliances behind a GLB.
+            
+            ⚙️ How GLB Works Technically:
+            Protocol Used: GENEVE (port 6081)
+            
+            Step 1 — Traffic arrives from internet/user
+                     │
+                     ▼
+            Step 2 — Route Table redirects traffic to GLB endpoint
+                     │
+                     ▼
+            Step 3 — GLB encapsulates packets using GENEVE protocol
+                     and sends to security appliances (Target Group)
+                     │
+                     ▼
+            Step 4 — Security appliance inspects the packet:
+                     ├── Malicious? → Drop it ❌
+                     └── Safe?      → Return to GLB ✅
+                     │
+                     ▼
+            Step 5 — GLB forwards approved traffic to Application
