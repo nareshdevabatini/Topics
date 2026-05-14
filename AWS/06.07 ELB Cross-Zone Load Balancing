@@ -2,6 +2,23 @@ What is Cross-Zone Load Balancing?
 Cross-Zone Load Balancing is a setting on AWS Load Balancers that allows traffic to be distributed evenly across
 ALL registered EC2 instances in ALL Availability Zones — regardless of which AZ the traffic originally entered through.
 
+Step 1 — Navigate: Go to AWS Console → EC2
+       In the left panel → Click "Load Balancers"
+       Select ELB-Demo-NLB
+Step 2 — Go to Attributes:
+       Click the "Attributes" tab
+       Click "Edit"(top right)
+Step 3 — Enable Cross-Zone:
+       Setting	              Value
+       Cross-Zone Load Balancing	Turn ON ✅
+       Click "Save Changes" ✅
+⏳ Takes effect immediately — no restart required.
+
+Load Balancer	       Default	       Can Change?
+ALB	              ✅ Always ON	       ❌ Cannot disable
+NLB	              ❌ OFF by default	✅ Can enable
+GLB	              ❌ OFF by default	✅ Can enable
+CLB	              ❌ OFF by default	✅ Can enable
 
 Internet Traffic
        │
