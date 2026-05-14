@@ -1,3 +1,30 @@
  📌What is Dynamic Scaling?
 Dynamic Scaling automatically adjusts the number of EC2 instances in your ASG in real time based on a metric (like CPU usage). 
 When load increases → ASG adds instances. When load decreases → ASG removes instances.
+
+📋 Part 1 — Create Dynamic Scaling Policy:
+       Step 1 — Navigate:
+             Go to AWS Console → EC2
+             In the left panel → Click "Auto Scaling Groups"
+             Select Demo-ASG
+             Click "Automatic Scaling" tab
+       Step 2 — Create Dynamic Scaling Policy:
+       Click "Create Dynamic Scaling Policy"
+       Configure:
+       seting	Value
+       Policy Type	Target Tracking Scaling
+       Scaling Policy Name	target-tracking-policy
+       Metric Type	Average CPU Utilization
+       Target Value	40(percent)
+       Instance Warmup	300 seconds (default — leave as is)
+       💡 Target Value = 40 means ASG will try to keep average CPU at 40% across all instances. If it goes above → add instances. If it drops below → remove instances.
+       Click "Create" ✅
+       Step 3 — Update Maximum Capacity:
+       Go to Demo-ASG → Click "Edit"(Overview section)
+       Update:
+       Setting	Old Value	New Value
+       Desired Capacity	2	2
+       Minimum Capacity	1	1
+       Maximum Capacity	2	3
+       Click "Update" ✅
+       ⚠️ Important: Maximum Capacity must be set to 3 so ASG has room to launch a 3rd instance when CPU goes above 40% under stress testing.
