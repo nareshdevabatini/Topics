@@ -1,0 +1,4 @@
+📌 What is Amazon Aurora?
+            Amazon Aurora is AWS's own cloud-native relational database engine   
+            — fully compatible with MySQL and PostgreSQL but built from scratch by AWS to be faster, 
+            more reliable, and more scalable than standard RDS MySQL/PostgreSQL.
