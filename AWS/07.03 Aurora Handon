@@ -1,40 +1,39 @@
 🛢️ Create Amazon Aurora MySQL Database
-Step 1 — Navigate to RDS & Start Creation
-Go to AWS Console → Search RDS → Click RDS
-In the left panel, click Databases
-Click Create database
+        Step 1 — Navigate to RDS & Start Creation
+        Go to AWS Console → Search RDS → Click RDS
+        In the left panel, click Databases
+        Click Create database
 Step 2 — Choose Creation Method
-Select Standard create
-✅ This enables Full Configuration mode — exposing all available settings
+        Select Standard create
+        ✅ This enables Full Configuration mode — exposing all available settings
 
 Step 3 — Select Engine Type
-Engine type → Amazon Aurora
-Edition → Amazon Aurora MySQL-Compatible Edition
+      Engine type → Amazon Aurora
+      Edition → Amazon Aurora MySQL-Compatible Edition
 Step 4 — Choose Template
-Templates → Select Production
+      Templates → Select Production
 Step 5 — Cluster Scalability Type
-Cluster scalability type → Provisioned
+      Cluster scalability type → Provisioned
 Step 6 — Instance Configuration (Burstable Classes)
-DB instance class → Select Burstable classes (includes t classes)
-Choose an instance size, e.g. db.t3.medium or db.t4g.medium
+      DB instance class → Select Burstable classes (includes t classes)
+      Choose an instance size, e.g. db.t3.medium or db.t4g.medium
 Step 7 — Set DB Cluster Identifier
-DB cluster identifier → database-2
+        DB cluster identifier → database-2
 Step 8 — Configure Credentials (Self Managed)
-Master username → admin(default)
-Credentials management → Self managed
-Master password → admin123
-Confirm password → admin123
+        Master username → admin(default)
+        Credentials management → Self managed
+        Master password → admin123
+        Confirm password → admin123
 Step 9 — Connectivity & VPC Security Group
-Scroll down to Connectivity
-Under VPC security group (firewall) → Choose Select existing
-Remove the default SG (if any) → Select demo-sg-rds-aurora
+        Scroll down to Connectivity
+        Under VPC security group (firewall) → Choose Select existing
+        Remove the default SG (if any) → Select demo-sg-rds-aurora
 Step 10 — Additional Configuration
-Scroll down → Expand Additional configuration
-Under Database options:
-Initial database name → myDb
-💡 If left blank, no default database is created — you'd have to create it manually via MySQL client.
-
+      Scroll down → Expand Additional configuration
+      Under Database options:
+      Initial database name → myDb
+        💡 If left blank, no default database is created — you'd have to create it manually via MySQL client.
 Step 11 — Create the Database
-Review all settings
-Scroll to the bottom → Click Create database
-Status will show Creating → changes to Available in approximately 5–15 minutes
+      Review all settings
+      Scroll to the bottom → Click Create database
+      Status will show Creating → changes to Available in approximately 5–15 minutes
