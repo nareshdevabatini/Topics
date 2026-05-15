@@ -1,0 +1,3 @@
+📌What is Amazon ElastiCache?
+                    Amazon ElastiCache is a fully managed in-memory caching service by AWS. 
+                    It improves application performance by storing frequently accessed data in memory (RAM) instead of fetching it from a database every time. It supports two engines — Redis and Memcached.
