@@ -2,3 +2,47 @@
             Amazon Aurora is AWS's own cloud-native relational database engine   
             — fully compatible with MySQL and PostgreSQL but built from scratch by AWS to be faster, 
             more reliable, and more scalable than standard RDS MySQL/PostgreSQL.
+
+📊 Aurora Architecture — How it's Different:
+            Standard RDS MySQL:
+            ┌─────────────────────────────────┐
+            │  EC2-like Instance              │
+            │  ┌───────────┐  ┌────────────┐  │
+            │  │  MySQL    │  │  EBS       │  │
+            │  │  Engine   │  │  Storage   │  │
+            │  └───────────┘  └────────────┘  │
+            │  (Compute + Storage TOGETHER)   │
+            │  Single AZ by default           │
+            └─────────────────────────────────┘
+            
+            Amazon Aurora:
+            ┌─────────────────────────────────────────────────┐
+            │  Aurora Instance (Compute)                       │
+            │  ┌──────────────────────────────────────────┐   │
+            │  │  Aurora Engine (MySQL/PostgreSQL compat) │   │
+            │  └──────────────────────────────────────────┘   │
+            │                    │                             │
+            │  ┌─────────────────▼──────────────────────────┐ │
+            │  │       Aurora Distributed Storage           │ │
+            │  │  6 copies across 3 Availability Zones      │ │
+            │  │  AZ-1: Copy 1 ✅  Copy 2 ✅               │ │
+            │  │  AZ-2: Copy 3 ✅  Copy 4 ✅               │ │
+            │  │  AZ-3: Copy 5 ✅  Copy 6 ✅               │ │
+            │  └────────────────────────────────────────────┘ │
+            │  (Compute + Storage SEPARATED — highly durable)  │
+            └─────────────────────────────────────────────────┘
+Feature	            RDS MySQL	            Amazon Aurora
+Performance	            Baseline	            5x faster ✅
+Storage	            Up to 64TB	            Up to 128TB ✅
+Storage Auto-scale	Manual	            Automatic ✅
+Copies	            2 (Multi-AZ)	6 across 3 AZs ✅
+Read Replicas	Up to 5	            Up to 15 ✅
+Failover Time	60-120 seconds	< 30 seconds ✅
+Self-healing	❌ No	            ✅ Yes
+Serverless	            ❌ No	            ✅ Yes
+Global Database	❌ No	            ✅ Yes
+Free Tier	            ✅ Yes	            ❌ No
+Cost	            Lower 💰	            Higher 💸
+Local Development	✅ Yes	            ❌ No
+Beginner Friendly	✅ Yes	            ❌ Complex
+Best For	            Learning / Small apps	Enterprise / High traffic
