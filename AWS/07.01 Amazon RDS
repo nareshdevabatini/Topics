@@ -1,0 +1,100 @@
+📌 What is Amazon RDS?
+            Amazon RDS (Relational Database Service) is a fully managed AWS service that makes it easy to set up, 
+            operate, and scale a relational database in the cloud. AWS handles all the heavy lifting 
+            — backups, patching, scaling, and high availability.
+🗄️ Part 1 — Create the Database:
+Step 1 — Navigate:
+
+Go to AWS Console → Search "RDS" → Click "RDS"
+In the left panel → Click "Databases"
+Click "Create Database" ✅
+Step 2 — Choose Database Creation Method:
+
+Table
+
+
+Setting	Value
+Creation Method	Standard Create(Full Configuration)
+⚠️ Correction: You said "Aurora RDS" but then selected MySQL with Free Tier. Amazon Aurora is NOT available on Free Tier. Select MySQL engine directly — not Aurora. Aurora costs money even at minimal usage.
+
+Step 3 — Engine Selection:
+
+Table
+
+
+Setting	Value
+Engine Type	MySQL
+Edition	MySQL Community
+Engine Version	MySQL 8.0 (latest stable)
+Step 4 — Template:
+
+Table
+
+
+Setting	Value
+Template	Free Tier ✅
+💡 Selecting Free Tier automatically:
+
+Sets instance to db.t3.micro
+Disables Multi-AZ
+Limits storage to 20GB
+No charge for 12 months ✅
+Step 5 — Settings / Credentials:
+
+Table
+
+
+Setting	Value
+DB Instance Identifier	database-1
+Master Username	admin
+Credential Management	Self Managed
+Master Password	admin123
+Confirm Password	admin123
+⚠️ Security Note:admin123 is fine for learning/demo purposes. For production — always use a strong password with uppercase, numbers and special characters.
+
+Step 6 — Instance Configuration:
+
+Table
+
+
+Setting	Value
+DB Instance Class	db.t3.micro(auto-set by Free Tier)
+Storage Type	gp2(General Purpose SSD)
+Allocated Storage	20 GB
+Storage Autoscaling	Leave as default
+Step 7 — Connectivity:
+
+Table
+
+
+Setting	Value
+Compute Resource	Don't connect to EC2
+VPC	Default VPC
+Subnet Group	Default
+Publicly Accessible	YES ✅
+Availability Zone	No preference (Free Tier)
+VPC Security Group	Create New
+Security Group Name	demo-rds-sg
+Port	3306
+⚠️ Correction: You wrote demo-rds name it — the proper name format is demo-rds-sg (adding -sg suffix makes it clear it's a Security Group).
+
+⚠️ Critical:Publicly Accessible must be set to YES — otherwise you cannot connect from your local computer or SQL Electron. This is the most common mistake.
+
+Step 8 — Additional Configuration:
+
+Expand "Additional Configuration" section
+Configure:
+Table
+
+
+Setting	Value
+Initial Database Name	myDb
+Automated Backups	Leave as default
+Encryption	Leave as default
+Maintenance	Leave as default
+⚠️ If you skip Initial Database Name — AWS will create the RDS instance but no database will exist inside it. You would have to create it manually via SQL later.
+
+Step 9 — Create Database:
+
+Review all settings
+Click "Create Database" ✅
