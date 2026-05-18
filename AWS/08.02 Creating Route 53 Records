@@ -1,0 +1,32 @@
+🌐 Create First Record in Route 53
+Step 1 — Create the Record
+
+In the AWS Console, navigate to Route 53 → Hosted Zones
+Click on your hosted zone: needtoknowEc2.com
+Click Create Record
+Enter record name: test(this creates test.needtoknowEc2.com)
+Record type: A (default)
+Value / Route traffic to: 11.26.36.213
+Leave all remaining settings as default (TTL, routing policy, etc.)
+Click Create Records
+🖥️ Verify via CloudShell
+Step 2 — Open CloudShell & Install bind-utils
+
+Click the CloudShell icon in the AWS Console top navigation bar
+Run the following to install DNS query tools:
+  sudo yum install -y bind-utils
+Step 3 — Verify with nslookup
+
+Run:
+  nslookup test.needtoknowEc2.com
+✅ This confirms the A record resolves — it returns the IP 11.26.36.213
+Step 4 — Deep-dive with dig
+
+Run:
+  dig test.needtoknowEc2.com
+📋 This gives more detailed DNS information including:
+ANSWER SECTION — the resolved IP address
+TTL — Time To Live value
+Query time — how long the lookup took
+Authoritative nameserver — which NS server responded
+💡 Tip:nslookup gives a quick confirmation, while dig is preferred for troubleshooting as it shows the full DNS resolution chain and metadata.
