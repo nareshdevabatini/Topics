@@ -1,0 +1,11 @@
+📌 What is Amazon Route 53 Domain Registration?
+          Route 53 allows you to register and manage domain names directly from AWS. When you register a domain, 
+          AWS automatically creates a Hosted Zone for it 
+          — which holds your DNS records. Domain registration is a paid service and is not covered by AWS Free Tier.
+🌐 Part 1 — Register a Domain in Route 53:
+
+Step 1 — Navigate to Route 53:
+          Go to AWS Console → Search "Route 53" → Click "Route 53"
+          On the Route 53 homepage → Click "Get started"
+          ⚠️ Note: Route 53 domain registration is NOT free.
+          Domain pricing varies by TLD (e.g. .com starts at ~$13/year). You will be charged immediately upon registration.
